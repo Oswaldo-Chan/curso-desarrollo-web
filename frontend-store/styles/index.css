@@ -1,0 +1,208 @@
+:root {
+    --blanco: #ffffff;
+    --purpura-oscuro: #2A083D;
+    --negro-puro: #0A0010;
+    --rosa-palido: #DBC6E7;
+    --amarillo-pastel: #F9E792;
+    --marron-oscuro: #6B602B;
+    --verde-amarillo: #7A9F35;
+    --amarillo-fuerte: #ffd336f3;
+    --purpura: #12041b;
+    --fuente-principal: 'Kanit', sans-serif;
+    --fuente-secundaria: 'Raleway', sans-serif;
+}
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *::after {
+    box-sizing: inherit;
+}
+/*globals*/
+body {
+    background-color: var(--negro-puro);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+p {
+    font-size: 1.8rem;
+    font-family: var(--fuente-secundaria);
+    color: var(--blanco);
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+}
+h1, h2, h3 {
+    text-align: center;
+    color: var(--rosa-palido);
+    font-family: var(--fuente-principal);
+}
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 3.2rem;
+}
+h3 {
+    font-size: 2.4rem;
+}
+.container {
+    max-width: 100rem;
+    margin: 0 auto;
+}
+/*CSS using BEM*/
+/* Header */
+.header {
+    display: flex;
+    justify-content: center;
+}
+.header__logo {
+    margin: 3rem 0;
+}
+/* navigation */
+.nav {
+    background-color: var(--purpura-oscuro);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    /*gap: 2rem; forma nueva para separar*/
+}
+.nav__link {
+    margin-right: 2rem;
+    font-family: var(--fuente-secundaria);
+    color: var(--blanco);
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: .5;
+}
+.nav__link:last-of-type {
+    margin-right: 0;
+}
+.nav__link:hover,
+.nav__link--active {
+    opacity: 1;
+    border-bottom: 0.1rem solid var(--blanco);
+}
+/*main*/
+.container {
+    background-color: var(--negro-puro);
+}
+.container__title {
+    text-transform: capitalize;
+}
+.container__title--color {
+    color: var(--purpura-oscuro);
+    text-shadow: .1rem 0 0 var(--amarillo-fuerte),
+    0 .1rem 0 var(--amarillo-fuerte),
+    -.1rem 0 0 var(--amarillo-fuerte),
+    0 -.1rem 0 var(--amarillo-fuerte);
+}
+/*grid*/
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem; /*column gap & row gap*/
+}
+@media (min-width: 768px){
+    .grid {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+/*products*/
+.product {
+    background-color: var(--purpura);
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+.product__image {
+    width: 100%;
+    border-radius: 1.5rem;
+}
+.product__name {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.product__size {
+    font-family: var(--fuente-principal);
+    text-transform: uppercase;
+    font-size: 2rem;
+    opacity: .7;
+}
+.product__price {
+    font-family: var(--fuente-principal);
+    font-size: 2.8rem;
+    color: var(--amarillo-pastel);
+}
+.product__name, 
+.product__size,
+.product__price {
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 1;
+}
+/**/
+/* footer */
+.footer{
+    background-color: var(--rosa-palido);
+    background-color: p;
+}
+.footer__text{
+    text-transform: capitalize;
+    text-align: center;
+    font-family: var(--fuente-principal);
+    font-size: 2rem;
+    font-weight: lighter;
+    color: var(--purpura-oscuro);
+}
+.footer__text span{
+    text-transform: uppercase;
+    color: var(--purpura-oscuro);
+    font-weight: bold;
+    opacity: .5;
+}
+/*graphics*/
+.graphic {
+    min-height: 30rem;
+    background-size: cover;
+    grid-column: 1/3;
+}
+.graphic--react {
+    grid-row: 2/3;
+    background-image: url(../assets/grafico1.jpg);
+}
+.graphic--react:hover {
+    background-image: url(../assets/grafico3.jpg);
+}
+.graphic--node {
+    background-image: url(../assets/grafico2.jpg);
+    grid-row: 8/9;
+}
+@media (min-width: 768px) {
+    .graphic--node {
+        grid-row: 5/6;
+        grid-column: 2/4;
+    }
+}
+.graphic--node:hover {
+    background-image: url(../assets/grafico4.jpg);
+}
+/**/
+@media (max-width: 520px) {
+    .product {
+        width: 15rem;
+        height: min-content;
+    }
+    .product__name {
+        font-size: 2rem;
+    }
+    .grid {
+        justify-items: center;
+    }
+    .graphic {
+        display: none;
+    }
+}
