@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-end Store</title>
+    <link rel="preload" href="styles/normalize.css" as="style">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;500&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="styles/producto.css" as="style">
+    <link rel="stylesheet" href="styles/producto.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html">
+            <img class="header__logo" src="assets/logo.png" alt="logo">
+        </a>
+    </header>
+
+    <nav class="nav">
+        <a class="nav__link" href="index.html">tienda</a>
+        <a class="nav__link nav__link--active" href="nosotros.html">nosotros</a>
+    </nav>
+
+    <main class="container">
+        <h1 class="container__title">react <span class="container__title--color">JS</span></h1>
+        <div class="shirt">
+            <img class="shirt__image" src="assets/3.jpg" alt="">
+
+            <div class="shirt__content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus expedita ipsum minus nulla mollitia accusantium, nostrum sed, qui officia iste dolorem odio eius in! Laboriosam maxime mollitia quaerat ex accusamus?</p>
+            
+                <form class="form">
+                    <select class="form__field">
+                        <option disabled selected>-- Seleccionar Talla --</option>
+                        <option>L</option>
+                        <option>M</option>
+                        <option>S</option>
+                        <option>XS</option>
+                    </select>
+                    <select class="form__field">
+                        <option disabled selected>-- Seleccionar Color --</option>
+                        <option>Negro</option>
+                        <option>Gris</option>
+                        <option>Blanco</option>
+                    </select>
+                    <input class="form__field" placeholder="Ingrese una cantidad" type="number" min="1" max="30" step="1"><!--step hace saltos-->
+                    <input class="form__submit" type="submit" value="Agregar al carrito">
+                    <input class="form__submit--color" type="submit" value="Comprar ahora">
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p class="footer__text">front end store | created by <span>oswaldo chan</span></p>
+    </footer>
+</body>
+</html>
