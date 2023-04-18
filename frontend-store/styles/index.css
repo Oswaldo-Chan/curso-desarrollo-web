@@ -102,6 +102,7 @@ h3 {
 }
 /*grid*/
 .grid {
+    margin: 0 2rem;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 2rem; /*column gap & row gap*/
@@ -116,6 +117,13 @@ h3 {
     background-color: var(--purpura);
     padding: 1rem;
     border-radius: 1.5rem;
+    transition: box-shadow .2s ease;
+}
+.product:hover {
+    box-shadow: 0 0 .3rem var(--rosa-palido);
+    margin-top: -.3rem;
+    text-shadow: 0 0 .3rem var(--rosa-palido);
+
 }
 .product__image {
     width: 100%;
@@ -144,26 +152,6 @@ h3 {
     text-align: center;
     line-height: 1;
 }
-/**/
-/* footer */
-.footer{
-    background-color: var(--rosa-palido);
-    background-color: p;
-}
-.footer__text{
-    text-transform: capitalize;
-    text-align: center;
-    font-family: var(--fuente-principal);
-    font-size: 2rem;
-    font-weight: lighter;
-    color: var(--purpura-oscuro);
-}
-.footer__text span{
-    text-transform: uppercase;
-    color: var(--purpura-oscuro);
-    font-weight: bold;
-    opacity: .5;
-}
 /*graphics*/
 .graphic {
     min-height: 30rem;
@@ -190,19 +178,39 @@ h3 {
 .graphic--node:hover {
     background-image: url(../assets/grafico4.jpg);
 }
+/*footer*/
+.footer{
+    background-color: var(--rosa-palido);
+    margin-top: 2rem;
+    padding: .5rem;
+}
+.footer__text{
+    text-transform: capitalize;
+    text-align: center;
+    font-family: var(--fuente-principal);
+    font-size: 2rem;
+    font-weight: lighter;
+    color: var(--purpura-oscuro);
+}
+.footer__text span{
+    text-transform: uppercase;
+    color: var(--purpura-oscuro);
+    font-weight: bold;
+    opacity: .5;
+}
 /**/
-@media (max-width: 520px) {
-    .product {
-        width: 15rem;
-        height: min-content;
-    }
+@media (max-width: 559px) {
     .product__name {
         font-size: 2rem;
     }
     .grid {
-        justify-items: center;
+        margin: 0;
+        gap: 2rem 1rem;
+        margin: 0 .3rem;
     }
+}
+@media (max-width: 345px) {
     .graphic {
-        display: none;
+        display: none; /*solo es para ver que hace, desaparece los graficos*/
     }
 }

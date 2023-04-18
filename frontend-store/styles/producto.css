@@ -33,7 +33,7 @@ a {
     text-decoration: none;
 }
 img {
-    max-width: 100%;
+    width: 100%;
 }
 h1, h2, h3 {
     text-align: center;
@@ -101,50 +101,77 @@ h3 {
     -.1rem 0 0 var(--amarillo-fuerte),
     0 -.1rem 0 var(--amarillo-fuerte);
 }
-/*info*/
-.info {
-    display: grid;
-    grid-template-columns: repeat(1,1fr);
-    gap: 2rem;
+/*shirt*/
+.shirt {
     margin: 0 2rem;
 }
-.info__image {
-    grid-row: 1/2;
-    grid-column: 1/2;
-    width: 100%;
+.shirt__image {
     border-radius: 1.5rem;
 }
-@media (min-width: 768px){
-    .info {
+@media (min-width: 768px) {
+    .shirt {
+        display: grid;
         grid-template-columns: repeat(2,1fr);
-    }
-    .info__image {
-        grid-row: 1/2;
-        grid-column: 2/3;
+        column-gap: 2rem; 
+        align-items: center;
     }
 }
-/*shop info*/
-/*blocks*/
-.blocks {
+/*form*/
+.form {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 2rem;
-    margin: 0 2rem;
+    gap: 1rem;
 }
-@media (min-width: 768px){
-    .blocks {
-        grid-template-columns: repeat(4,1fr);
+@media (min-width: 768px) {
+    .form {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 1rem;
+    }
+    .form__field:nth-child(3) {
+        grid-column:1/3;
     }
 }
-.block {
-    text-align: center;
+.form__field {
+    border: .4rem solid var(--purpura-oscuro);
+    font-size: 1.8rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    appearance: none;
+    font-family: var(--fuente-principal);
+    font-weight: lighter;
 }
-.block__image {
-    width: 100%;
+.form__submit {
+    background-color:var(--rosa-palido);
+    border: none;
+    padding: 1.5rem;
+    font-size: 2rem;
+    font-family: var(--fuente-principal);
+    text-transform: uppercase;
+    opacity: .6;
+    color: var(--blanco);
+    transition: .2s ease;
 }
-.block__title {
-    margin: 0;
-    text-transform: capitalize;
+.form__submit:hover {
+    cursor: pointer;
+    opacity: 1;
+    box-shadow: 0 0 1rem var(--blanco);
+    color: var(--purpura);
+}
+.form__submit--color {
+    background-color: transparent;
+    border: 0.2rem solid var(--rosa-palido);
+    padding: 1.5rem;
+    font-size: 2rem;
+    font-family: var(--fuente-principal);
+    text-transform: uppercase;
+    opacity: .6;
+    color: var(--rosa-palido);
+    transition: .2s ease;
+}
+.form__submit--color:hover {
+    cursor: pointer;
+    opacity: 1;
+    box-shadow: 0 0 1rem var(--blanco);
 }
 /* footer */
 .footer{
