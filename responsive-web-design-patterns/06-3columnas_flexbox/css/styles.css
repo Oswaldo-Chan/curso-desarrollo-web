@@ -1,0 +1,77 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.2rem;
+}
+
+p {
+    font-size: 2rem;
+}
+
+.contenedor {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.entrada-blog a {
+    display: inline-block;
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/** CODIGO AQUI **/
+@media (min-width: 768px) {
+    .flex-container-1 {
+        display: flex;
+        justify-content: space-between;
+    }
+    .flex-container-1 .main-content {
+        flex-basis: calc(60% - 1rem);
+
+    }
+    .flex-container-1 .sidebar {
+        flex-basis: calc(20% - 1rem);
+    }
+    .flex-container-1 .sidebar-1 {
+        order: -1;
+    }
+    .flex-container-2 {
+        display: flex;
+        flex-wrap: wrap; /*si no hay espacio en la fila actual, se van a la sig. fila*/
+        justify-content: space-between;
+        background-color: #ededed;
+    }
+    .flex-container-2 .main-content {
+        width: 100%;
+    }
+    .flex-container-2 .sidebar {
+        width: calc(50% - 1rem);
+    }   
+}
