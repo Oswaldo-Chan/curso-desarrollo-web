@@ -2,10 +2,10 @@
     --heading-font-1:'Encode Sans Condensed', sans-serif;
     --heading-font-2:'Playfair Display', serif;
     --paragraph-font:'Open Sans', sans-serif;
-    
     --white: #ffffff;
     --black: #000000;
     --gray: #eeeeee; 
+    --gray-2: #f8f8f8;
     --brown-1: #B27A3F;
     --brown-2: #2e2112;
 }
@@ -23,18 +23,23 @@ body {
 }
 /*globals*/
 .container {
-    max-width: 100%;
-    width: 90%;
+    max-width: 120rem;
+    width:90%;
     margin: 0 auto;
+}
+img {
+    max-width: 100%;
 }
 a {
     text-decoration: none;
 }
-h1,h2 {
+h1,h2,h3 {
     font-family: var(--heading-font-1);
+    line-height: 1.3;
 }
-h3,h4 {
+h4 {
     font-family: var(--heading-font-2);
+    line-height: 1.6;
 }
 h1 {
     font-size: 4.8rem;
@@ -44,9 +49,12 @@ h2 {
 }
 h3 {
     font-size: 3.2rem;
+    display: inline-block;
+    padding-bottom: 1rem;
+    border-bottom: 0.5rem solid var(--brown-1);
 }
 h4 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
 }
 /*utilities*/
 .no-margin {
@@ -58,32 +66,227 @@ h4 {
 .text-centered {
     text-align: center;
 }
-/**/
+/*header*/
 .header {
-    background-image: url(../assets/header-image.jpg);
+    background-image: url(../assets/banner.webp);
     height: 20rem;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    position: relative;
+    box-shadow: 0px -3px 9px 6px rgba(0,0,0,0.8);
+    margin-bottom: 0.5rem;
 }
 .header__content {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .30);
+    color: var(--white);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.logo {
     color: var(--white);
 }
 .logo__name {
-    color: var(--white);
     font-weight: 400;
 }
 .logo__bold {
     font-weight: bold;
 }
+.header__slogan {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.25rem;
+}
+@media (max-width: 530px) {
+    .header__slogan {
+        font-size: 1.25rem;
+    }
+}
+/*navbar*/
 .nav {
-    background-color: var(--white);
-    border-top: 0.1rem solid var(--gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     border-bottom: 0.1rem solid var(--gray);
 }
+.nav__icon {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    background-image: url(../assets/nav-icon-down.svg);
+    background-size: contain;
+    cursor: pointer;
+}
+.nav__icon:hover {
+    opacity: .5;
+}
+.nav__toggle {
+    display: none; /*oculta el checkbox*/
+}
 .nav__link {
+    display: none;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     color: var(--black);
-    display: grid;
+}
+.nav__link--active {
+    color: var(--brown-1);
+}
+.nav__link:hover {
+    color: var(--brown-1);
+    font-weight: bold;
+}
+.nav__toggle:checked ~ .nav__link { /*si el checkbox esta activo, se aplica a nav__link display block para que aparezcan los links*/
+    display: block;
+}
+.nav__toggle:checked ~ .nav__icon {/* e1 ~ e2 solo funciona cuando e2 va despues de e1*/
+    background-image: url(../assets/nav-icon-up.svg);
+}
+@media (min-width: 768px) {
+    .nav {
+        flex-direction: row;
+    }
+    .nav__icon {
+        display: none;
+    }
+    .nav__link {
+        display: block;
+        margin-right: 5rem;
+    }
+    .nav__link:last-child {
+        margin-right: 0;
+    }
+}
+/**/
+@media (min-width: 768px) {
+    .main-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 5rem;
+    }
+}
+/*blog*/
+.article {
+    border-bottom: 0.1rem solid var(--gray);
+    margin-bottom: 2rem;
+}
+.article:last-of-type {
+    border: none;
+    margin-bottom: 0;
+}
+.article__content {
+    text-align: center;
+}
+.article__img img{
+    box-shadow: 0px 8px 9px -1px rgba(0,0,0,0.7);
+}
+.article__content p {
+    text-align: justify;
+}
+.article__content p:first-letter {
+    font-family: var(--heading-font-2);
+    float:left; /*ajusta la letra hacia la izquierda, hace que flote hacia la izquierda*/
+    margin-right: 1rem; /*separa la letra del parrafo para que se vea mejor*/
+    font-size: 7rem;
+    line-height:100%; /*ajusta la letra con la linea del parrafo*/
+}
+.btn {
+    display: block;
+    font-family: var(--paragraph-font);
+    color: var(--white);
+    text-align: center;
+    padding: 0.5rem 3rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    border: 0.1rem solid var(--white);
+}
+.btn--primary {
+    background-color: var(--black);
+}
+.btn--primary:hover {
+    background-color: transparent;
+    color: var(--black);
+    border: 0.1rem solid var(--black);
+}
+@media (min-width: 768px) {
+    .btn {
+        display: inline-block;
+    }
+}
+/*sidebar*/
+.courses {
+    list-style: none; 
+}
+.widget-course {
+    border-bottom: 0.2rem solid var(--gray);
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.widget-course h4,
+.widget-course p {
+    text-align:left;
+}
+.widget-course:last-of-type {
+    border: none;
+    margin-bottom: 0;
+}
+.widget-course__label {
+    font-family: var(--paragraph-font);
+    font-weight: bold;
+}
+.widget-course__info {
+    font-weight: normal;
+}
+.widget-course__info,
+.widget-course__label {
+    font-size: 2rem;
+}
+.btn--secondary {
+    background-color: var(--brown-1);
+}
+.btn--secondary:hover {
+    background-color: transparent;
+    color: var(--brown-1);
+    border: 0.1rem solid var(--brown-1);
+}
+/*footer*/
+.footer {
+    background-color: var(--black);
+    padding: 2rem 0;
+}
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.social-media {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.social-media a {
+    margin-right: 3rem;
+}
+.social-media a:last-child {
+    margin-right: 0;
+}
+.social-media a:hover {
+    opacity: .4;
+}
+@media (min-width: 768px) {
+    .footer .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .social-media{
+        margin-top: 0;
+    }
 }
