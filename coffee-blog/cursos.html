@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="styles/normalize.css" as="style">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;700&family=Open+Sans:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="preload" href="styles/style.css" as="style">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Blog De Café</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__content">
+            <a class="logo" href="index.html">
+                <h1 class="logo__name no-margin text-centered">Blog<span class="logo__bold">DeCafé</span></h1>
+            </a>
+
+            <p class="header__slogan no-margin text-centered">Un blog de café con consejos, cursos y más</p>
+        </div>
+    </header>
+    
+    <nav class="nav text-centered">
+        <input id="nav__toggle" class="nav__toggle" type="checkbox" ></input>
+        <label class="nav__icon" for="nav__toggle"></label><!--for vincula el label con el checkbox-->
+        <a class="nav__link" href="nosotros.html">nosotros</a>
+        <a class="nav__link nav__link--active" href="cursos.html">cursos</a>
+        <a class="nav__link" href="contacto.html">contacto</a>
+    </nav>
+
+    <main class="container">
+        <h3 class="text-centered">Nuestros Próximos Cursos y Talleres</h3>
+    
+        <div class="course">
+            <div class="course__img">
+                <img loading="lazy" src="assets/curso1.jpg" alt="course image">
+            </div>
+            
+            <div class="course__info">
+                <h4 class="no-margin">Técnicas de Extracción de Café</h4>
+                <p class="course__label">Precio:
+                    <span class="widget-course__info">Gratis</span>
+                </p>
+                <p class="course__label">Cupo:
+                    <span class="widget-course__info">20</span>
+                </p>
+                <p class="course__descripction">Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex expedita at, 
+                hic non laudantium. Molestiae, delectus iste magni dignissimos doloremque debitis maiores officia necessitatibus, 
+                fuga ducimus officiis a tenetur</p>
+            </div>
+        </div> <!--end course-->
+
+        <div class="course">
+            <div class="course__img">
+                <img loading="lazy" src="assets/curso2.jpg" alt="course image">
+            </div>
+            
+            <div class="course__info">
+                <h4 class="no-margin">Cuatro Recetas de Café para Principiantes</h4>
+                <p class="course__label">Precio:
+                    <span class="widget-course__info">Gratis</span>
+                </p>
+                <p class="course__label">Cupo:
+                    <span class="widget-course__info">20</span>
+                </p>
+                <p class="course__descripction">Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex expedita at, 
+                hic non laudantium. Molestiae, delectus iste magni dignissimos doloremque debitis maiores officia necessitatibus, 
+                fuga ducimus officiis a tenetur</p>
+            </div>
+        </div> <!--end course-->
+
+        <div class="course">
+            <div class="course__img">
+                <img loading="lazy" src="assets/curso3.jpg" alt="course image">
+            </div>
+            
+            <div class="course__info">
+                <h4 class="no-margin">Barismo y Arte Latte</h4>
+                <p class="course__label">Precio:
+                    <span class="widget-course__info">Gratis</span>
+                </p>
+                <p class="course__label">Cupo:
+                    <span class="widget-course__info">20</span>
+                </p>
+                <p class="course__descripction">Lorem ipsum dolor sit amet consectetur adipisicing elit. A ex expedita at, 
+                hic non laudantium. Molestiae, delectus iste magni dignissimos doloremque debitis maiores officia necessitatibus, 
+                fuga ducimus officiis a tenetur</p>
+            </div>
+        </div> <!--end course-->
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a class="logo" href="index.html">
+                <h1 class="logo__name no-margin text-centered">Blog<span class="logo__bold">DeCafé</span></h1>
+            </a>
+
+            <div class="social-media">
+                <a href="#">
+                    <img loading="lazy" src="assets/fb-icon.svg" alt="facebook icon">
+                </a>
+                <a href="#">
+                    <img loading="lazy" src="assets/ig-icon.svg" alt="instagram icon">
+                </a>
+                <a href="#">
+                    <img loading="lazy" src="assets/tw-icon.svg" alt="twitter icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/modernizr.js"></script>
+</body>
+</html>
