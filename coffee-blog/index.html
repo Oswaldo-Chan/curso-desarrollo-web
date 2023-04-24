@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página web sobre un blog de café">
+    <link rel="prefetch" href="cursos.html" as="document"> <!-- carga la siguiente pagina "cursos"-->
     <link rel="preload" href="styles/normalize.css" as="style">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,9 +29,9 @@
     <nav class="nav text-centered">
         <input id="nav__toggle" class="nav__toggle" type="checkbox" ></input>
         <label class="nav__icon" for="nav__toggle"></label><!--for vincula el label con el checkbox-->
-        <a class="nav__link" href="#">nosotros</a>
-        <a class="nav__link" href="#">cursos</a>
-        <a class="nav__link" href="#">contacto</a>
+        <a class="nav__link" href="nosotros.html">nosotros</a>
+        <a class="nav__link" href="cursos.html">cursos</a>
+        <a class="nav__link" href="contacto.html">contacto</a>
     </nav>
 
     <div class="container main-container">
@@ -38,7 +40,10 @@
 
             <article class="article">
                 <div class="article__img">
-                    <img src="assets/blog1.webp" alt="article image">
+                    <picture>
+                        <source loading="lazy" srcset="assets/blog1.webp" type="image/webp">
+                        <img loading="lazy" src="assets/blog1.jpg" alt="blog image">
+                    </picture>
                 </div>
 
                 <div class="article__content">
@@ -47,13 +52,16 @@
                     praesentium eligendi optio iusto dolorem veniam pariatur voluptate error rem tempore autem dolore adipisci quidem!. 
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sint, possimus nesciunt molestias, officia itaque 
                     praesentium eligendi optio iusto dolorem veniam pariatur voluptate error rem tempore autem dolore adipisci quidem!</p>
-                    <a class="btn btn--primary" href="entrada.html">Leer más</a>
+                    <a class="btn btn--primary" href="article.html">Leer más</a>
                 </div>
             </article>
 
             <article class="article">
                 <div class="article__img">
-                    <img src="assets/blog2.webp" alt="article image">
+                    <picture>
+                        <source loading="lazy" srcset="assets/blog2.webp" type="image/webp">
+                        <img loading="lazy" src="assets/blog2.jpg" alt="blog image">
+                    </picture>
                 </div>
 
                 <div class="article__content">
@@ -62,13 +70,16 @@
                     praesentium eligendi optio iusto dolorem veniam pariatur voluptate error rem tempore autem dolore adipisci quidem!. 
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sint, possimus nesciunt molestias, officia itaque 
                     praesentium eligendi optio iusto dolorem veniam pariatur voluptate error rem tempore autem dolore adipisci quidem!</p>
-                    <a class="btn btn--primary" href="entrada.html">Leer más</a>
+                    <a class="btn btn--primary" href="article.html">Leer más</a>
                 </div>
             </article>
 
             <article class="article">
                 <div class="article__img">
-                    <img src="assets/blog3.webp" alt="article image">
+                    <picture>
+                        <source loading="lazy" srcset="assets/blog3.webp" type="image/webp">
+                        <img loading="lazy" src="assets/blog3.jpg" alt="blog image">
+                    </picture>
                 </div>
 
                 <div class="article__content">
@@ -77,7 +88,7 @@
                     praesentium eligendi optio iusto dolorem veniam pariatur voluptate error rem tempore autem dolore adipisci quidem!. 
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sint, possimus nesciunt molestias, officia itaque 
                     praesentium eligendi optio iusto dolorem veniam pariatur voluptate error rem tempore autem dolore adipisci quidem!</p>
-                    <a class="btn btn--primary" href="entrada.html">Leer más</a>
+                    <a class="btn btn--primary" href="article.html">Leer más</a>
                 </div>
             </article>
         </main>
@@ -93,7 +104,7 @@
                     <p class="widget-course__label">Cupo:
                         <span class="widget-course__info">20</span>
                     </p>
-                    <a class="btn btn--secondary" href="entrada.html">Detalles</a>
+                    <a class="btn btn--secondary" href="cursos.html">Detalles</a>
                 </li>
 
                 <li class="widget-course"><!-- ol le agrega numeros a la lista, il es no ordenada -->
@@ -104,7 +115,7 @@
                     <p class="widget-course__label">Cupo:
                         <span class="widget-course__info">20</span>
                     </p>
-                    <a class="btn btn--secondary" href="entrada.html">Detalles</a>
+                    <a class="btn btn--secondary" href="cursos.html">Detalles</a>
                 </li>
 
                 <li class="widget-course"><!-- ol le agrega numeros a la lista, il es no ordenada -->
@@ -115,7 +126,7 @@
                     <p class="widget-course__label">Cupo:
                         <span class="widget-course__info">20</span>
                     </p>
-                    <a class="btn btn--secondary" href="entrada.html">Detalles</a>
+                    <a class="btn btn--secondary" href="cursos.html">Detalles</a>
                 </li>
             </ul>
         </aside>
@@ -128,17 +139,19 @@
             </a>
 
             <div class="social-media">
-                <a href="">
-                    <img src="assets/fb-icon.svg" alt="">
+                <a href="#">
+                    <img loading="lazy" src="assets/fb-icon.svg" alt="facebook icon">
                 </a>
-                <a href="">
-                    <img src="assets/ig-icon.svg" alt="">
+                <a href="#">
+                    <img loading="lazy" src="assets/ig-icon.svg" alt="instagram icon">
                 </a>
-                <a href="">
-                    <img src="assets/tw-icon.svg" alt="">
+                <a href="#">
+                    <img loading="lazy" src="assets/tw-icon.svg" alt="twitter icon">
                 </a>
             </div>
         </div>
     </footer>
+
+    <script src="js/modernizr.js"></script>
 </body>
 </html>

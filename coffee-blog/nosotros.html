@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="styles/normalize.css" as="style">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;700&family=Open+Sans:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="preload" href="styles/style.css" as="style">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Blog De Café</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__content">
+            <a class="logo" href="index.html">
+                <h1 class="logo__name no-margin text-centered">Blog<span class="logo__bold">DeCafé</span></h1>
+            </a>
+
+            <p class="header__slogan no-margin text-centered">Un blog de café con consejos, cursos y más</p>
+        </div>
+    </header>
+    
+    <nav class="nav text-centered">
+        <input id="nav__toggle" class="nav__toggle" type="checkbox" ></input>
+        <label class="nav__icon" for="nav__toggle"></label><!--for vincula el label con el checkbox-->
+        <a class="nav__link nav__link--active" href="nosotros.html">nosotros</a>
+        <a class="nav__link" href="cursos.html">cursos</a>
+        <a class="nav__link" href="contacto.html">contacto</a>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+        <h2 class="container__title text-centered">Sobre Nosotros</h2>
+
+        <div class="about-us">
+            <div class="about-us__img">
+                <img loading="lazy" src="assets/nosotros.jpg" alt="about us image">
+            </div>
+            
+            <div class="about-us__text">
+                <p>Nulla vehicula finibus magna facilisis, a hendrerit urna iaculis. Donec posuere felis at lacus interdum, et feugiat tortor scelerisque. Sed finibus auctor sapien in ultricies. Nam rutrum non mauris eget fermentum.</p>
+                <p>In cursus nisl enim pulvinar augue, sagittis eleifend nulla nibh ut justo. Duis magna enim, feugiat eget tristique at, pulvinar a diam. Mauris augue velit, iaculis ut nibh non, interdum faucibus libero. Curabitur porttitor placerat elit, non cursus purus. Sed justo ipsum, aliquam eu maximus vel, elementum nec leo. Fusce gravida lacus non lacinia auctor.</p>
+            </div>
+        </div>
+    </div>
+
+    <svg loading="lazy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill-opacity="1" d="M0,288L48,266.7C96,245,192,203,288,192C384,181,480,203,576,176C672,149,768,75,864,64C960,53,1056,107,1152,128C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a class="logo" href="index.html">
+                <h1 class="logo__name no-margin text-centered">Blog<span class="logo__bold">DeCafé</span></h1>
+            </a>
+
+            <div class="social-media">
+                <a href="#">
+                    <img loading="lazy" src="assets/fb-icon.svg" alt="facebook icon">
+                </a>
+                <a href="#">
+                    <img loading="lazy" src="assets/ig-icon.svg" alt="instagram icon">
+                </a>
+                <a href="#">
+                    <img loading="lazy" src="assets/tw-icon.svg" alt="twitter icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/modernizr.js"></script>
+</body>
+</html>

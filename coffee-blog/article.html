@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="styles/normalize.css" as="style">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@400;700&family=Open+Sans:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link rel="preload" href="styles/style.css" as="style">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Blog De Café</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__content">
+            <a class="logo" href="index.html">
+                <h1 class="logo__name no-margin text-centered">Blog<span class="logo__bold">DeCafé</span></h1>
+            </a>
+
+            <p class="header__slogan no-margin text-centered">Un blog de café con consejos, cursos y más</p>
+        </div>
+    </header>
+    
+    <nav class="nav text-centered">
+        <input id="nav__toggle" class="nav__toggle" type="checkbox" ></input>
+        <label class="nav__icon" for="nav__toggle"></label><!--for vincula el label con el checkbox-->
+        <a class="nav__link" href="nosotros.html">nosotros</a>
+        <a class="nav__link" href="cursos.html">cursos</a>
+        <a class="nav__link" href="contacto.html">contacto</a>
+    </nav>
+
+    <main class="article-blog container">
+        <h4 class="text-centered">Tipos de Grano de Café</h4>
+
+        <picture>
+            <source loading="lazy" srcset="assets/blog1.webp" type="image/webp">
+            <img loading="lazy" src="assets/blog1.jpg" alt="blog image">
+        </picture>
+
+        <p class="container__first-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin egestas felis ac lorem lobortis, a mollis urna ultricies. Nullam vitae 
+        sagittis tellus. Suspendisse ultrices imperdiet est. Praesent iaculis suscipit urna. Vestibulum iaculis imperdiet tempus. Nulla fringilla 
+        viverra tristique. Praesent ac odio lectus. Aliquam pretium nunc enim, et consectetur enim tempor in. Morbi ac nunc neque. Pellentesque 
+        fermentum scelerisque nunc id suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+        Fusce pulvinar, ex nec bibendum blandit, ex purus ornare eros, vel pharetra lectus quam non ex. Cras id metus et tortor gravida hendrerit.</p>
+        <p>Curabitur gravida aliquam metus, non ultrices leo vehicula id. Curabitur at mauris quis massa vestibulum varius sed a urna. Pellentesque 
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque ullamcorper sollicitudin sodales. Duis turpis tortor, 
+        auctor nec scelerisque quis, eleifend non sapien. Proin vitae dignissim sem, nec faucibus turpis. Integer feugiat tortor eu purus venenatis 
+        egestas. Aliquam vel rutrum ligula, sed consequat mi. In ante augue, eleifend vel arcu vitae, eleifend aliquet elit. Vivamus urna nisi, 
+        pharetra et pellentesque id, imperdiet quis velit. Curabitur at laoreet leo. Nullam ac pharetra sapien, at feugiat purus. In tempus porta 
+        vehicula. Suspendisse rutrum, felis porttitor varius porta, elit turpis scelerisque augue, sit amet convallis nunc orci id velit. Donec sit 
+        amet sapien felis.</p>
+        <p>Aenean nec sem vel urna consequat elementum a a ipsum. Donec varius neque magna. Curabitur venenatis lacinia purus quis tristique. 
+        Vestibulum facilisis nisl odio, id interdum turpis sollicitudin vel. Sed rutrum, risus eu ullamcorper condimentum, nunc ex tempor nibh, 
+        in efficitur nulla ipsum in felis. Sed est erat, tempor non dolor non, dictum consectetur quam. In nec mollis ante, nec aliquam nulla. 
+        Maecenas metus magna, condimentum et ante vitae, lacinia finibus turpis. In id lorem tempus, sagittis velit in, imperdiet purus. 
+        Phasellus et orci dui. Fusce augue felis, fringilla ut volutpat pretium, euismod at leo. Nam id nisi ut sapien blandit tempor. Sed 
+        vulputate, nisi vitae tristique suscipit, libero ex venenatis libero, id pellentesque tellus dui sed dolor. Fusce pulvinar efficitur 
+        risus vel mollis. Phasellus ullamcorper accumsan felis at laoreet.</p>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a class="logo" href="index.html">
+                <h1 class="logo__name no-margin text-centered">Blog<span class="logo__bold">DeCafé</span></h1>
+            </a>
+
+            <div class="social-media">
+                <a href="#">
+                    <img loading="lazy" src="assets/fb-icon.svg" alt="facebook icon">
+                </a>
+                <a href="#">
+                    <img loading="lazy" src="assets/ig-icon.svg" alt="instagram icon">
+                </a>
+                <a href="#">
+                    <img loading="lazy" src="assets/tw-icon.svg" alt="twitter icon">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/modernizr.js"></script>
+</body>
+</html>
