@@ -14,9 +14,11 @@ const reproductor = {
         console.log(`reproduciendo la playlist: ${nombre}`);
     }
 }
+
 reproductor.borrarCancion = function(id) {
     console.log(`borrando cancion con el ID: ${id}`);
 }
+
 reproductor.reproducir(3840);
 reproductor.pausar();
 reproductor.borrarCancion(204);

@@ -6,8 +6,8 @@ const producto = {
     disponible: true
 }
 
- Object.freeze(producto); //evita cambiar, eliminar o agregar propiedades
- console.log(Object.isFrozen(producto)); 
+Object.freeze(producto); //evita cambiar, eliminar o agregar propiedades
+console.log(Object.isFrozen(producto)); 
 
 Object.seal(producto); //solo permite modificar propiedades existentes
 producto.precio = 50;
