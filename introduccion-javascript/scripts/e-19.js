@@ -12,20 +12,20 @@ imprimir(restar(10,2));
 
 let total = 0;
 
- function agregarCarrito(precio) {
+function agregarCarrito(precio) {
     return total += precio;
- }
+}
 
- function calcularImpuesto(total) {
+function calcularImpuesto(total) {
     return 1.15 * total;
- }
+}
 
- total = agregarCarrito(200);
- total = agregarCarrito(400);
- total = agregarCarrito(600);
+total = agregarCarrito(200);
+total = agregarCarrito(400);
+total = agregarCarrito(600);
 
- console.log(total);
+console.log(total);
 
- const total_a_pagar = calcularImpuesto(total);
+const total_a_pagar = calcularImpuesto(total);
 
- imprimir(total_a_pagar);
+imprimir(total_a_pagar);
