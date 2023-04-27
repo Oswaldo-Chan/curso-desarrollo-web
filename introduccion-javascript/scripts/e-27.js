@@ -8,7 +8,7 @@ const producto_info = {
 
 //object constructor se puede usar function o class
 
-function producto(nombre, precio) {
+function Producto(nombre, precio) {
     this.nombre = nombre;
     this.precio = precio;
 }
@@ -27,9 +27,25 @@ class Mascota {
     }
 }
 
+const producto = new Producto('monitor',20);
 const mascota = new Mascota('Alana','negro');
 const persona = new Persona('Oswaldo',20,mascota);
 
 console.log(persona);
 
+// prototypes - función que esta asociada a un propio objeto
 
+function formatearPersona(p) {
+    return `${p} tiene una mascota llamada ${p.mascota.nombre}`;
+}
+
+//funcion anterior como prototype
+Persona.prototype.formatearPersona = function() {
+    return `${this.nombre} tiene una mascota llamada ${this.mascota.nombre}`;
+}
+
+Producto.prototype.formatearProducto = function() {
+    return `${this.nombre} cuesta $ ${this.precio}`;
+}
+
+console.log(persona.formatearPersona());
