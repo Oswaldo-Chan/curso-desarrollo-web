@@ -1,0 +1,65 @@
+@use 'base/variables' as var;
+@use 'base/mixins' as m;
+
+.lineup {
+    background-image: url(/festival-de-musica/build/img/concert-3.jpg);
+    padding: 5rem 0;
+    h3, p {
+        text-align: center;
+        color: var.$purple_2;
+        font-weight: bold;
+    }
+    .day {
+        color: var.$white;
+        text-transform: uppercase;
+        margin: 5rem 0;
+    }
+}
+.stage-content {
+    @include m.tablet {
+        @include m.grid(2,5rem);
+    }
+    p {
+        color: var.$white;
+    }
+}
+.stage {
+    border-radius: 5rem 1.5rem 5rem 1.5rem;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+    p {
+        &:after {
+            content: '';
+            display: block;
+            width: 20rem;
+            height: 10rem; 
+            background-size: 15rem;
+            background-repeat: no-repeat;
+            background-position: center center;
+            margin: 2rem auto 0 auto;
+        }
+    }
+}
+.rock .stage-name:after {
+    background-image: url(/festival-de-musica/build/img/icono_rock.png);
+}
+.edm .stage-name:after {
+    background-image: url(/festival-de-musica/build/img/icono_edm.png);
+}
+.calendar {
+    @include m.resetList;
+    li {
+        text-align: center;
+        padding: 2rem;
+        font-weight: 700;
+        span {
+            font-weight: 400;
+        }
+    }
+}
+.bg {
+    background-color: darken(var.$white, 85%);
+    li:nth-child(odd) {
+        background-color: darken(var.$white, 82%);
+    }
+}
