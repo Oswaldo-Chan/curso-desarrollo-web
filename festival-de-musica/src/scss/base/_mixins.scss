@@ -20,3 +20,13 @@
         @content;
     }
 }
+@mixin grid($columns: 2, $gap: 2rem) {
+    display: grid;
+    grid-template-columns: repeat($columns,1fr);
+    gap: $gap;
+}
+@mixin resetList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

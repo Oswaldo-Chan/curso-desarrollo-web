@@ -317,22 +317,33 @@ html {
 }
 
 body {
+  font-family: "Montserrat", sans-serif;
   background-color: #121314;
   color: #efefef;
-  font-family: "Bruno Ace SC", sans-serif;
   font-size: 1.6rem;
 }
 
+img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 p {
+  font-family: "Montserrat", sans-serif;
   font-size: 2rem;
+  line-height: 1.5;
 }
 
 a {
+  font-family: "Bruno Ace SC", sans-serif;
   text-decoration: none;
 }
 
 h1, h2, h3 {
   margin: 0 0 5rem 0;
+  font-family: "Bruno Ace SC", sans-serif;
 }
 
 h1 {
@@ -354,7 +365,12 @@ h3 {
 }
 
 .header h1 {
+  margin: 0;
   text-align: center;
+}
+.header h1:hover {
+  transform: rotateY(360deg);
+  transition: transform 2s;
 }
 .header .header-content {
   padding: 2rem;
@@ -378,7 +394,6 @@ h3 {
   text-align: center;
   color: #efefef;
   font-size: 2.4rem;
-  margin-bottom: 1rem;
 }
 .nav-main a:hover {
   color: #652087;
@@ -392,7 +407,6 @@ h3 {
 }
 .video .overlay {
   position: absolute;
-  background: rgb(12, 0, 43);
   background: linear-gradient(95deg, rgb(12, 0, 43) 0%, rgba(131, 58, 205, 0.5800464037) 100%, rgba(63, 1, 98, 0.494199536) 100%);
   height: 100%;
   width: 100%;
@@ -418,10 +432,118 @@ h3 {
   margin: 0;
 }
 .video-content p {
+  font-family: "Bruno Ace SC", sans-serif;
   border-top-left-radius: 5rem;
   border-bottom-right-radius: 5rem;
   background-color: #652087;
   display: inline-block;
   padding: 1rem 2rem;
   font-weight: normal;
+}
+
+.about-festival {
+  padding: 5rem 0;
+}
+@media (min-width: 768px) {
+  .about-festival {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+}
+
+.image img {
+  border-top-left-radius: 5rem;
+  border-bottom-right-radius: 5rem;
+}
+
+.festival-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+  margin-top: 3rem;
+}
+@media (min-width: 768px) {
+  .festival-content {
+    margin-top: 0;
+  }
+}
+.festival-content h2 {
+  margin-bottom: 2rem;
+}
+.festival-content .date {
+  color: #cd9ce6;
+  font-weight: 700;
+}
+
+.lineup {
+  background-image: url(/festival-de-musica/build/img/concert-3.jpg);
+  padding: 5rem 0;
+}
+.lineup h3, .lineup p {
+  text-align: center;
+  color: #cd9ce6;
+  font-weight: bold;
+}
+.lineup .day {
+  color: #efefef;
+  text-transform: uppercase;
+  margin: 5rem 0;
+}
+
+@media (min-width: 768px) {
+  .stage-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+  }
+}
+.stage-content p {
+  color: #efefef;
+}
+
+.stage {
+  border-radius: 5rem 1.5rem 5rem 1.5rem;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+}
+.stage p:after {
+  content: "";
+  display: block;
+  width: 20rem;
+  height: 10rem;
+  background-size: 15rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 2rem auto 0 auto;
+}
+
+.rock .stage-name:after {
+  background-image: url(/festival-de-musica/build/img/icono_rock.png);
+}
+
+.edm .stage-name:after {
+  background-image: url(/festival-de-musica/build/img/icono_edm.png);
+}
+
+.calendar {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.calendar li {
+  text-align: center;
+  padding: 2rem;
+  font-weight: 700;
+}
+.calendar li span {
+  font-weight: 400;
+}
+
+.bg {
+  background-color: #161616;
+}
+.bg li:nth-child(odd) {
+  background-color: #1e1e1e;
 }

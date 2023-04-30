@@ -7,19 +7,29 @@ html {
     box-sizing: inherit;
 }
 body {
+    font-family: var.$default_font;
     background-color: var.$black;
     color: var.$white;
-    font-family: var.$first_font;
     font-size: 1.6rem;
 }
+img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+}
 p {
+    font-family: var.$default_font;
     font-size: 2rem;
+    line-height: 1.5;
 }
 a {
+    font-family: var.$first_font;
     text-decoration: none;
 }
 h1,h2,h3 {
     margin: 0 0 5rem 0;
+    font-family: var.$first_font;
 }
 h1 {
     font-size: 4rem;
