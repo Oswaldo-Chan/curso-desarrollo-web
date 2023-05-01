@@ -16,9 +16,9 @@
             <h1>EclipseFest</h1>
 
             <nav class="nav-main">
-                <a href="#">Line Up</a>
-                <a href="#">Gallery</a>
-                <a href="#">Passes</a>
+                <a href="#lineup">Line Up</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#passes">Passes</a>
             </nav>
         </div>
     </header>
@@ -53,7 +53,7 @@
         </div>
     </section>
 
-    <section class="lineup">
+    <section id="lineup" class="lineup">
         <h3>Line Up</h3>
         <p class="day">Friday 26th</p>
 
@@ -162,12 +162,57 @@
         </div><!--stage-content end-->
     </section>
 
-    <section class="gallery-content">
+    <section id="gallery" class="gallery container">
         <h3>Gallery</h3>
 
         <ul class="gallery-images">
 
         </ul>
     </section>
+
+    <section id="passes" class="passes">
+        <h3>Passes</h3>
+
+        <div class="container passes-content">
+            <div class="pass basic">
+                <header class="pass-header">
+                    <p>Basic</p>
+                </header>
+                <div class="pass-body">
+                    <ul>
+                        <li>Access to both stages</li>
+                        <li>food and drink</li>
+                    </ul>
+                </div>
+                <footer class="pass-footer">
+                    <p>$100</p>
+                </footer>
+            </div>
+            <div class="pass premium">
+                <header class="pass-header">
+                    <p>Premium</p>
+                </header>
+                <div class="pass-body">
+                    <ul>
+                        <li>Access to both stages</li>
+                        <li>food and drink</li>
+                        <li>Premium bathrooms</li>
+                        <li>VIP access</li>
+                    </ul>
+                </div>
+                <footer class="pass-footer">
+                    <p>$180</p>
+                </footer>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p><span>EclipseFest |</span> All Rights Reserved</p>
+    </footer>
+    <script src="build/js/modernizr.js"></script>
+    <script src="build/js/gallery.js"></script>
+    <script src="build/js/app.js"></script>
+
 </body>
 </html>

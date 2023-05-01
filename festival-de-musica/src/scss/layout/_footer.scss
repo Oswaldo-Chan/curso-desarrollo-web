@@ -1,0 +1,13 @@
+@use 'base/variables' as var;
+
+.footer {
+    background: linear-gradient(262deg, rgb(24, 24, 24) 0%, rgb(19, 19, 19) 50%, rgb(0, 0, 0) 100%);
+    padding: 1rem;
+    p {
+        margin: 0;
+        text-align: center;
+        span {
+            font-family: var.$first_font;
+        }
+    }
+}
