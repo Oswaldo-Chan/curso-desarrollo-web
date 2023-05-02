@@ -11,3 +11,5 @@ Este es un repositorio con un conjunto de proyectos para practicar Desarrollo We
 - [front-end store](https://frontend-store-loopcrack-mentory.netlify.app/)
 
 - [coffee blog](https://coffee-blog-loopcrack-course.netlify.app/)
+
+- [music festival](https://festival-music-loopcrack-course.netlify.app/)
