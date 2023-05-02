@@ -1,0 +1,60 @@
+@use 'base/variables' as var;
+@use 'base/mixins' as m;
+
+.passes {
+    background-color: var.$dark;
+    padding: 5rem 0;
+    h3 {
+        text-align: center;
+    }
+    .passes-content {
+        @include m.tablet {
+           @include m.grid(2,5rem);
+        }
+    }
+}
+.pass{
+    margin-bottom: 5rem;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    @include m.tablet {
+        margin-bottom: 0;
+    }
+    &-header,
+    &-footer {
+        padding: .5rem 0;
+        text-align: center;
+        p {
+            font-family: var.$first_font;
+            margin: 0;
+        }
+    }
+    &-body {
+        ul {
+            @include m.resetList;
+            text-align: center;
+            li,
+            :nth-child(odd) {
+                background-color: rgb(0 0 0 / 0.85);
+                padding: 1rem;
+                border-bottom: 0.1rem solid #202020;
+            }
+        }
+    }
+    &-footer {
+        background-color: var.$black;
+        p {
+            font-size: 2.4rem;
+        }
+    }
+}
+.basic .pass-header {
+    border-radius: 2.5rem 2.5rem 0 0;
+    background: linear-gradient(262deg, rgb(72, 72, 72) 0%, rgb(36, 36, 36) 50%, rgb(30, 30, 30) 100%);
+}
+.premium .pass-header {
+    border-radius: 2.5rem 2.5rem 0 0;
+    background: linear-gradient(262deg, rgba(123,79,255,1) 0%, rgba(62,37,138,1) 50%, rgba(15,1,59,1) 100%);
+}
+

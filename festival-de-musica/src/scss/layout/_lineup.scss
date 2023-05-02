@@ -1,8 +1,13 @@
 @use 'base/variables' as var;
 @use 'base/mixins' as m;
 
+.webp .lineup {
+    background-image: url(../img/concert.webp);
+}
+.no-webp .lineup {
+    background-image: url(../img/concert.jpg);
+}
 .lineup {
-    background-image: url(/festival-de-musica/build/img/concert-3.jpg);
     padding: 5rem 0;
     h3, p {
         text-align: center;
@@ -24,7 +29,7 @@
     }
 }
 .stage {
-    border-radius: 5rem 1.5rem 5rem 1.5rem;
+    border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
     padding-top: 2rem;
     margin-bottom: 2rem;
     p {
@@ -32,19 +37,19 @@
             content: '';
             display: block;
             width: 20rem;
-            height: 10rem; 
+            height: 20rem; 
             background-size: 15rem;
             background-repeat: no-repeat;
             background-position: center center;
-            margin: 2rem auto 0 auto;
+            margin: 0 auto;
         }
     }
 }
 .rock .stage-name:after {
-    background-image: url(/festival-de-musica/build/img/icono_rock.png);
+    background-image: url(../img/icono_rock.png);
 }
 .edm .stage-name:after {
-    background-image: url(/festival-de-musica/build/img/icono_edm.png);
+    background-image: url(../img/icono_edm.png);
 }
 .calendar {
     @include m.resetList;
@@ -58,8 +63,8 @@
     }
 }
 .bg {
-    background-color: darken(var.$white, 85%);
+    background-color: rgb(0 0 0 / 0.75);
     li:nth-child(odd) {
-        background-color: darken(var.$white, 82%);
+        background-color:  rgba(59, 59, 59, .2);
     }
 }
