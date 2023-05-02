@@ -2,10 +2,10 @@
 @use 'base/mixins' as m;
 
 .webp .lineup {
-    background-image: url(/festival-de-musica/build/img/concert.webp);
+    background-image: url(../img/concert.webp);
 }
 .no-webp .lineup {
-    background-image: url(/festival-de-musica/build/img/concert.jpg);
+    background-image: url(../img/concert.jpg);
 }
 .lineup {
     padding: 5rem 0;
@@ -46,10 +46,10 @@
     }
 }
 .rock .stage-name:after {
-    background-image: url(/festival-de-musica/build/img/icono_rock.png);
+    background-image: url(../img/icono_rock.png);
 }
 .edm .stage-name:after {
-    background-image: url(/festival-de-musica/build/img/icono_edm.png);
+    background-image: url(../img/icono_edm.png);
 }
 .calendar {
     @include m.resetList;

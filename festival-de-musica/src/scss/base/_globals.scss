@@ -1,5 +1,6 @@
 @use 'variables' as var;
 html {
+    scroll-behavior: smooth;
     font-size: 62.5%;
     box-sizing: border-box;
 }
@@ -7,6 +8,7 @@ html {
     box-sizing: inherit;
 }
 body {
+    scroll-behavior: smooth;
     font-family: var.$default_font;
     background-color: var.$black;
     color: var.$white;
