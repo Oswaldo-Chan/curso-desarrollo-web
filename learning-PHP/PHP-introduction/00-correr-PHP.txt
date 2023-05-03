@@ -1,1 +1,15 @@
+Ejecutar el siguiente comando:
+
 php -S localhost:3000
+
+en la url agregarle el archivo a acceder
+
+Ejemplo:
+
+http://localhost:3000/02-variables.php
+
+tomar en cuenta el path en el que están los archivos PHP
+
+Ejemplo: 
+
+localhost:3000/learning-PHP/PHP-introduction/02-variables.php
