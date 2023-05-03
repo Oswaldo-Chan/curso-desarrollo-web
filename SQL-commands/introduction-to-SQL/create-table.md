@@ -77,10 +77,16 @@ Añadir columna del tipo decimal con 3 numeros entero y 2 decimales con la restr
 precio DECIMAL(5,2) NOT NULL,
 ```
 
-Añadir columna del tipo TIME el cual si no tiene un dato tendra un valor DEFAUL el cual tomará la hora en que se creó el registro:
+Añadir columna del tipo TIME el cual si no tiene un dato tendra un valor DEFAULT el cual tomará la hora en que se creó el registro:
 
 ```shell
 hora TIME DEFAULT NULL,
+```
+
+Añadir columna de tipo VARCHAR el cual no puede aceptar campos vacíos y el valor sea unico:
+
+```shell
+email VARCHAR(30) NOT NULL UNIQUE,
 ```
 
 seleccionar id como identificador:
