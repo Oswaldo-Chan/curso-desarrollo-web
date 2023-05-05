@@ -12,6 +12,8 @@ sumar(2,4.5);
 sumar(240,60.2);
 sumar(25,0.1);
 
+//parametros nombrados
 
+sumar(b: 20, a: 50);
 
 include 'includes/footer.php';
