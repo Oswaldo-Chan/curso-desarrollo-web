@@ -8,10 +8,8 @@ function getServices() {
         $query = 'SELECT * FROM servicios';
         //realizar el query
         $result = mysqli_query($DBconnected,$query);
-        //acceder a los resultados
-        echo "<pre>";
-        var_dump(mysqli_fetch_assoc($result));
-        echo "</pre>";
+        //retornar resultado
+        return $result;
         //cerrar la conexion
         mysqli_close($DBconnected);
     } catch (\Throwable $th) {
