@@ -2,9 +2,7 @@
 
 $DBconnected = mysqli_connect('localhost','root','','appsalon');
 
-if ($DBconnected) {
-    echo "Conexion Exitosa";
-} else {
-    echo "Error con la conexion";
+if (!$DBconnected) {
+    echo "Error con la conexión";
     exit;
 }
