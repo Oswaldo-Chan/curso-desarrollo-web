@@ -1,5 +1,5 @@
 /** Media Queries **/
-@mixin telefono {
+@mixin phone {
     @media (min-width: #{$telefono}) {
         @content;
     }
@@ -20,4 +20,22 @@
     display: grid;
     gap: $espaciado;
     grid-template-columns: repeat($columnas, 1fr);
+}
+@mixin btn($bg,$display) {
+    text-transform: capitalize;
+    background-color: $bg;
+    color: $blanco;
+    font-weight: $bold;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: $separacion / 2;
+    display: $display;
+    border: .2rem solid transparent;
+
+    &:hover {
+        border-color: $bg;
+        background-color: transparent;
+        color: $bg;
+    }
 }
