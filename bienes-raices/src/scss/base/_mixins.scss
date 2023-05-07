@@ -1,5 +1,5 @@
 /** Media Queries **/
-@mixin telefono {
+@mixin phone {
     @media (min-width: #{$telefono}) {
         @content;
     }
