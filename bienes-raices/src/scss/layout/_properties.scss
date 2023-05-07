@@ -13,16 +13,17 @@
     h3,p {
         margin: 0;
     }
-    .price {
-        color: $morado;
-        font-weight: $bold;
-        font-size: 3rem;
-    }
+}
+.price {
+    color: $morado;
+    font-weight: $bold;
+    font-size: 3rem;
 }
 .details-icons {
     display: flex;
     list-style: none;
     padding: 0;
+    max-width: 40rem;
 
     li {
         flex: 1;

@@ -1,9 +1,9 @@
 .section {
-    margin-top: calc($separacion / 2);
-    margin-bottom: calc($separacion / 2);
+    margin-top: calc($separacion/2);
+    margin-bottom: calc($separacion/2);
 }
 .content-center {
-    max-width: 800px;
+    max-width: 80rem;
 }
 .align-left {
     display: flex;
