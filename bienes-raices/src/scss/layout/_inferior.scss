@@ -17,6 +17,11 @@
         margin-bottom: 0;
     }
 }
+.meta-info {
+    span {
+        color: $amarillo;
+    }
+}
 .text-post {
     a {
         color: $negro;
@@ -38,8 +43,5 @@
             height: .5rem;
             background-color: $morado;
         }
-    }
-    span {
-        color: $amarillo;
     }
 }
