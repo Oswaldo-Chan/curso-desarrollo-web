@@ -9,13 +9,12 @@
     .property {
         background-color: $grisOscuro;
         border-color: $grisOscuro;
-
-        .price {
-            color: lighten($morado, 30%);
-        }
-        .details-icons img {
-            filter: invert(50%);
-        }
+    }
+    .price {
+        color: lighten($morado, 30%);
+    }
+    .details-icons img {
+        filter: invert(50%);
     }
     .about-us-text blockquote {
         color: $blanco;

@@ -4,9 +4,14 @@
         align-items: center;
     }
 }
-.about-us-text blockquote {
-    font-weight: $black;
-    font-size: 2.2rem;
-    margin: 3rem 0 0 0;
-    padding-left: 1rem 0 3rem 0;
+.about-us-text {
+    p {
+        text-align: justify;
+    }
+    blockquote {
+        font-weight: $black;
+        font-size: 2.2rem;
+        margin: 3rem 0 0 0;
+        padding-left: 1rem 0 3rem 0;
+    }
 }
