@@ -37,6 +37,7 @@
 .nav {
     transform: translateY(-300%);
     opacity: 0;
+    height: 0;
 
     @include tablet {
         display: flex;
@@ -78,5 +79,6 @@
 .show-nav {
     transform: translateY(0%);
     opacity: 1;
-    transition: transform .2s ease, opacity .8s linear;
+    height: auto;
+    transition: transform .2s ease, opacity .8s linear, height .5s linear;
 }

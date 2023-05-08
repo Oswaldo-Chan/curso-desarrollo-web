@@ -17,4 +17,21 @@
             filter: invert(50%);
         }
     }
+    .about-us-text blockquote {
+        color: $blanco;
+    }
+    .form {
+        label,
+        legend,
+        p {
+            color: $gris;
+        }
+        input:not([type="submit"]),
+        textarea,
+        select {
+            background-color: $grisOscuro;
+            color: $blanco;
+            border: .1rem solid $grisOscuro;
+        }
+    }
 }
