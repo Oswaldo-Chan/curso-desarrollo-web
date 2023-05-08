@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 3rem;
+    align-items: center;
 
     @include tablet {
         flex-direction: row;
@@ -9,6 +10,8 @@
     }
 }
 .nav {
+    display: none;
+
     @include tablet {
         display: flex;
         align-items: center;
@@ -33,4 +36,17 @@
             }
         }
     }
+}
+/*Menú de hamburguesa*/
+.mobile-menu {
+    @include tablet {
+        display: none;
+    }
+
+    img {
+        width: 5rem;
+    }
+}
+.show-nav {
+    display: block;
 }
