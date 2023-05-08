@@ -6,6 +6,10 @@
     .footer-content {
         padding-top: calc($separacion/2);
     }
+    .nav {
+        transform: translateY(0%);
+        opacity: 1;
+    }
     .copyright {
         color: $blanco;
         text-align: center;

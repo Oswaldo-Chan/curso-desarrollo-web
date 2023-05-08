@@ -6,6 +6,7 @@
 .property {
     background-color: lighten($gris, 9%);
     border: .1rem solid lighten($grisOscuro, 80%);
+    margin-bottom: 2rem;
 
     .property-content {
         padding: 2rem;
