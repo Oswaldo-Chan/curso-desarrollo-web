@@ -10,11 +10,14 @@
     }
 }
 .nav {
-    display: none;
+    transform: translateY(-300%);
+    opacity: 0;
 
     @include tablet {
         display: flex;
         align-items: center;
+        opacity: 1;
+        transform: translateY(0%);
     }
     a {
         color: $blanco;
@@ -48,5 +51,7 @@
     }
 }
 .show-nav {
-    display: block;
+    transform: translateY(0%);
+    opacity: 1;
+    transition: transform .2s ease, opacity .8s linear;
 }
