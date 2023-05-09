@@ -4,13 +4,24 @@
     $db = connectDB();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        echo "<pre>";
-        var_dump($_POST['title']);
-        echo "</pre>";
 
         $title = $_POST['title'];
         $price = $_POST['price'];
+        $description = $_POST['description'];
+        $rooms = $_POST['rooms'];
+        $wc = $_POST['wc'];
+        $parking = $_POST['parking'];
+        $seller = $_POST['seller'];
 
+        //insert to db
+        $query = " INSERT INTO propiedades (nombre, precio, descripcion, habitaciones, wc, estacionamiento, vendedores_id)";
+        $query .= " VALUES ('$title', '$price', '$description', '$rooms', '$wc', '$parking', '$seller')";
+
+        $result = mysqli_query($db, $query);
+
+        if ($result) {
+            echo "Insertado Correctamente";
+        }
     }
 
     require '../../includes/functions.php';
@@ -36,26 +47,26 @@
                 <input type="file" id="image" accept="image/jpeg, image/png">
 
                 <label for="description">Descripcion:</label>
-                <textarea id="description"></textarea>
+                <textarea id="description" name="description"></textarea>
             </fieldset>
 
             <fieldset>
                 <legend>Información de la Propiedad</legend>
 
                 <label for="rooms">Habitaciones:</label>
-                <input type="number" id="rooms" placeholder="Ej: 5" min="1" max="10">
+                <input type="number" id="rooms" name="rooms" placeholder="Ej: 5" min="1" max="10">
             
                 <label for="wc">Baños:</label>
-                <input type="number" id="wc" placeholder="Ej: 5" min="1" max="10">
+                <input type="number" id="wc" name="wc" placeholder="Ej: 5" min="1" max="10">
 
                 <label for="parking">Estacionamiento:</label>
-                <input type="number" id="parking" placeholder="Ej: 5" min="1" max="10">
+                <input type="number" id="parking" name="parking" placeholder="Ej: 5" min="1" max="10">
             </fieldset>
 
             <fieldset>
                 <legend>Vendedor</legend>
 
-                <select>
+                <select name="seller">
                     <option value="1">Oswaldo</option>
                 </select>
             </fieldset>
