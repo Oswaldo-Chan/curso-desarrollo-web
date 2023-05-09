@@ -3,6 +3,16 @@
     require '../../includes/config/database.php';
     $db = connectDB();
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        echo "<pre>";
+        var_dump($_POST['title']);
+        echo "</pre>";
+
+        $title = $_POST['title'];
+        $price = $_POST['price'];
+
+    }
+
     require '../../includes/functions.php';
     includeTemplate('header');
 ?>
@@ -12,15 +22,15 @@
 
         <a href="/admin" class="btn btn-purple">Regresar</a>
 
-        <form class="form">
+        <form class="form" method="POST" action="/admin/properties/create.php">
             <fieldset>
                 <legend>Información General</legend>
 
                 <label for="title">Titulo:</label>
-                <input type="text" id="title" placeholder="Titulo de la propiedad">
+                <input type="text" id="title" name="title" placeholder="Titulo de la propiedad">
 
                 <label for="price">Precio:</label>
-                <input type="number" id="price" placeholder="precio de la propiedad">
+                <input type="number" id="price" name="price" placeholder="precio de la propiedad">
 
                 <label for="image">Imagen:</label>
                 <input type="file" id="image" accept="image/jpeg, image/png">
