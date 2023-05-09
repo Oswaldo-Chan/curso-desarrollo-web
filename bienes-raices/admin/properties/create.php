@@ -3,6 +3,9 @@
     require '../../includes/config/database.php';
     $db = connectDB();
 
+    //array with error messages
+    $errors = [];
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $title = $_POST['title'];
@@ -13,14 +16,43 @@
         $parking = $_POST['parking'];
         $seller = $_POST['seller'];
 
-        //insert to db
-        $query = " INSERT INTO propiedades (nombre, precio, descripcion, habitaciones, wc, estacionamiento, vendedores_id)";
-        $query .= " VALUES ('$title', '$price', '$description', '$rooms', '$wc', '$parking', '$seller')";
+        if (!$title) {
+            $errors[] = "Debes agregar un titulo";
+        }
+        if (!$price) {
+            $errors[] = "El precio es obligatorio";
+        }
+        if (!$description) {
+            $errors[] = "Necesitas agregar una descripcion";
+        } else if (strlen($description) < 20) {
+            $errors[] = "La descripcion debe tener al menos 20 caracteres";
+        } else if (strlen($description) > 200) {
+            $errors[] = "La descripcion no debe exceder los 200 caracteres";
+        }
+        if (!$rooms) {
+            $errors[] = "El numero de habitaciones es obligatorio";
+        }
+        if (!$wc) {
+            $errors[] = "El numero de baños es obligatorio";
+        }
+        if (!$parking) {
+            $errors[] = "El numero de lugares de estacionamiento es obligatorio";
+        }
+        if (!$seller) {
+            $errors[] = "Elige un vendedor";
+        }
 
-        $result = mysqli_query($db, $query);
+        
+        if (empty($errors)) {
+            //insert to db
+            $query = " INSERT INTO propiedades (nombre, precio, descripcion, habitaciones, wc, estacionamiento, vendedores_id)";
+            $query .= " VALUES ('$title', '$price', '$description', '$rooms', '$wc', '$parking', '$seller')";
 
-        if ($result) {
-            echo "Insertado Correctamente";
+            $result = mysqli_query($db, $query);
+
+            if ($result) {
+                echo "Insertado Correctamente";
+            }
         }
     }
 
@@ -32,6 +64,12 @@
         <h1>Crear</h1>
 
         <a href="/admin" class="btn btn-purple">Regresar</a>
+
+        <?php foreach($errors as $error): ?>
+            <div class="alert error">
+                <?php echo $error; ?>
+            </div>
+        <?php endforeach; ?>
 
         <form class="form" method="POST" action="/admin/properties/create.php">
             <fieldset>
@@ -67,6 +105,7 @@
                 <legend>Vendedor</legend>
 
                 <select name="seller">
+                    <option value="" disabled selected>-- Seleccione --</option>
                     <option value="1">Oswaldo</option>
                 </select>
             </fieldset>
