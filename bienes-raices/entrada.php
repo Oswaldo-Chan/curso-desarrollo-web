@@ -1,40 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienes Raices</title>
-    <link rel="stylesheet" href="build/css/app.css">
-</head>
-<body>
-
-    <header class="header">
-        <div class="container header-content">
-            <div class="bar">
-                <a href="index.html">
-                    <img src="build/img/logo.svg" alt="logo image">
-                </a>
-                
-                <div class="mobile-menu">
-                    <img src="build/img/barras.svg" alt="">
-                </div>
-                
-                <div class="nav-container">
-                    <img class="btn-dark-mode" src="build/img/dark-mode.svg">
-                    <nav class="nav">
-                        <a href="nosotros.html">nosotros</a>
-                        <a href="anuncios.html">anuncios</a>
-                        <a href="blog.html">blog</a>
-                        <a href="contacto.html">contacto</a>
-                    </nav>
-                </div>
-            </div><!--end bar-->
-        </div>
-    </header>
+<?php
+    include './includes/templates/header.php';
+?>
 
     <main class="container section content-center">
-        <h1>Casa en venta frente al bosque</h1>
+        <h1>Guía para la decoración de tu hogar</h1>
 
         <picture>
             <source srcset="build/img/destacada.webp" type="image/webp">
@@ -42,24 +11,9 @@
             <img loading="lazy" src="build/img/destacada.jpg" alt="property image">
         </picture>
 
+        <p class="meta-info">Escrito el: <span>06/05/23</span> por: <span>Admin</span></p>
+
         <div class="property-summary">
-            <p class="price">$3,000,000</p>
-
-            <ul class="details-icons">
-                <li>
-                    <img loading="lazy" src="build/img/icono_wc.svg" alt="wc icon">
-                    <p>3</p>
-                </li>
-                <li>
-                    <img loading="lazy" src="build/img/icono_estacionamiento.svg" alt="parking icon">
-                    <p>3</p>
-                </li>
-                <li>
-                    <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="room icon">
-                    <p>4</p>
-                </li>
-            </ul>
-
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero ut?
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero
