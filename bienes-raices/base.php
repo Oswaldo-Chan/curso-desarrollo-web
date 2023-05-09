@@ -1,5 +1,6 @@
 <?php
-    include './includes/templates/header.php';
+    require 'includes/functions.php';
+    includeTemplate('header');
 ?>
 
     <main class="container section">
@@ -7,5 +8,5 @@
     </main>
 
 <?php
-    include './includes/templates/footer.php';
+    includeTemplate('footer');
 ?>
