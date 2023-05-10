@@ -1,10 +1,15 @@
 .footer {
-    padding: $separacion / 2 0;
+    padding: calc($separacion/2) 0;
     background-color: $grisOscuro;
     margin-bottom: 0;
 
     .footer-content {
-        padding-top: $separacion / 2;
+        padding-top: calc($separacion/2);
+    }
+    .nav {
+        transform: translateY(0%);
+        opacity: 1;
+        height: auto;
     }
     .copyright {
         color: $blanco;

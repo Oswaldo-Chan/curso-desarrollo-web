@@ -29,11 +29,12 @@
     text-decoration: none;
     padding: 1rem 3rem;
     text-align: center;
-    margin-top: $separacion / 2;
+    margin-top: calc($separacion/2);
     display: $display;
     border: .2rem solid transparent;
 
     &:hover {
+        cursor: pointer;
         border-color: $bg;
         background-color: transparent;
         color: $bg;

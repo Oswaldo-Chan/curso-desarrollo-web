@@ -1,32 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienes Raices</title>
-    <link rel="stylesheet" href="build/css/app.css">
-</head>
-<body>
-
-    <header class="header inicio">
-        <div class="container header-content">
-            <div class="bar">
-                <a href="index.html">
-                    <img src="build/img/logo.svg" alt="logo image">
-                </a>
-                
-                <nav class="nav">
-                    <a href="nosotros.html">nosotros</a>
-                    <a href="anuncios.html">anuncios</a>
-                    <a href="blog.html">blog</a>
-                    <a href="contacto.html">contacto</a>
-                </nav>
-            </div><!--end bar-->
-
-            <h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>
-        </div>
-    </header>
+<?php
+    require 'includes/functions.php';
+    includeTemplate('header', true);
+?>
 
     <main class="container section">
         <h1>Sobre Nosotros</h1>
@@ -175,7 +150,7 @@
                 <div class="text-post">
                     <a href="entrada.html">
                         <h4>Terraza en el techo de tu casa</h4>
-                        <p>Escrito el: <span>06/05/23</span> por: <span>Admin</span></p>
+                        <p class="meta-info">Escrito el: <span>06/05/23</span> por: <span>Admin</span></p>
                         
                         <p>Consejos para construir una terraza en el techo de tu casa con los mejores materiales y ahorrando dinero</p>
                     </a>
@@ -194,7 +169,7 @@
                 <div class="text-post">
                     <a href="entrada.html">
                         <h4>Guía para la decoración de tu hogar</h4>
-                        <p>Escrito el: <span>06/05/23</span> por: <span>Admin</span></p>
+                        <p class="meta-info">Escrito el: <span>06/05/23</span> por: <span>Admin</span></p>
                         
                         <p>Maximiza el espacio en tu hogar con esta guía, aprende a combinar muebles y colores para darle vida a tu espacio</p>
                     </a>
@@ -214,19 +189,6 @@
         </section>
     </div>
     
-    <footer class="footer section">
-        <div class="container footer-content">
-            <nav class="nav">
-                <a href="nosotros.html">nosotros</a>
-                <a href="anuncios.html">anuncios</a>
-                <a href="blog.html">blog</a>
-                <a href="contacto.html">contacto</a>
-            </nav>
-        </div>
-
-        <p class="copyright">todos los derechos reservados 2023 &copy;</p>
-    </footer>
-
-    <script src="build/js/bundle.min.js"></script>
-</body>
-</html>
+<?php
+    includeTemplate('footer');
+?>
