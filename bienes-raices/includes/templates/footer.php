@@ -1,10 +1,10 @@
 <footer class="footer section">
         <div class="container footer-content">
             <nav class="nav">
-                <a href="nosotros.html">nosotros</a>
-                <a href="anuncios.html">anuncios</a>
-                <a href="blog.html">blog</a>
-                <a href="contacto.html">contacto</a>
+                <a href="/nosotros.php">nosotros</a>
+                <a href="/anuncios.php">anuncios</a>
+                <a href="/blog.php">blog</a>
+                <a href="/contacto.php">contacto</a>
             </nav>
         </div>
 
