@@ -20,6 +20,8 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+
+
         $title = mysqli_real_escape_string($db, $_POST['title']);
         $price = mysqli_real_escape_string($db, $_POST['price']);
         $description = mysqli_real_escape_string($db, $_POST['description']);
@@ -28,6 +30,10 @@
         $parking = mysqli_real_escape_string($db, $_POST['parking']);
         $seller = mysqli_real_escape_string($db, $_POST['seller']);
         $date = date('Y/m/d');
+
+        $image = $_FILES['image'];
+         //validate size
+         $size = 1000 * 100;
 
         if (!$title) {
             $errors[] = "Debes agregar un titulo";
@@ -53,6 +59,11 @@
         }
         if (!$seller) {
             $errors[] = "Elige un vendedor";
+        }
+        if (!$image['name'] || $image['error']) {
+            $errors[] = "La imagen es obligatoria";
+        } else if($image['size'] > $size){
+            $errors[] = "El tamaño de la imagen pesa demasiado";
         }
 
         
@@ -84,7 +95,7 @@
             </div>
         <?php endforeach; ?>
 
-        <form class="form" method="POST" action="/admin/properties/create.php">
+        <form class="form" method="POST" action="/admin/properties/create.php" enctype="multipart/form-data">
             <fieldset>
                 <legend>Información General</legend>
 
@@ -95,7 +106,7 @@
                 <input type="number" id="price" name="price" placeholder="precio de la propiedad" value="<?php echo $price; ?>">
 
                 <label for="image">Imagen:</label>
-                <input type="file" id="image" accept="image/jpeg, image/png">
+                <input type="file" id="image" accept="image/jpeg, image/png" name="image">
 
                 <label for="description">Descripcion:</label>
                 <textarea id="description" name="description"><?php echo $description; ?></textarea>
