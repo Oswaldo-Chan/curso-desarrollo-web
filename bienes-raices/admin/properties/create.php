@@ -32,8 +32,8 @@
         $date = date('Y/m/d');
 
         $image = $_FILES['image'];
-         //validate size
-         $size = 1000 * 100;
+        //validate size
+        $size = 1000 * 1000;
 
         if (!$title) {
             $errors[] = "Debes agregar un titulo";
@@ -68,6 +68,17 @@
 
         
         if (empty($errors)) {
+            //make dir
+            $folder = '../../img';
+
+            if (!is_dir($folder)) {
+                mkdir($folder);
+            }
+
+            //upload image
+            move_uploaded_file($image['tmp_name'], $folder."/archivo.jpg");
+            exit;
+
             //insert to db
             $query = " INSERT INTO propiedades (nombre, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)";
             $query .= " VALUES ('$title', '$price', '$description', '$rooms', '$wc', '$parking', '$date', '$seller')";
