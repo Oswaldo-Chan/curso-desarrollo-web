@@ -2,6 +2,10 @@
     //DATABASE
     require '../../includes/config/database.php';
     $db = connectDB();
+    
+    //query sellers
+    $query = "SELECT * FROM vendedores";
+    $result = mysqli_query($db,$query);
 
     //array with error messages
     $errors = [];
@@ -23,6 +27,7 @@
         $wc = $_POST['wc'];
         $parking = $_POST['parking'];
         $seller = $_POST['seller'];
+        $date = date('Y/m/d');
 
         if (!$title) {
             $errors[] = "Debes agregar un titulo";
@@ -53,13 +58,13 @@
         
         if (empty($errors)) {
             //insert to db
-            $query = " INSERT INTO propiedades (nombre, precio, descripcion, habitaciones, wc, estacionamiento, vendedores_id)";
-            $query .= " VALUES ('$title', '$price', '$description', '$rooms', '$wc', '$parking', '$seller')";
+            $query = " INSERT INTO propiedades (nombre, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)";
+            $query .= " VALUES ('$title', '$price', '$description', '$rooms', '$wc', '$parking', '$date', '$seller')";
 
             $result = mysqli_query($db, $query);
 
             if ($result) {
-                echo "Insertado Correctamente";
+                header('Location: /admin');
             }
         }
     }
@@ -113,8 +118,10 @@
                 <legend>Vendedor</legend>
 
                 <select name="seller">
-                    <option value="" disabled selected>-- Seleccione --</option>
-                    <option value="1">Oswaldo</option>
+                <option value="" selected disabled>-- Seleccione --</option>
+                    <?php while($row = mysqli_fetch_assoc($result)): ?>
+                        <option <?php echo $seller === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>"><?php echo $row['name']." ".$row['apellido']; ?></option>
+                    <?php endwhile ?>
                 </select>
             </fieldset>
 
