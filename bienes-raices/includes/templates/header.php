@@ -12,7 +12,7 @@
     <header class="header <?php echo $inicio ? 'inicio' : ''; ?>">
         <div class="container header-content">
             <div class="bar">
-                <a href="index.php">
+                <a href="/index.php">
                     <img src="/build/img/logo.svg" alt="logo image">
                 </a>
 
@@ -23,10 +23,10 @@
                 <div class="nav-container">
                     <img class="btn-dark-mode" src="/build/img/dark-mode.svg">
                     <nav class="nav">
-                        <a href="nosotros.php">nosotros</a>
-                        <a href="anuncios.php">anuncios</a>
-                        <a href="blog.php">blog</a>
-                        <a href="contacto.php">contacto</a>
+                        <a href="/nosotros.php">nosotros</a>
+                        <a href="/anuncios.php">anuncios</a>
+                        <a href="/blog.php">blog</a>
+                        <a href="/contacto.php">contacto</a>
                     </nav>
                 </div>
             </div><!--end bar-->

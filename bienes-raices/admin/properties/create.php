@@ -2,6 +2,10 @@
     //DATABASE
     require '../../includes/config/database.php';
     $db = connectDB();
+    
+    //query sellers
+    $query = "SELECT * FROM vendedores";
+    $result = mysqli_query($db,$query);
 
     //array with error messages
     $errors = [];
@@ -16,13 +20,20 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $title = $_POST['title'];
-        $price = $_POST['price'];
-        $description = $_POST['description'];
-        $rooms = $_POST['rooms'];
-        $wc = $_POST['wc'];
-        $parking = $_POST['parking'];
-        $seller = $_POST['seller'];
+
+
+        $title = mysqli_real_escape_string($db, $_POST['title']);
+        $price = mysqli_real_escape_string($db, $_POST['price']);
+        $description = mysqli_real_escape_string($db, $_POST['description']);
+        $rooms = mysqli_real_escape_string($db, $_POST['rooms']);
+        $wc = mysqli_real_escape_string($db, $_POST['wc']);
+        $parking = mysqli_real_escape_string($db, $_POST['parking']);
+        $seller = mysqli_real_escape_string($db, $_POST['seller']);
+        $date = date('Y/m/d');
+
+        $image = $_FILES['image'];
+        //validate size
+        $size = 1000 * 1000;
 
         if (!$title) {
             $errors[] = "Debes agregar un titulo";
@@ -49,17 +60,33 @@
         if (!$seller) {
             $errors[] = "Elige un vendedor";
         }
+        if (!$image['name'] || $image['error']) {
+            $errors[] = "La imagen es obligatoria";
+        } else if($image['size'] > $size){
+            $errors[] = "El tamaño de la imagen pesa demasiado";
+        }
 
         
         if (empty($errors)) {
+            //make dir
+            $folder = '../../img';
+
+            if (!is_dir($folder)) {
+                mkdir($folder);
+            }
+
+            //upload image
+            move_uploaded_file($image['tmp_name'], $folder."/archivo.jpg");
+            exit;
+
             //insert to db
-            $query = " INSERT INTO propiedades (nombre, precio, descripcion, habitaciones, wc, estacionamiento, vendedores_id)";
-            $query .= " VALUES ('$title', '$price', '$description', '$rooms', '$wc', '$parking', '$seller')";
+            $query = " INSERT INTO propiedades (nombre, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)";
+            $query .= " VALUES ('$title', '$price', '$description', '$rooms', '$wc', '$parking', '$date', '$seller')";
 
             $result = mysqli_query($db, $query);
 
             if ($result) {
-                echo "Insertado Correctamente";
+                header('Location: /admin');
             }
         }
     }
@@ -79,7 +106,7 @@
             </div>
         <?php endforeach; ?>
 
-        <form class="form" method="POST" action="/admin/properties/create.php">
+        <form class="form" method="POST" action="/admin/properties/create.php" enctype="multipart/form-data">
             <fieldset>
                 <legend>Información General</legend>
 
@@ -90,7 +117,7 @@
                 <input type="number" id="price" name="price" placeholder="precio de la propiedad" value="<?php echo $price; ?>">
 
                 <label for="image">Imagen:</label>
-                <input type="file" id="image" accept="image/jpeg, image/png">
+                <input type="file" id="image" accept="image/jpeg, image/png" name="image">
 
                 <label for="description">Descripcion:</label>
                 <textarea id="description" name="description"><?php echo $description; ?></textarea>
@@ -113,8 +140,10 @@
                 <legend>Vendedor</legend>
 
                 <select name="seller">
-                    <option value="" disabled selected>-- Seleccione --</option>
-                    <option value="1">Oswaldo</option>
+                <option value="" selected disabled>-- Seleccione --</option>
+                    <?php while($row = mysqli_fetch_assoc($result)): ?>
+                        <option <?php echo $seller === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>"><?php echo $row['name']." ".$row['apellido']; ?></option>
+                    <?php endwhile ?>
                 </select>
             </fieldset>
 
