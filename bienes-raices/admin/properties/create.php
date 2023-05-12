@@ -86,7 +86,7 @@
             $result = mysqli_query($db, $query);
 
             if ($result) {
-                header('Location: /admin');
+                header('Location: /admin?result=1');
             }
         }
     }
