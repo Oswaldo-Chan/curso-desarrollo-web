@@ -8,7 +8,10 @@
     //DATABASE
     require '../../includes/config/database.php';
     $db = connectDB();
-    
+    //get property
+    $query = "SELECT * FROM propiedades WHERE id = {$propertyID}";
+    $result = mysqli_query($db, $query);
+    $property = mysqli_fetch_assoc($result);
     //query sellers
     $query = "SELECT * FROM vendedores";
     $result = mysqli_query($db,$query);
@@ -16,13 +19,14 @@
     //array with error messages
     $errors = [];
 
-    $title = '';
-    $price = '';
-    $description = '';
-    $rooms = '';
-    $wc = '';
-    $parking = '';
-    $seller = '';
+    $title = $property['nombre'];
+    $price = $property['precio'];
+    $description = $property['descripcion'];
+    $rooms = $property['habitaciones'];
+    $wc = $property['wc'];
+    $parking = $property['estacionamiento'];
+    $seller = $property['vendedores_id'];
+    $propertyImage = $property['imagen'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -124,6 +128,8 @@
 
                 <label for="image">Imagen:</label>
                 <input type="file" id="image" accept="image/jpeg, image/png" name="image">
+
+                <img src="/img/<?php echo $propertyImage; ?>" class="image-small">
 
                 <label for="description">Descripcion:</label>
                 <textarea id="description" name="description"><?php echo $description; ?></textarea>
