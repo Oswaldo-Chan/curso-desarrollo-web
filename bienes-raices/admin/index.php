@@ -37,7 +37,7 @@
                             <td>$ <?php echo $property['precio']; ?></td>
                             <td>
                                 <a class="btn-red-block" href="#">Eliminar</a>
-                                <a class="btn-green-block" href="#">Actualizar</a>
+                                <a class="btn-green-block" href="admin/properties/update.php?id=<?php echo $property['id'] ?>">Actualizar</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
