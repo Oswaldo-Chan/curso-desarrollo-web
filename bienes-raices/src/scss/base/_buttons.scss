@@ -7,3 +7,9 @@
 .btn-purple {
     @include btn($morado, inline-block);
 }
+.btn-red-block {
+    @include btn($rojo, block);
+}
+.btn-green-block {
+    @include btn($verde, block);
+}
