@@ -1,5 +1,11 @@
 <?php
+    require '../includes/config/database.php';
+    $db = connectDB();
+    $query = "SELECT * FROM propiedades";
+    $queryResult = mysqli_query($db, $query);
+    //show conditional message
     $result = $_GET['result'] ?? null; //enves de usar isset
+    //include a template
     require '../includes/functions.php';
     includeTemplate('header');
 ?>
@@ -16,27 +22,30 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>titulo</th>
-                        <th>imagen</th>
-                        <th>precio</th>
-                        <th>acciones</th>
+                        <th>Titulo</th>
+                        <th>Imagen</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Casa en la playa</td>
-                        <td> <img src="/img/071a629a3c58143ef6c0d60dee602e60.jpg" class="table-image"></td>
-                        <td>1200000</td>
-                        <td>
-                            <a class="btn-red-block" href="#">Eliminar</a>
-                            <a class="btn-green-block" href="#">Actualizar</a>
-                        </td>
-                    </tr>
+                    <?php while($property = mysqli_fetch_assoc($queryResult)): ?>
+                        <tr>
+                            <td><?php echo $property['id']; ?></td>
+                            <td><?php echo $property['nombre']; ?></td>
+                            <td> <img src="/img/<?php echo $property['imagen']; ?>" class="table-image"></td>
+                            <td>$ <?php echo $property['precio']; ?></td>
+                            <td>
+                                <a class="btn-red-block" href="#">Eliminar</a>
+                                <a class="btn-green-block" href="#">Actualizar</a>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
     </main>
 
 <?php
+    mysqli_close($db);
     includeTemplate('footer');
 ?>
