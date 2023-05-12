@@ -20,8 +20,6 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-
-
         $title = mysqli_real_escape_string($db, $_POST['title']);
         $price = mysqli_real_escape_string($db, $_POST['price']);
         $description = mysqli_real_escape_string($db, $_POST['description']);
@@ -69,19 +67,21 @@
         
         if (empty($errors)) {
             //make dir
-            $folder = '../../img';
+            $folder = '../../img/';
 
             if (!is_dir($folder)) {
                 mkdir($folder);
             }
 
+            //generating a unique name
+            $imageName = md5(uniqid(rand(), true)).".jpg";
+
             //upload image
-            move_uploaded_file($image['tmp_name'], $folder."/archivo.jpg");
-            exit;
+            move_uploaded_file($image['tmp_name'], $folder.$imageName);
 
             //insert to db
-            $query = " INSERT INTO propiedades (nombre, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)";
-            $query .= " VALUES ('$title', '$price', '$description', '$rooms', '$wc', '$parking', '$date', '$seller')";
+            $query = " INSERT INTO propiedades (nombre, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)";
+            $query .= " VALUES ('$title', '$price', '$imageName', '$description', '$rooms', '$wc', '$parking', '$date', '$seller')";
 
             $result = mysqli_query($db, $query);
 
