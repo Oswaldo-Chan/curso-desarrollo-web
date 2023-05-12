@@ -68,14 +68,13 @@
         if (!$seller) {
             $errors[] = "Elige un vendedor";
         }
-        if (!$image['name'] || $image['error']) {
-            $errors[] = "La imagen es obligatoria";
-        } else if($image['size'] > $size){
+        if($image['size'] > $size){
             $errors[] = "El tamaño de la imagen pesa demasiado";
         }
 
         
         if (empty($errors)) {
+            /*
             //make dir
             $folder = '../../img/';
 
@@ -88,15 +87,16 @@
 
             //upload image
             move_uploaded_file($image['tmp_name'], $folder.$imageName);
+            */
 
             //insert to db
-            $query = " INSERT INTO propiedades (nombre, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)";
-            $query .= " VALUES ('$title', '$price', '$imageName', '$description', '$rooms', '$wc', '$parking', '$date', '$seller')";
-
+            $query = "UPDATE propiedades SET nombre = '{$title}', precio = '{$price}', 
+            descripcion = '{$description}', habitaciones = {$rooms}, wc = {$wc}, estacionamiento = {$parking}, vendedores_id = {$seller} WHERE id = {$propertyID}";
+            
             $result = mysqli_query($db, $query);
 
             if ($result) {
-                header('Location: /admin?result=1');
+                header('Location: /admin?result=2');
             }
         }
     }
@@ -116,7 +116,7 @@
             </div>
         <?php endforeach; ?>
 
-        <form class="form" method="POST" action="/admin/properties/create.php" enctype="multipart/form-data">
+        <form class="form" method="POST" enctype="multipart/form-data">
             <fieldset>
                 <legend>Información General</legend>
 
