@@ -14,6 +14,8 @@
         <h1>Administrador de Bienes Raíces</h1>
         <?php if (intval($result) === 1): ?>
             <p class="alert success">Propiedad Agregada Correctamente</p>
+        <?php elseif (intval($result) === 2): ?>
+            <p class="alert success">Propiedad Actualizada Correctamente</p>
         <?php endif; ?>
     
         <a href="/admin/properties/create.php" class="btn btn-purple">Nueva Propiedad</a>
