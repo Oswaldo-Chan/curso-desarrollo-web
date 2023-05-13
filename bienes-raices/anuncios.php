@@ -35,7 +35,7 @@
                             </li>
                         </ul>
     
-                        <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
+                        <a class="btn-yellow-block" href="/anuncio.php">ver propiedad</a>
                     </div><!--end property-content-->
                 </div><!--end property-->
     
@@ -66,7 +66,7 @@
                             </li>
                         </ul>
     
-                        <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
+                        <a class="btn-yellow-block" href="/anuncio.php">ver propiedad</a>
                     </div><!--end property-content-->
                 </div><!--end property-->
     
@@ -97,7 +97,7 @@
                             </li>
                         </ul>
     
-                        <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
+                        <a class="btn-yellow-block" href="/anuncio.php">ver propiedad</a>
                     </div><!--end property-content-->
                 </div><!--end property-->
 
@@ -128,7 +128,7 @@
                             </li>
                         </ul>
     
-                        <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
+                        <a class="btn-yellow-block" href="/anuncio.php">ver propiedad</a>
                     </div><!--end property-content-->
                 </div><!--end property-->
 
@@ -159,7 +159,7 @@
                             </li>
                         </ul>
     
-                        <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
+                        <a class="btn-yellow-block" href="/anuncio.php">ver propiedad</a>
                     </div><!--end property-content-->
                 </div><!--end property-->
 
@@ -190,7 +190,7 @@
                             </li>
                         </ul>
     
-                        <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
+                        <a class="btn-yellow-block" href="/anuncio.php">ver propiedad</a>
                     </div><!--end property-content-->
                 </div><!--end property-->
             </div> <!--end properties-->

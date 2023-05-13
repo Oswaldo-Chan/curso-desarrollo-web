@@ -56,7 +56,7 @@
                         </li>
                     </ul>
 
-                    <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
+                    <a class="btn-yellow-block" href="anuncio.php">ver propiedad</a>
                 </div><!--end property-content-->
             </div><!--end property-->
 
@@ -87,7 +87,7 @@
                         </li>
                     </ul>
 
-                    <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
+                    <a class="btn-yellow-block" href="anuncio.php">ver propiedad</a>
                 </div><!--end property-content-->
             </div><!--end property-->
 
@@ -118,20 +118,20 @@
                         </li>
                     </ul>
 
-                    <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
+                    <a class="btn-yellow-block" href="anuncio.php">ver propiedad</a>
                 </div><!--end property-content-->
             </div><!--end property-->
         </div> <!--end properties-->
 
         <div class="align-left">
-            <a href="anuncios.html" class="btn-purple">Ver Todas</a>
+            <a href="anuncios.php" class="btn-purple">Ver Todas</a>
         </div>
     </section>
 
     <section class="contact-image">
         <h2>Encuentra la casa de tus sueños</h2>
         <p>Llena el formulario de contacto y un asesor se pondrá en contacto contigo a la brevedad</p>
-        <a href="contacto.html" class="btn-yellow">Contáctanos</a>
+        <a href="contacto.php" class="btn-yellow">Contáctanos</a>
     </section>
 
     <div class="container section inferior-section">
@@ -148,7 +148,7 @@
                 </div>
 
                 <div class="text-post">
-                    <a href="entrada.html">
+                    <a href="entrada.php">
                         <h4>Terraza en el techo de tu casa</h4>
                         <p class="meta-info">Escrito el: <span>06/05/23</span> por: <span>Admin</span></p>
                         
@@ -167,7 +167,7 @@
                 </div>
 
                 <div class="text-post">
-                    <a href="entrada.html">
+                    <a href="entrada.php">
                         <h4>Guía para la decoración de tu hogar</h4>
                         <p class="meta-info">Escrito el: <span>06/05/23</span> por: <span>Admin</span></p>
                         
