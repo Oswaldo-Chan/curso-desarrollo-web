@@ -71,10 +71,9 @@
         if($image['size'] > $size){
             $errors[] = "El tamaño de la imagen pesa demasiado";
         }
-
         
         if (empty($errors)) {
-            /*
+            
             //make dir
             $folder = '../../img/';
 
@@ -82,15 +81,21 @@
                 mkdir($folder);
             }
 
-            //generating a unique name
-            $imageName = md5(uniqid(rand(), true)).".jpg";
+            $imageName = '';
 
-            //upload image
-            move_uploaded_file($image['tmp_name'], $folder.$imageName);
-            */
-
+            if ($image['name']) {
+                //delete previous image
+                unlink($folder.$property['imagen']);
+                //generating a unique name
+                $imageName = md5(uniqid(rand(), true)).".jpg";
+                //upload image
+                move_uploaded_file($image['tmp_name'], $folder.$imageName);
+            } else {
+                $imageName = $property['imagen'];
+            }
+            
             //insert to db
-            $query = "UPDATE propiedades SET nombre = '{$title}', precio = '{$price}', 
+            $query = "UPDATE propiedades SET nombre = '{$title}', precio = '{$price}', imagen = '{$imageName}', 
             descripcion = '{$description}', habitaciones = {$rooms}, wc = {$wc}, estacionamiento = {$parking}, vendedores_id = {$seller} WHERE id = {$propertyID}";
             
             $result = mysqli_query($db, $query);
