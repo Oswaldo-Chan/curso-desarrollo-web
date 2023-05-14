@@ -5,6 +5,24 @@
     $queryResult = mysqli_query($db, $query);
     //show conditional message
     $result = $_GET['result'] ?? null; //enves de usar isset
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_POST['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        if ($id) {
+            //delete file
+            $query = "SELECT imagen FROM propiedades WHERE id = {$id}";
+            $result = mysqli_query($db,$query);
+            $property = mysqli_fetch_assoc($result);
+            unlink('../img/'.$property['imagen']);
+            //delete property
+            $query = "DELETE FROM propiedades WHERE id = {$id}";
+            $result = mysqli_query($db,$query);
+            if ($result) {
+                header('Location: /admin');
+            }
+        }
+    }
     //include a template
     require '../includes/functions.php';
     includeTemplate('header');
@@ -38,8 +56,11 @@
                             <td> <img src="/img/<?php echo $property['imagen']; ?>" class="table-image"></td>
                             <td>$ <?php echo $property['precio']; ?></td>
                             <td>
-                                <a class="btn-red-block" href="#">Eliminar</a>
-                                <a class="btn-green-block" href="admin/properties/update.php?id=<?php echo $property['id'] ?>">Actualizar</a>
+                                <form method="POST" class="w-100">
+                                    <input type="hidden" name="id" value="<?php echo $property['id'] ?>">
+                                    <input type="submit" class="btn-red-block" value="Eliminar">
+                                </form>
+                                <a class="btn-green-block" href="/admin/properties/update.php?id=<?php echo $property['id'] ?>">Actualizar</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
