@@ -1,25 +1,26 @@
-<?php include 'includes/header.php';
-
+<?php 
+declare(strict_types = 1);
+include 'includes/header.php';
 //creando una clase
 class Producto {
     public $nombre;
     public $precio;
     public $disponible;
 
-
+    public function __construct(string $nombre, float $precio, bool $disponible) {
+        $this->nombre = $nombre;
+        $this->precio = $precio;
+        $this->disponible = $disponible;
+    }   
 }
 
-$producto = new Producto();
-$producto->nombre = 'tablet';
-$producto->precio = 200;
-$producto->disponible = true;
+$producto = new Producto('tablet',200,true);
+
 echo '<pre>';
 var_dump($producto);
 echo '</pre>';
-$producto2 = new Producto();
-$producto2->nombre = 'monitor';
-$producto2->precio = 1000;
-$producto2->disponible = false;
+$producto2 = new Producto('monitor',1000,true);
+
 echo $producto2->nombre;
 echo '<pre>';
 var_dump($producto2);
