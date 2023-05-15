@@ -1,4 +1,10 @@
 <?php
+    require '../../includes/functions.php';
+    $auth = userAuth();
+    if (!$auth) {
+        header('Location: /');
+    }
+
     //DATABASE
     require '../../includes/config/database.php';
     $db = connectDB();
@@ -91,7 +97,6 @@
         }
     }
 
-    require '../../includes/functions.php';
     includeTemplate('header');
 ?>
 

@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    $auth = $_SESSION['login'];
+    require '../includes/functions.php';
+    $auth = userAuth();
     if (!$auth) {
         header('Location: /');
     }
@@ -30,7 +30,6 @@
         }
     }
     //include a template
-    require '../includes/functions.php';
     includeTemplate('header');
 ?>
 

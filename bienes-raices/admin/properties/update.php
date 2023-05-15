@@ -1,4 +1,10 @@
 <?php
+    require '../../includes/functions.php';
+    $auth = userAuth();
+    if (!$auth) {
+        header('Location: /');
+    }
+
     $propertyID = $_GET['id'];
     $propertyID = filter_var($propertyID, FILTER_VALIDATE_INT);
     
@@ -106,7 +112,6 @@
         }
     }
 
-    require '../../includes/functions.php';
     includeTemplate('header');
 ?>
 
