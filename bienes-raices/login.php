@@ -1,4 +1,10 @@
 <?php
+    require 'includes/functions.php';
+    $auth = userAuth();
+    if ($auth) {
+        header('Location: /admin');
+    }
+
     require 'includes/config/database.php';
     $db = connectDB();
     //autenticar el usuario
@@ -27,6 +33,7 @@
                     session_start();
                     $_SESSION['user'] = $user['email'];
                     $_SESSION['login'] = true;
+                    header('Location: /admin');
                 } else {
                     $errors[] = "La contraseña es incorrecta"; 
                 }
@@ -36,7 +43,6 @@
         }
     }
 
-    require 'includes/functions.php';
     includeTemplate('header');
 ?>
 
