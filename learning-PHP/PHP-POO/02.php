@@ -1,7 +1,7 @@
 <?php 
 declare(strict_types = 1);
 include 'includes/header.php';
-//creando una clase
+//modificadores de acceso
 class Producto {
     //public se puede acceder y modificar en cualquier lugar
     //protected se puede acceder unicamente en la clase
