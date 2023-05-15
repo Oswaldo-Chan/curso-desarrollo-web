@@ -1,5 +1,6 @@
 <?php
     require 'includes/functions.php';
+    
     $auth = userAuth();
     if ($auth) {
         header('Location: /admin');

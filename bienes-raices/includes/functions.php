@@ -9,10 +9,9 @@ function includeTemplate(string $template, bool $inicio = false) {
 function userAuth() : bool {
     session_start();
 
-    $auth = $_SESSION['login'];
-    if ($auth) {
+    if (isset($_SESSION['login']) && $_SESSION['login']) {
         return true;
     }
-
+    
     return false;
 }
