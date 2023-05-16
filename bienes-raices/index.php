@@ -28,110 +28,20 @@
     <section class="container section">
         <h2>Casas y Departamentos en Venta</h2>
 
-        <div class="properties">
-            <div class="property">
-                <picture>
-                    <source srcset="build/img/anuncio1.webp" type="image/webp">
-                    <source srcset="build/img/anuncio1.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/anuncio1.jpg" alt="property image">
-                </picture>
-
-                <div class="property-content">
-                    <h3>Casa de Lujo en el Lago</h3>
-                    <p>Casa en el lago con excelente vista, acabados de lujo a un excelente precio</p>
-                    <p class="price">$3,000,000</p>
-
-                    <ul class="details-icons">
-                        <li>
-                            <img loading="lazy" src="build/img/icono_wc.svg" alt="wc icon">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img loading="lazy" src="build/img/icono_estacionamiento.svg" alt="parking icon">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="room icon">
-                            <p>4</p>
-                        </li>
-                    </ul>
-
-                    <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
-                </div><!--end property-content-->
-            </div><!--end property-->
-
-            <div class="property">
-                <picture>
-                    <source srcset="build/img/anuncio2.webp" type="image/webp">
-                    <source srcset="build/img/anuncio2.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/anuncio2.jpg" alt="property image">
-                </picture>
-
-                <div class="property-content">
-                    <h3>Casa Terminados de Lujo</h3>
-                    <p>Casa en el lago con excelente vista, acabados de lujo a un excelente precio</p>
-                    <p class="price">$3,000,000</p>
-
-                    <ul class="details-icons">
-                        <li>
-                            <img loading="lazy" src="build/img/icono_wc.svg" alt="wc icon">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img loading="lazy" src="build/img/icono_estacionamiento.svg" alt="parking icon">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="room icon">
-                            <p>4</p>
-                        </li>
-                    </ul>
-
-                    <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
-                </div><!--end property-content-->
-            </div><!--end property-->
-
-            <div class="property">
-                <picture>
-                    <source srcset="build/img/anuncio3.webp" type="image/webp">
-                    <source srcset="build/img/anuncio3.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/anuncio3.jpg" alt="property image">
-                </picture>
-
-                <div class="property-content">
-                    <h3>Casa con Lujosa Alberca</h3>
-                    <p>Casa en el lago con excelente vista, acabados de lujo a un excelente precio</p>
-                    <p class="price">$3,000,000</p>
-
-                    <ul class="details-icons">
-                        <li>
-                            <img loading="lazy" src="build/img/icono_wc.svg" alt="wc icon">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img loading="lazy" src="build/img/icono_estacionamiento.svg" alt="parking icon">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="room icon">
-                            <p>4</p>
-                        </li>
-                    </ul>
-
-                    <a class="btn-yellow-block" href="anuncio.html">ver propiedad</a>
-                </div><!--end property-content-->
-            </div><!--end property-->
-        </div> <!--end properties-->
+        <?php 
+            $limit = 3;
+            include 'includes/templates/properties.php';
+        ?>
 
         <div class="align-left">
-            <a href="anuncios.html" class="btn-purple">Ver Todas</a>
+            <a href="anuncios.php" class="btn-purple">Ver Todas</a>
         </div>
     </section>
 
     <section class="contact-image">
         <h2>Encuentra la casa de tus sueños</h2>
         <p>Llena el formulario de contacto y un asesor se pondrá en contacto contigo a la brevedad</p>
-        <a href="contacto.html" class="btn-yellow">Contáctanos</a>
+        <a href="contacto.php" class="btn-yellow">Contáctanos</a>
     </section>
 
     <div class="container section inferior-section">
@@ -148,7 +58,7 @@
                 </div>
 
                 <div class="text-post">
-                    <a href="entrada.html">
+                    <a href="entrada.php">
                         <h4>Terraza en el techo de tu casa</h4>
                         <p class="meta-info">Escrito el: <span>06/05/23</span> por: <span>Admin</span></p>
                         
@@ -167,7 +77,7 @@
                 </div>
 
                 <div class="text-post">
-                    <a href="entrada.html">
+                    <a href="entrada.php">
                         <h4>Guía para la decoración de tu hogar</h4>
                         <p class="meta-info">Escrito el: <span>06/05/23</span> por: <span>Admin</span></p>
                         

@@ -33,4 +33,10 @@
             border: .1rem solid $grisOscuro;
         }
     }
+    table {
+        color: $blanco;
+    }
+    .table-image {
+        border: .1rem solid darken($gris, 50%);
+    }
 }

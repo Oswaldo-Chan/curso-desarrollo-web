@@ -8,4 +8,29 @@
     &.error {
         background-color: $rojo;
     }
+    &.success {
+        background-color: $verde;
+    }
+}
+table.table-properties {
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+    text-align: center;
+
+    thead {
+        background-color: $morado;
+        
+        th {
+            color: $blanco;
+            padding: 2rem;
+        }
+    }
+    .table-image {
+        width: 10rem;
+        margin: 0 auto;
+    }
+}
+.image-small {
+    width: 30rem;
 }

@@ -7,3 +7,10 @@
 .btn-purple {
     @include btn($morado, inline-block);
 }
+.btn-red-block {
+    @include btn($rojo, block);
+    width: 100%
+}
+.btn-green-block {
+    @include btn($verde, block);
+}

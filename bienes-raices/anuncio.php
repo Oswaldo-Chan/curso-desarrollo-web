@@ -1,47 +1,52 @@
 <?php
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+    if (!$id) {
+        header('Location: /');
+    }
+
+    require 'includes/config/database.php';
+    $db = connectDB();
+
+    $query = "SELECT * FROM propiedades WHERE id = {$id}";
+    $result = mysqli_query($db, $query);
+    if (!$result->num_rows) {
+        header('Location: /');
+    }
+    $property = mysqli_fetch_assoc($result);
+
     require 'includes/functions.php';
     includeTemplate('header');
 ?>
 
     <main class="container section content-center">
-        <h1>Casa en venta frente al bosque</h1>
+        <h1><?php echo $property['nombre']?></h1>
 
-        <picture>
-            <source srcset="build/img/destacada.webp" type="image/webp">
-            <source srcset="build/img/destacada.jpg" type="image/jpeg">
-            <img loading="lazy" src="build/img/destacada.jpg" alt="property image">
-        </picture>
+            <img loading="lazy" src="/img/<?php echo $property['imagen']?>" alt="property image">
 
         <div class="property-summary">
-            <p class="price">$3,000,000</p>
+            <p class="price">$<?php echo $property['precio']?></p>
 
             <ul class="details-icons">
                 <li>
                     <img loading="lazy" src="build/img/icono_wc.svg" alt="wc icon">
-                    <p>3</p>
+                    <p><?php echo $property['wc']?></p>
                 </li>
                 <li>
                     <img loading="lazy" src="build/img/icono_estacionamiento.svg" alt="parking icon">
-                    <p>3</p>
+                    <p><?php echo $property['estacionamiento']?></p>
                 </li>
                 <li>
                     <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="room icon">
-                    <p>4</p>
+                    <p><?php echo $property['habitaciones']?></p>
                 </li>
             </ul>
 
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero ut?
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero
-            </p>
-
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero ut?
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero
-            </p>
+            <p><?php echo $property['descripcion']?></p>
         </div>
     </main>
     
 <?php
+    mysqli_close($db);
     includeTemplate('footer');
 ?>
