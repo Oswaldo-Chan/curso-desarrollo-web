@@ -1,8 +1,16 @@
 <?php include 'includes/header.php';
-//incluyendo clases
+//namespaces
+
+/* require 'classes/Clientes.php';
+require 'classes/Detalles.php';
+ */
+
+ use App\Clientes;
+ use App\Detalles;
 
 function autoload($class) {
-    require __DIR__.'/classes/'.$class.'.php';
+    $partes = explode('\\',$class);
+    require __DIR__.'/classes/'.$partes[1].'.php';
 }
 
 spl_autoload_register('autoload');
