@@ -2,7 +2,7 @@
 //conectar a la db con Mysqli
 
 //se usa la db del proyecto de bienes raices
-$db = new mysqli('localhost','root','mimamaRosario1','bienesraices_crud');
+$db = new mysqli('localhost','root','','bienesraices_crud');
 
 /* $query = "SELECT nombre from propiedades";
 $result = $db->query($query);
