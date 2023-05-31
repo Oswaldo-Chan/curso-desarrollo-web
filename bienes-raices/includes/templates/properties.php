@@ -1,5 +1,5 @@
 <?php
-    require 'includes/config/database.php';
+
     $db = connectDB();
 
     $queryRows = "SELECT COUNT(*) AS total_rows FROM propiedades"; // devuelve el total de filas en total_rows

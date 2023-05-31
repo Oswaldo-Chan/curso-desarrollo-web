@@ -1,6 +1,6 @@
 <?php
 //conectar db
-require 'includes/config/database.php';
+require 'includes/app.php';
 $db = connectDB();
 //crear email y password
 $email = 'correo@correo.com';
