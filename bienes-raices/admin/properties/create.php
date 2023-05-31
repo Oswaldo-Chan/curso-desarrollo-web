@@ -2,14 +2,7 @@
     require '../../includes/app.php';
     use App\Property;
 
-    $property = new Property;
-
-    var_dump($property);
-
-    $auth = userAuth();
-    if (!$auth) {
-        header('Location: /');
-    }
+    userAuth();
 
     //DATABASE
     $db = connectDB();
