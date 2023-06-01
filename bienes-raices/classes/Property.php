@@ -83,8 +83,10 @@ class Property {
         return $sanitized;
    }
 
-   protected function getPropertyForColumn($column) {
+   protected static function getPropertyForColumn($column) {
         switch ($column) {
+            case 'id':
+                return 'id';
             case 'nombre':
                 return 'title';
             case 'precio':
@@ -141,4 +143,33 @@ class Property {
 
         return self::$errors;
     }
+    public static function all() {
+        $query = "SELECT * FROM propiedades";
+
+        $result = self::SQLQuery($query);
+
+        return $result;
+    }
+    public static function SQLQuery($query) {
+        $result = self::$db->query($query);
+        $array = [];
+        while ($record = $result->fetch_assoc()) {
+            $array[] = self::createObject($record);
+        }
+        $result->free();
+        return $array;
+    }
+    protected static function createObject($record) {
+        $object = new self;
+    
+        foreach ($record as $key => $value) {
+            $propertyName = self::getPropertyForColumn($key);
+            if (property_exists($object, $propertyName)) {
+                $object->$propertyName = $value;
+            }
+        }
+
+        return $object;
+    }
+    
 } 
