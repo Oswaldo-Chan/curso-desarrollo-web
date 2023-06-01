@@ -24,6 +24,11 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+        $property = new Property($_POST);
+        $property->save();
+
+        debug($property);
+
         $title = mysqli_real_escape_string($db, $_POST['title']);
         $price = mysqli_real_escape_string($db, $_POST['price']);
         $description = mysqli_real_escape_string($db, $_POST['description']);
@@ -83,10 +88,6 @@
             //upload image
             move_uploaded_file($image['tmp_name'], $folder.$imageName);
 
-            //insert to db
-            $query = " INSERT INTO propiedades (nombre, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)";
-            $query .= " VALUES ('$title', '$price', '$imageName', '$description', '$rooms', '$wc', '$parking', '$date', '$seller')";
-
             $result = mysqli_query($db, $query);
 
             if ($result) {
@@ -142,7 +143,7 @@
             <fieldset>
                 <legend>Vendedor</legend>
 
-                <select name="seller">
+                <select name="vendedores_id">
                 <option value="" selected disabled>-- Seleccione --</option>
                     <?php while($row = mysqli_fetch_assoc($result)): ?>
                         <option <?php echo $seller === $row['id'] ? 'selected' : ''; ?> value="<?php echo $row['id']; ?>"><?php echo $row['name']." ".$row['apellido']; ?></option>
