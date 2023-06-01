@@ -27,8 +27,6 @@
         $property = new Property($_POST);
         $property->save();
 
-        debug($property);
-
         $title = mysqli_real_escape_string($db, $_POST['title']);
         $price = mysqli_real_escape_string($db, $_POST['price']);
         $description = mysqli_real_escape_string($db, $_POST['description']);
