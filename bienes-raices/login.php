@@ -1,11 +1,5 @@
 <?php
     require 'includes/app.php';
-    
-    $auth = userAuth();
-    if ($auth) {
-        header('Location: /admin');
-    }
-
     $db = connectDB();
     //autenticar el usuario
     $errors = [];

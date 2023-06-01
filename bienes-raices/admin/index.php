@@ -1,11 +1,7 @@
 <?php
-    require '../includes/functions.php';
-    $auth = userAuth();
-    if (!$auth) {
-        header('Location: /');
-    }
+    require '../includes/app.php';
+    userAuth();
     
-    require '../includes/config/database.php';
     $db = connectDB();
     $query = "SELECT * FROM propiedades";
     $queryResult = mysqli_query($db, $query);

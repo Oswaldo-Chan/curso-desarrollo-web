@@ -13,7 +13,7 @@ function userAuth() {
 
     if (!$_SESSION['login']) {
         header('Location: /');
-    }
+    } 
 }
 
 function debug($var) {

@@ -1,9 +1,6 @@
 <?php
-    require '../../includes/functions.php';
-    $auth = userAuth();
-    if (!$auth) {
-        header('Location: /');
-    }
+    require '../../includes/app.php';
+    userAuth();
 
     $propertyID = $_GET['id'];
     $propertyID = filter_var($propertyID, FILTER_VALIDATE_INT);
@@ -12,7 +9,6 @@
         header('Location: /admin');
     }
     //DATABASE
-    require '../../includes/config/database.php';
     $db = connectDB();
     //get property
     $query = "SELECT * FROM propiedades WHERE id = {$propertyID}";
