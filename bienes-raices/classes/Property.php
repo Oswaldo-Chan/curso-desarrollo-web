@@ -7,6 +7,8 @@ class Property {
     protected static $db;
     protected static $dbColumns = ['id','nombre','precio','imagen','descripcion','habitaciones','wc','estacionamiento','creado','vendedores_id'];
 
+    protected static $errors = [];
+
     public $id;
     public $title;
     public $price;
@@ -35,6 +37,9 @@ class Property {
     //getters and setters
     public static function setDB($db) {
         self::$db = $db;
+    }
+    public static function getErrors() {
+        return self::$errors;
     }
 
     //methods
@@ -96,5 +101,42 @@ class Property {
             default:
                 return null;
         }
+    }
+
+    public function validate(){
+
+        if (!$this->title) {
+            self::$errors[] = "Debes agregar un titulo";
+        }
+        if (!$this->price) {
+            self::$errors[] = "El precio es obligatorio";
+        }
+        if (!$this->description) {
+            self::$errors[] = "Necesitas agregar una descripcion";
+        } else if (strlen($this->description) < 20) {
+            self::$errors[] = "La descripcion debe tener al menos 20 caracteres";
+        } else if (strlen($this->description) > 200) {
+            self::$errors[] = "La descripcion no debe exceder los 200 caracteres";
+        }
+        if (!$this->rooms) {
+            self::$errors[] = "El numero de habitaciones es obligatorio";
+        }
+        if (!$this->wc) {
+            self::$errors[] = "El numero de baños es obligatorio";
+        }
+        if (!$this->parking) {
+            self::$errors[] = "El numero de lugares de estacionamiento es obligatorio";
+        }
+        if (!$this->seller) {
+            self::$errors[] = "Elige un vendedor";
+        }
+/*         $size = 1000 * 1000;
+        if (!$this->image['name'] || $this->image['error']) {
+            self::$errors[] = "La imagen es obligatoria";
+        } else if($this->image['size'] > $size){
+            self::$errors[] = "El tamaño de la imagen pesa demasiado";
+        } */
+
+        return self::$errors;
     }
 } 
