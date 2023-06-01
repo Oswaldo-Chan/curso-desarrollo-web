@@ -1,6 +1,7 @@
 <?php
     require '../../includes/app.php';
     use App\Property;
+    use Intervention\Image\ImageManagerStatic as Image;
 
     userAuth();
 
@@ -25,28 +26,28 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $property = new Property($_POST);
+
+        //generating a unique name
+        $imageName = md5(uniqid(rand(), true)).".jpg";
+
+        if ($_FILES['image']["tmp_name"]) {
+            //upload image
+            $image = Image::make($_FILES['image']["tmp_name"])->fit(800, 600);
+            $property->setImage($imageName);
+        }
+
         $errors = $property->validate();
         
         if (empty($errors)) {
 
-            $property->save();
-
-            $image = $_FILES['image'];
-            //make dir
-            $folder = '../../img/';
-
-            if (!is_dir($folder)) {
-                mkdir($folder);
+            if (!is_dir(FOLDER_IMG)) {
+                mkdir(FOLDER_IMG);
             }
 
-            //generating a unique name
-            $imageName = md5(uniqid(rand(), true)).".jpg";
-
-            //upload image
-            move_uploaded_file($image['tmp_name'], $folder.$imageName);
-
-            $result = mysqli_query($db, $query);
-
+            $image->save(FOLDER_IMG.$imageName);
+            
+            $result = $property->save();
+ 
             if ($result) {
                 header('Location: /admin?result=1');
             }

@@ -25,7 +25,7 @@ class Property {
         $this->id = $args['id'] ?? '';
         $this->title = $args['title'] ?? '';
         $this->price = $args['price'] ?? '';
-        $this->image = $args['image'] ?? 'imagen.jpg';
+        $this->image = $args['image'] ?? '';
         $this->description = $args['description'] ?? '';
         $this->rooms = $args['rooms'] ?? '';
         $this->wc = $args['wc'] ?? '';
@@ -37,6 +37,11 @@ class Property {
     //getters and setters
     public static function setDB($db) {
         self::$db = $db;
+    }
+    public function setImage($image){
+        if ($image) {
+            $this->image = $image;
+        }
     }
     public static function getErrors() {
         return self::$errors;
@@ -53,7 +58,7 @@ class Property {
         $query .= " ')";
         $result = self::$db->query($query);
 
-        debug($result);
+        return $result;
    }
 
    public function attributes() {
@@ -130,12 +135,9 @@ class Property {
         if (!$this->seller) {
             self::$errors[] = "Elige un vendedor";
         }
-/*         $size = 1000 * 1000;
-        if (!$this->image['name'] || $this->image['error']) {
+        if (!$this->image) {
             self::$errors[] = "La imagen es obligatoria";
-        } else if($this->image['size'] > $size){
-            self::$errors[] = "El tamaño de la imagen pesa demasiado";
-        } */
+        }
 
         return self::$errors;
     }
