@@ -40,11 +40,12 @@ class Property {
     //methods
     public function save() {
         $attributes = $this->sanitizeAttributes();
-        debug($attributes);
 
-        $query = " INSERT INTO propiedades (nombre, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)";
-        $query .= " VALUES ('$this->title', '$this->price', '$this->image', '$this->description', '$this->rooms', '$this->wc', '$this->parking', '$this->date', '$this->seller')";  
-       
+        $query = " INSERT INTO propiedades ( ";
+        $query .= join(', ', array_keys($attributes));
+        $query .= " ) VALUES (' ";
+        $query .= join("', '", array_values($attributes));
+        $query .= " ')";
         $result = self::$db->query($query);
 
         debug($result);
