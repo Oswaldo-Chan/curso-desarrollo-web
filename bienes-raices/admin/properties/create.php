@@ -1,12 +1,10 @@
 <?php
-    require '../../includes/functions.php';
-    $auth = userAuth();
-    if (!$auth) {
-        header('Location: /');
-    }
+    require '../../includes/app.php';
+    use App\Property;
+
+    userAuth();
 
     //DATABASE
-    require '../../includes/config/database.php';
     $db = connectDB();
     
     //query sellers

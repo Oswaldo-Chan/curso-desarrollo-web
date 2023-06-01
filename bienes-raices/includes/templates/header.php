@@ -22,7 +22,7 @@
     <header class="header <?php echo $inicio ? 'inicio' : ''; ?>">
         <div class="container header-content">
             <div class="bar">
-                <a href="/index.php">
+                <a href="/">
                     <img src="/build/img/logo.svg" alt="logo image">
                 </a>
 

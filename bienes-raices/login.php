@@ -1,12 +1,5 @@
 <?php
-    require 'includes/functions.php';
-    
-    $auth = userAuth();
-    if ($auth) {
-        header('Location: /admin');
-    }
-
-    require 'includes/config/database.php';
+    require 'includes/app.php';
     $db = connectDB();
     //autenticar el usuario
     $errors = [];
