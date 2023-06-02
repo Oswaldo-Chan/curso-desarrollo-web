@@ -23,3 +23,8 @@ function debug($var) {
     echo "</pre>";
     exit;
 }
+
+function sanitize($html) : string {
+    $sanitized = htmlspecialchars($html);
+    return $sanitized;
+}

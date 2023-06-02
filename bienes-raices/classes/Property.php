@@ -31,7 +31,7 @@ class Property {
         $this->wc = $args['wc'] ?? '';
         $this->parking = $args['parking'] ?? '';
         $this->date = date('Y/m/d');
-        $this->seller = $args['vendedores_id'] ?? '';
+        $this->seller = $args['vendedores_id'] ?? 1;
     }
 
     //getters and setters
