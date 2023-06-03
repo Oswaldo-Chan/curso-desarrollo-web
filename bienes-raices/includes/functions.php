@@ -3,6 +3,7 @@
 
 define('TEMPLATES_URL', __DIR__.'/templates');
 define('FUNCTIONS_URL', __DIR__.'functions.php');
+define('FOLDER_IMG',__DIR__.'/../img/');
 
 function includeTemplate(string $template, bool $inicio = false) {
     include TEMPLATES_URL."/{$template}.php";
@@ -21,4 +22,9 @@ function debug($var) {
     var_dump($var);
     echo "</pre>";
     exit;
+}
+
+function sanitize($html) : string {
+    $sanitized = htmlspecialchars($html);
+    return $sanitized;
 }

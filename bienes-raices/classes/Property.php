@@ -3,6 +3,12 @@
 namespace App;
 
 class Property {
+    //database
+    protected static $db;
+    protected static $dbColumns = ['id','nombre','precio','imagen','descripcion','habitaciones','wc','estacionamiento','creado','vendedores_id'];
+
+    protected static $errors = [];
+
     public $id;
     public $title;
     public $price;
@@ -15,17 +21,155 @@ class Property {
     public $seller;
 
     public function __construct($args = [])
-    {
-        
+    {  
         $this->id = $args['id'] ?? '';
-        $this->title = $args['nombre'] ?? '';
-        $this->price = $args['precio'] ?? '';
-        $this->image = $args['imagen'] ?? '';
-        $this->description = $args['descripcion'] ?? '';
-        $this->rooms = $args['habitaciones'] ?? '';
+        $this->title = $args['title'] ?? '';
+        $this->price = $args['price'] ?? '';
+        $this->image = $args['image'] ?? '';
+        $this->description = $args['description'] ?? '';
+        $this->rooms = $args['rooms'] ?? '';
         $this->wc = $args['wc'] ?? '';
-        $this->parking = $args['estacionamiento'] ?? '';
-        $this->date = $args['creado'] ?? '';
-        $this->seller = $args['vendedores_id'] ?? '';
+        $this->parking = $args['parking'] ?? '';
+        $this->date = date('Y/m/d');
+        $this->seller = $args['vendedores_id'] ?? 1;
     }
-}
+
+    //getters and setters
+    public static function setDB($db) {
+        self::$db = $db;
+    }
+    public function setImage($image){
+        if ($image) {
+            $this->image = $image;
+        }
+    }
+    public static function getErrors() {
+        return self::$errors;
+    }
+
+    //methods
+    public function save() {
+        $attributes = $this->sanitizeAttributes();
+
+        $query = " INSERT INTO propiedades ( ";
+        $query .= join(', ', array_keys($attributes));
+        $query .= " ) VALUES (' ";
+        $query .= join("', '", array_values($attributes));
+        $query .= " ')";
+        $result = self::$db->query($query);
+
+        return $result;
+   }
+
+   public function attributes() {
+        $attributes = [];
+
+        foreach(self::$dbColumns as $column) {
+            if($column === 'id') continue;
+            $propertyName = $this->getPropertyForColumn($column);
+            $attributes[$column] = $this->$propertyName;
+        }
+        return $attributes;
+   }
+
+   public function sanitizeAttributes() {
+        $attributes = $this->attributes();
+        $sanitized = [];
+
+        foreach($attributes as $key => $value) {
+            $sanitized[$key] = self::$db->escape_string($value);
+        }
+
+        return $sanitized;
+   }
+
+   protected static function getPropertyForColumn($column) {
+        switch ($column) {
+            case 'id':
+                return 'id';
+            case 'nombre':
+                return 'title';
+            case 'precio':
+                return 'price';
+            case 'imagen':
+                return 'image';
+            case 'descripcion':
+                return 'description';
+            case 'habitaciones':
+                return 'rooms';
+            case 'wc':
+                return 'wc';
+            case 'estacionamiento':
+                return 'parking';
+            case 'creado':
+                return 'date';
+            case 'vendedores_id':
+                return 'seller';
+            default:
+                return null;
+        }
+    }
+
+    public function validate(){
+
+        if (!$this->title) {
+            self::$errors[] = "Debes agregar un titulo";
+        }
+        if (!$this->price) {
+            self::$errors[] = "El precio es obligatorio";
+        }
+        if (!$this->description) {
+            self::$errors[] = "Necesitas agregar una descripcion";
+        } else if (strlen($this->description) < 20) {
+            self::$errors[] = "La descripcion debe tener al menos 20 caracteres";
+        } else if (strlen($this->description) > 200) {
+            self::$errors[] = "La descripcion no debe exceder los 200 caracteres";
+        }
+        if (!$this->rooms) {
+            self::$errors[] = "El numero de habitaciones es obligatorio";
+        }
+        if (!$this->wc) {
+            self::$errors[] = "El numero de baños es obligatorio";
+        }
+        if (!$this->parking) {
+            self::$errors[] = "El numero de lugares de estacionamiento es obligatorio";
+        }
+        if (!$this->seller) {
+            self::$errors[] = "Elige un vendedor";
+        }
+        if (!$this->image) {
+            self::$errors[] = "La imagen es obligatoria";
+        }
+
+        return self::$errors;
+    }
+    public static function all() {
+        $query = "SELECT * FROM propiedades";
+
+        $result = self::SQLQuery($query);
+
+        return $result;
+    }
+    public static function SQLQuery($query) {
+        $result = self::$db->query($query);
+        $array = [];
+        while ($record = $result->fetch_assoc()) {
+            $array[] = self::createObject($record);
+        }
+        $result->free();
+        return $array;
+    }
+    protected static function createObject($record) {
+        $object = new self;
+    
+        foreach ($record as $key => $value) {
+            $propertyName = self::getPropertyForColumn($key);
+            if (property_exists($object, $propertyName)) {
+                $object->$propertyName = $value;
+            }
+        }
+
+        return $object;
+    }
+    
+} 

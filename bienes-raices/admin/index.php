@@ -2,10 +2,11 @@
     require '../includes/app.php';
     userAuth();
     
-    $db = connectDB();
-    $query = "SELECT * FROM propiedades";
-    $queryResult = mysqli_query($db, $query);
-    //show conditional message
+    use App\Property;
+
+    //property methods
+    $properties = Property::all();
+
     $result = $_GET['result'] ?? null; //enves de usar isset
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -50,21 +51,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while($property = mysqli_fetch_assoc($queryResult)): ?>
+                    <?php foreach($properties as $property): ?>
                         <tr>
-                            <td><?php echo $property['id']; ?></td>
-                            <td><?php echo $property['nombre']; ?></td>
-                            <td> <img src="/img/<?php echo $property['imagen']; ?>" class="table-image"></td>
-                            <td>$ <?php echo $property['precio']; ?></td>
+                            <td><?php echo $property->id; ?></td>
+                            <td><?php echo $property->title; ?></td>
+                            <td> <img src="/img/<?php echo $property->image; ?>" class="table-image"></td>
+                            <td>$ <?php echo $property->price; ?></td>
                             <td>
                                 <form method="POST" class="w-100">
-                                    <input type="hidden" name="id" value="<?php echo $property['id'] ?>">
+                                    <input type="hidden" name="id" value="<?php echo $property->id ?>">
                                     <input type="submit" class="btn-red-block" value="Eliminar">
                                 </form>
-                                <a class="btn-green-block" href="/admin/properties/update.php?id=<?php echo $property['id'] ?>">Actualizar</a>
+                                <a class="btn-green-block" href="/admin/properties/update.php?id=<?php echo $property->id ?>">Actualizar</a>
                             </td>
                         </tr>
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
     </main>
