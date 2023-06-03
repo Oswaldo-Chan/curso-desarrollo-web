@@ -177,5 +177,11 @@ class Property {
 
         return $object;
     }
-    
+    public function sync($args = []) {
+        foreach($args as $key => $value){
+            if(property_exists($this, $key) && !is_null($value)) {
+                $this->$key = $value;
+            }
+        }
+    }
 } 

@@ -25,14 +25,10 @@ require '../../includes/app.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $title = mysqli_real_escape_string($db, $_POST['title']);
-        $price = mysqli_real_escape_string($db, $_POST['price']);
-        $description = mysqli_real_escape_string($db, $_POST['description']);
-        $rooms = mysqli_real_escape_string($db, $_POST['rooms']);
-        $wc = mysqli_real_escape_string($db, $_POST['wc']);
-        $parking = mysqli_real_escape_string($db, $_POST['parking']);
-        $seller = mysqli_real_escape_string($db, $_POST['seller']);
-        $date = date('Y/m/d');
+        $args = $_POST['property'];
+        
+        $property->sync($args);
+        debug($property);
 
         $image = $_FILES['image'];
         //validate size
