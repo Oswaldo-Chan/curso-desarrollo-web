@@ -3,6 +3,7 @@
 use App\Property;
 
 require '../../includes/app.php';
+use Intervention\Image\ImageManagerStatic as Image;
 
     userAuth();
 
@@ -30,28 +31,19 @@ require '../../includes/app.php';
         $property->sync($args);
         
         $errors = $property->validate();
+
+        //generating a unique name
+        $imageName = md5(uniqid(rand(), true)).".jpg";
+
+        if ($_FILES['property']['tmp_name']["image"]) {
+            //upload image
+            $image = Image::make($_FILES['property']['tmp_name']["image"])->fit(800, 600);
+            $property->setImage($imageName);
+        }
        
         if (empty($errors)) {
             
-            //make dir
-            $folder = '../../img/';
-
-            if (!is_dir($folder)) {
-                mkdir($folder);
-            }
-
-            $imageName = '';
-
-            if ($image['name']) {
-                //delete previous image
-                unlink($folder.$property['imagen']);
-                //generating a unique name
-                $imageName = md5(uniqid(rand(), true)).".jpg";
-                //upload image
-                move_uploaded_file($image['tmp_name'], $folder.$imageName);
-            } else {
-                $imageName = $property['imagen'];
-            }
+           exit;
             
             //insert to db
             $query = "UPDATE propiedades SET nombre = '{$title}', precio = '{$price}', imagen = '{$imageName}', 

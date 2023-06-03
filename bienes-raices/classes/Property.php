@@ -39,6 +39,15 @@ class Property {
         self::$db = $db;
     }
     public function setImage($image){
+
+        if ($this->id) {
+            $exists = file_exists(FOLDER_IMG.$this->image);
+
+            if ($exists) {
+                unlink(FOLDER_IMG.$this->image);
+            }
+        }
+        
         if ($image) {
             $this->image = $image;
         }
