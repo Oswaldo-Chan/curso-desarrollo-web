@@ -9,6 +9,10 @@
 
     <label for="image">Imagen:</label>
     <input type="file" id="image" accept="image/jpeg, image/png" name="image">
+    
+    <?php if ($property->image): ?>
+        <img src="/img/<?php echo $property->image ?>" class="image-small">
+    <?php endif; ?>
 
     <label for="description">Descripcion:</label>
     <textarea id="description" name="description"><?php echo sanitize($property->description); ?></textarea>

@@ -150,6 +150,12 @@ class Property {
 
         return $result;
     }
+    public static function find($propertyID) {
+        $query = "SELECT * FROM propiedades WHERE id = {$propertyID}";
+        $result = self::SQLQuery($query);
+
+        return array_shift($result);
+    }
     public static function SQLQuery($query) {
         $result = self::$db->query($query);
         $array = [];
