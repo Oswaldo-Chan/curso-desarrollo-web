@@ -21,48 +21,16 @@ require '../../includes/app.php';
     $result = mysqli_query($db,$query);
 
     //array with error messages
-    $errors = [];
+    $errors = Property::getErrors();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $args = $_POST['property'];
         
         $property->sync($args);
-        debug($property);
-
-        $image = $_FILES['image'];
-        //validate size
-        $size = 1000 * 1000;
-
-        if (!$title) {
-            $errors[] = "Debes agregar un titulo";
-        }
-        if (!$price) {
-            $errors[] = "El precio es obligatorio";
-        }
-        if (!$description) {
-            $errors[] = "Necesitas agregar una descripcion";
-        } else if (strlen($description) < 20) {
-            $errors[] = "La descripcion debe tener al menos 20 caracteres";
-        } else if (strlen($description) > 200) {
-            $errors[] = "La descripcion no debe exceder los 200 caracteres";
-        }
-        if (!$rooms) {
-            $errors[] = "El numero de habitaciones es obligatorio";
-        }
-        if (!$wc) {
-            $errors[] = "El numero de baños es obligatorio";
-        }
-        if (!$parking) {
-            $errors[] = "El numero de lugares de estacionamiento es obligatorio";
-        }
-        if (!$seller) {
-            $errors[] = "Elige un vendedor";
-        }
-        if($image['size'] > $size){
-            $errors[] = "El tamaño de la imagen pesa demasiado";
-        }
         
+        $errors = $property->validate();
+       
         if (empty($errors)) {
             
             //make dir
