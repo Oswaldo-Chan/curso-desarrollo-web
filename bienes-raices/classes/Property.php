@@ -47,7 +47,7 @@ class Property {
                 unlink(FOLDER_IMG.$this->image);
             }
         }
-        
+
         if ($image) {
             $this->image = $image;
         }
@@ -58,6 +58,13 @@ class Property {
 
     //methods
     public function save() {
+        if (isset($this->id)) {
+            $this->update();
+        } else {
+            $this->create();
+        }
+    }
+    protected function create() {
         $attributes = $this->sanitizeAttributes();
 
         $query = " INSERT INTO propiedades ( ";
@@ -69,7 +76,25 @@ class Property {
 
         return $result;
    }
+   protected function update() {
+        $attributes = $this->sanitizeAttributes();
 
+        $values = [];
+        foreach ($attributes as $key => $value) {
+            $values[] = "{$key}='{$value}'";
+        }
+        join(', ', $values);
+        $query = "UPDATE propiedades SET ";
+        $query.= join(', ', $values);
+        $query.= " WHERE id = '".self::$db->escape_string($this->id)."' ";
+        $query.= "LIMIT 1";
+
+        $result = self::$db->query($query);
+
+        if ($result) {
+            header('Location: /admin?result=2');
+        }
+    }
    public function attributes() {
         $attributes = [];
 

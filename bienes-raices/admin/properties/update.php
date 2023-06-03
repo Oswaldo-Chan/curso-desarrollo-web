@@ -41,19 +41,9 @@ use Intervention\Image\ImageManagerStatic as Image;
             $property->setImage($imageName);
         }
        
-        if (empty($errors)) {
-            
-           exit;
-            
-            //insert to db
-            $query = "UPDATE propiedades SET nombre = '{$title}', precio = '{$price}', imagen = '{$imageName}', 
-            descripcion = '{$description}', habitaciones = {$rooms}, wc = {$wc}, estacionamiento = {$parking}, vendedores_id = {$seller} WHERE id = {$propertyID}";
-            
-            $result = mysqli_query($db, $query);
-
-            if ($result) {
-                header('Location: /admin?result=2');
-            }
+        if (empty($errors)) {   
+            $image->save(FOLDER_IMG.$imageName);
+            $property->save();
         }
     }
 
