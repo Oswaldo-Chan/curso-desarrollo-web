@@ -22,7 +22,7 @@ class Property {
 
     public function __construct($args = [])
     {  
-        $this->id = $args['id'] ?? '';
+        $this->id = $args['id'] ?? null;
         $this->title = $args['title'] ?? '';
         $this->price = $args['price'] ?? '';
         $this->image = $args['image'] ?? '';
@@ -40,7 +40,7 @@ class Property {
     }
     public function setImage($image){
 
-        if ($this->id) {
+        if (!is_null($this->id)) {
             $this->deleteImage();
         }
 
@@ -54,7 +54,7 @@ class Property {
 
     //methods
     public function save() {
-        if (isset($this->id)) {
+        if (!is_null($this->id)) {
             $this->update();
         } else {
             $this->create();
@@ -70,7 +70,9 @@ class Property {
         $query .= " ')";
         $result = self::$db->query($query);
 
-        return $result;
+        if ($result) {
+            header('Location: /admin?result=1');
+        }
    }
    protected function update() {
         $attributes = $this->sanitizeAttributes();

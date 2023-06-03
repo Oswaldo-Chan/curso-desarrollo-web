@@ -15,9 +15,6 @@
         if ($id) {
             $property = Property::find($id);
             $property->delete();
-
-
-
         }
     }
     //include a template

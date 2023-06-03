@@ -40,11 +40,7 @@
 
             $image->save(FOLDER_IMG.$imageName);
             
-            $result = $property->save();
- 
-            if ($result) {
-                header('Location: /admin?result=1');
-            }
+            $property->save();
         }
     }
 
