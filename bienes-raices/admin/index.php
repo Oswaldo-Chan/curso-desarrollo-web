@@ -13,17 +13,11 @@
         $id = $_POST['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
         if ($id) {
-            //delete file
-            $query = "SELECT imagen FROM propiedades WHERE id = {$id}";
-            $result = mysqli_query($db,$query);
-            $property = mysqli_fetch_assoc($result);
-            unlink('../img/'.$property['imagen']);
-            //delete property
-            $query = "DELETE FROM propiedades WHERE id = {$id}";
-            $result = mysqli_query($db,$query);
-            if ($result) {
-                header('Location: /admin');
-            }
+            $property = Property::find($id);
+            $property->delete();
+
+
+
         }
     }
     //include a template

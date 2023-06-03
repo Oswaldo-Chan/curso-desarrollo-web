@@ -41,11 +41,7 @@ class Property {
     public function setImage($image){
 
         if ($this->id) {
-            $exists = file_exists(FOLDER_IMG.$this->image);
-
-            if ($exists) {
-                unlink(FOLDER_IMG.$this->image);
-            }
+            $this->deleteImage();
         }
 
         if ($image) {
@@ -95,7 +91,25 @@ class Property {
             header('Location: /admin?result=2');
         }
     }
-   public function attributes() {
+    public function delete() {
+        //delete property
+        $query = "DELETE FROM propiedades WHERE id = ".self::$db->escape_string($this->id)." LIMIT 1";
+        
+        $result = self::$db->query($query);
+
+        if ($result) {
+            $this->deleteImage();
+            header('Location: /admin');
+        }
+    }
+    public function deleteImage(){
+        $exists = file_exists(FOLDER_IMG.$this->image);
+
+        if ($exists) {
+            unlink(FOLDER_IMG.$this->image);
+        }
+    }
+        public function attributes() {
         $attributes = [];
 
         foreach(self::$dbColumns as $column) {
