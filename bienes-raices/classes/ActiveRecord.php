@@ -5,35 +5,10 @@ namespace App;
 class ActiveRecord {
         //database
         protected static $db;
-        protected static $dbColumns = ['id','nombre','precio','imagen','descripcion','habitaciones','wc','estacionamiento','creado','vendedores_id'];
         protected static $table = '';
+        protected static $dbColumns = [];
 
-        protected static $errors = [];
-    
-        public $id;
-        public $title;
-        public $price;
-        public $image;
-        public $description;
-        public $rooms;
-        public $wc;
-        public $parking;
-        public $date;
-        public $seller;
-    
-        public function __construct($args = [])
-        {  
-            $this->id = $args['id'] ?? null;
-            $this->title = $args['title'] ?? '';
-            $this->price = $args['price'] ?? '';
-            $this->image = $args['image'] ?? '';
-            $this->description = $args['description'] ?? '';
-            $this->rooms = $args['rooms'] ?? '';
-            $this->wc = $args['wc'] ?? '';
-            $this->parking = $args['parking'] ?? '';
-            $this->date = date('Y/m/d');
-            $this->seller = $args['vendedores_id'] ?? 1;
-        }
+        protected static $errors = [];   
     
         //getters and setters
         public static function setDB($db) {
@@ -156,6 +131,12 @@ class ActiveRecord {
                     return 'date';
                 case 'vendedores_id':
                     return 'seller';
+                case 'name':
+                    return 'name';
+                case 'apellido':
+                    return 'surname';
+                case 'telefono':
+                    return 'phone';
                 default:
                     return null;
             }
@@ -217,7 +198,7 @@ class ActiveRecord {
             return $array;
         }
         protected static function createObject($record) {
-            $object = new self;
+            $object = new static;
         
             foreach ($record as $key => $value) {
                 $propertyName = self::getPropertyForColumn($key);
