@@ -90,7 +90,7 @@ class ActiveRecord {
     public function attributes() {
         $attributes = [];
     
-        foreach(self::$dbColumns as $column) {
+        foreach(static::$dbColumns as $column) {
             if($column === 'id') continue;
             $propertyName = static::getPropertyForColumn($column);
             $attributes[$column] = $this->$propertyName;
@@ -128,7 +128,7 @@ class ActiveRecord {
         $result = self::$db->query($query);
         $array = [];
         while ($record = $result->fetch_assoc()) {
-            $array[] = self::createObject($record);
+            $array[] = static::createObject($record);
         }
         $result->free();
         return $array;
