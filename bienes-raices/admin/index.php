@@ -9,8 +9,6 @@
     $properties = Property::all();
     $sellers = Seller::all();
 
-    debug($sellers);
-
     $result = $_GET['result'] ?? null; //enves de usar isset
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

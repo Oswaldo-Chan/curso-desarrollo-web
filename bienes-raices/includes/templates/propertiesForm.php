@@ -32,5 +32,14 @@
 </fieldset>
 
 <fieldset>
-    <legend>Vendedor</legend>
+    <legend>Información del Vendedor</legend>
+
+    <label for="seller">Vendedor</label>
+    <select name="property[seller]" id="seller">
+        <option selected disabled value="">Seleccione un vendedor</option>
+        <?php foreach($sellers as $seller): ?>
+            <option <?php echo $property->seller == $seller->id ? 'selected' : ''; ?> 
+            value="<?php echo sanitize($seller->id); ?>"><?php echo sanitize($seller->name)." ".sanitize($seller->surname); ?></option>
+        <?php endforeach; ?>
+    </select>
 </fieldset>

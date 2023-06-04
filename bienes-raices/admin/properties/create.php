@@ -1,18 +1,13 @@
 <?php
     require '../../includes/app.php';
     use App\Property;
+    use App\Seller;
     use Intervention\Image\ImageManagerStatic as Image;
 
     userAuth();
 
-    //DATABASE
-    $db = connectDB();
-
     $property = new Property();
-    
-    //query sellers
-    $query = "SELECT * FROM vendedores";
-    $result = mysqli_query($db,$query);
+    $sellers = Seller::all();
 
     //array with error messages
     $errors = Property::getErrors();
