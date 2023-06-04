@@ -19,4 +19,18 @@ class Seller extends ActiveRecord{
         $this->phone = $args['phone'] ?? '';
     
     }
+    protected static function getPropertyForColumn($column) {
+        switch ($column) {
+            case 'id':
+                return 'id';
+            case 'name':
+                return 'name';
+            case 'apellido':
+                return 'surname';
+            case 'telefono':
+                return 'phone';
+            default:
+                return null;
+        }
+    }
 }
