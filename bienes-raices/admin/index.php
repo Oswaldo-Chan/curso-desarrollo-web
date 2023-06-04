@@ -12,6 +12,8 @@
     $result = $_GET['result'] ?? null; //enves de usar isset
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        
         $id = $_POST['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
         if ($id) {
@@ -33,6 +35,8 @@
     
         <a href="/admin/properties/create.php" class="btn btn-purple">Nueva Propiedad</a>
     
+            <h2>Propiedades</h2>
+
             <table class="table-properties">
                 <thead>
                     <tr>
@@ -61,6 +65,36 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
+            <h2>Vendedores</h2>
+
+            <table class="table-properties">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($sellers as $seller): ?>
+                        <tr>
+                            <td><?php echo $seller->id; ?></td>
+                            <td><?php echo $seller->name." ".$seller->surname; ?></td>
+                            <td><?php echo $seller->phone; ?></td>
+                            <td>
+                                <form method="POST" class="w-100">
+                                    <input type="hidden" name="id" value="<?php echo $seller->id ?>">
+                                    <input type="submit" class="btn-red-block" value="Eliminar">
+                                </form>
+                                <a class="btn-green-block" href="/admin/sellers/update.php?id=<?php echo $seller->id ?>">Actualizar</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
     </main>
 
 <?php
