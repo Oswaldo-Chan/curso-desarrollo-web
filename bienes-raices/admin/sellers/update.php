@@ -5,25 +5,28 @@
 
     userAuth();
 
-    $seller = new Seller();
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    if (!$id) {
+        header('Location: /admin');
+    }
+
+    $seller = Seller::find($id);
     $errors = Seller::getErrors();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $args = $_POST['seller'];
+        $seller->sync($args);
+        
+        $errors = $seller->validate();
 
         if (empty($errors)) {
-
-            if (!is_dir(FOLDER_IMG)) {
-                mkdir(FOLDER_IMG);
-            }
-
-            $image->save(FOLDER_IMG.$imageName);
-            
-            $property->save();
+            $seller->save();
         }
+    }
 
-}
-
-includeTemplate('header');
+    IncludeTemplate('header');
 ?>
 
 <main class="container section">
