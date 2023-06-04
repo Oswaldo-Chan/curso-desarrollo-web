@@ -19,6 +19,23 @@ class Seller extends ActiveRecord{
         $this->phone = $args['phone'] ?? '';
     
     }
+    public function validate(){
+    
+        if (!$this->name) {
+            self::$errors[] = "Debes agregar un nombre";
+        }
+        if (!$this->surname) {
+            self::$errors[] = "El apellido es obligatorio";
+        }
+        if (!$this->phone) {
+            self::$errors[] = "Necesitas agregar telefono";
+        } 
+        if (!preg_match('/[0-9]{10}/',$this->phone)) {
+            self::$errors[] = "El telefono es invalido";
+
+        }
+        return self::$errors;
+    }   
     protected static function getPropertyForColumn($column) {
         switch ($column) {
             case 'id':

@@ -9,21 +9,16 @@
     $errors = Seller::getErrors();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $seller = new Seller($_POST['seller']);
+
+        $errors = $seller->validate();
 
         if (empty($errors)) {
-
-            if (!is_dir(FOLDER_IMG)) {
-                mkdir(FOLDER_IMG);
-            }
-
-            $image->save(FOLDER_IMG.$imageName);
-            
-            $property->save();
+            $seller->save();
         }
+    }
 
-}
-
-includeTemplate('header');
+    includeTemplate('header');
 ?>
 
 <main class="container section">
