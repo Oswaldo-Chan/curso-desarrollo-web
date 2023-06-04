@@ -6,7 +6,8 @@ class ActiveRecord {
         //database
         protected static $db;
         protected static $dbColumns = ['id','nombre','precio','imagen','descripcion','habitaciones','wc','estacionamiento','creado','vendedores_id'];
-    
+        protected static $table = '';
+
         protected static $errors = [];
     
         public $id;
@@ -63,7 +64,7 @@ class ActiveRecord {
         protected function create() {
             $attributes = $this->sanitizeAttributes();
     
-            $query = " INSERT INTO propiedades ( ";
+            $query = " INSERT INTO ".static::$table." ( ";
             $query .= join(', ', array_keys($attributes));
             $query .= " ) VALUES (' ";
             $query .= join("', '", array_values($attributes));
@@ -82,7 +83,7 @@ class ActiveRecord {
                 $values[] = "{$key}='{$value}'";
             }
             join(', ', $values);
-            $query = "UPDATE propiedades SET ";
+            $query = "UPDATE ".static::$table." SET ";
             $query.= join(', ', $values);
             $query.= " WHERE id = '".self::$db->escape_string($this->id)."' ";
             $query.= "LIMIT 1";
@@ -94,8 +95,8 @@ class ActiveRecord {
             }
         }
         public function delete() {
-            //delete property
-            $query = "DELETE FROM propiedades WHERE id = ".self::$db->escape_string($this->id)." LIMIT 1";
+            //delete
+            $query = "DELETE FROM ".static::$table." WHERE id = ".self::$db->escape_string($this->id)." LIMIT 1";
             
             $result = self::$db->query($query);
     
@@ -194,14 +195,14 @@ class ActiveRecord {
             return self::$errors;
         }
         public static function all() {
-            $query = "SELECT * FROM propiedades";
+            $query = "SELECT * FROM ".static::$table;
     
             $result = self::SQLQuery($query);
     
             return $result;
         }
         public static function find($propertyID) {
-            $query = "SELECT * FROM propiedades WHERE id = {$propertyID}";
+            $query = "SELECT * FROM ".static::$table." WHERE id = {$propertyID}";
             $result = self::SQLQuery($query);
     
             return array_shift($result);

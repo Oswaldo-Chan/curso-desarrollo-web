@@ -3,9 +3,11 @@
     userAuth();
     
     use App\Property;
+    use App\Seller;
 
     //property methods
     $properties = Property::all();
+    $sellers = Seller::all();
 
     $result = $_GET['result'] ?? null; //enves de usar isset
     

@@ -2,6 +2,7 @@
 
 namespace App;
 
-class Seller {
-    
+class Seller extends ActiveRecord{
+    protected static $table = 'vendedores';
+
 }
