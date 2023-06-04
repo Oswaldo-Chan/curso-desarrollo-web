@@ -34,3 +34,21 @@ function validateTypeContent($type) {
 
     return in_array($type, $types);
 }
+
+function showAlert($code){
+    $message = '';
+
+    switch ($code) {
+        case 1:
+            $message = "Creado Correctamente";
+            break;
+        case 2:
+            $message = "Actualizado Correctamente";
+            break;
+        default:
+            $message = false;
+            break;
+    }
+
+    return $message;
+}

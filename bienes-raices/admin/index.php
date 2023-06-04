@@ -36,11 +36,12 @@
 
     <main class="container section">
         <h1>Administrador de Bienes Raíces</h1>
-        <?php if (intval($result) === 1): ?>
-            <p class="alert success">Agregado Correctamente</p>
-        <?php elseif (intval($result) === 2): ?>
-            <p class="alert success">Actualizado Correctamente</p>
-        <?php endif; ?>
+        <?php 
+        $message = showAlert(intval($result));
+
+        if ($message) { ?>
+            <p class="alert success"><?php echo sanitize($message)?></p>
+        <?php } ?>
     
         <a href="/admin/properties/create.php" class="btn btn-purple">Nueva Propiedad</a>
         <a href="/admin/sellers/create.php" class="btn btn-yellow">Nuevo Vendedor</a>
