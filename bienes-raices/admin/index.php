@@ -5,7 +5,6 @@
     use App\Property;
     use App\Seller;
 
-    //property methods
     $properties = Property::all();
     $sellers = Seller::all();
 
@@ -13,12 +12,22 @@
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        
         $id = $_POST['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
+
         if ($id) {
-            $property = Property::find($id);
-            $property->delete();
+
+            $type = $_POST['type'];
+
+            if (validateTypeContent($type)) {
+                if ($type === 'seller') {
+                    $seller = Seller::find($id);
+                    $seller->delete();
+                } else if ($type === 'property') {
+                    $property = Property::find($id);
+                    $property->delete();
+                }
+            }
         }
     }
     //include a template
@@ -57,6 +66,7 @@
                             <td>
                                 <form method="POST" class="w-100">
                                     <input type="hidden" name="id" value="<?php echo $property->id ?>">
+                                    <input type="hidden" name="type" value="property">
                                     <input type="submit" class="btn-red-block" value="Eliminar">
                                 </form>
                                 <a class="btn-green-block" href="/admin/properties/update.php?id=<?php echo $property->id ?>">Actualizar</a>
@@ -86,6 +96,7 @@
                             <td>
                                 <form method="POST" class="w-100">
                                     <input type="hidden" name="id" value="<?php echo $seller->id ?>">
+                                    <input type="hidden" name="type" value="seller">
                                     <input type="submit" class="btn-red-block" value="Eliminar">
                                 </form>
                                 <a class="btn-green-block" href="/admin/sellers/update.php?id=<?php echo $seller->id ?>">Actualizar</a>

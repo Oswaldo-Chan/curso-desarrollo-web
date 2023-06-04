@@ -72,7 +72,6 @@ class ActiveRecord {
     public function delete() {
         //delete
         $query = "DELETE FROM ".static::$table." WHERE id = ".self::$db->escape_string($this->id)." LIMIT 1";
-            
         $result = self::$db->query($query);
     
         if ($result) {
