@@ -22,7 +22,7 @@ class Property {
 
     public function __construct($args = [])
     {  
-        $this->id = $args['id'] ?? '';
+        $this->id = $args['id'] ?? null;
         $this->title = $args['title'] ?? '';
         $this->price = $args['price'] ?? '';
         $this->image = $args['image'] ?? '';
@@ -39,6 +39,11 @@ class Property {
         self::$db = $db;
     }
     public function setImage($image){
+
+        if (!is_null($this->id)) {
+            $this->deleteImage();
+        }
+
         if ($image) {
             $this->image = $image;
         }
@@ -49,6 +54,13 @@ class Property {
 
     //methods
     public function save() {
+        if (!is_null($this->id)) {
+            $this->update();
+        } else {
+            $this->create();
+        }
+    }
+    protected function create() {
         $attributes = $this->sanitizeAttributes();
 
         $query = " INSERT INTO propiedades ( ";
@@ -58,10 +70,48 @@ class Property {
         $query .= " ')";
         $result = self::$db->query($query);
 
-        return $result;
+        if ($result) {
+            header('Location: /admin?result=1');
+        }
    }
+   protected function update() {
+        $attributes = $this->sanitizeAttributes();
 
-   public function attributes() {
+        $values = [];
+        foreach ($attributes as $key => $value) {
+            $values[] = "{$key}='{$value}'";
+        }
+        join(', ', $values);
+        $query = "UPDATE propiedades SET ";
+        $query.= join(', ', $values);
+        $query.= " WHERE id = '".self::$db->escape_string($this->id)."' ";
+        $query.= "LIMIT 1";
+
+        $result = self::$db->query($query);
+
+        if ($result) {
+            header('Location: /admin?result=2');
+        }
+    }
+    public function delete() {
+        //delete property
+        $query = "DELETE FROM propiedades WHERE id = ".self::$db->escape_string($this->id)." LIMIT 1";
+        
+        $result = self::$db->query($query);
+
+        if ($result) {
+            $this->deleteImage();
+            header('Location: /admin');
+        }
+    }
+    public function deleteImage(){
+        $exists = file_exists(FOLDER_IMG.$this->image);
+
+        if ($exists) {
+            unlink(FOLDER_IMG.$this->image);
+        }
+    }
+        public function attributes() {
         $attributes = [];
 
         foreach(self::$dbColumns as $column) {
@@ -150,6 +200,12 @@ class Property {
 
         return $result;
     }
+    public static function find($propertyID) {
+        $query = "SELECT * FROM propiedades WHERE id = {$propertyID}";
+        $result = self::SQLQuery($query);
+
+        return array_shift($result);
+    }
     public static function SQLQuery($query) {
         $result = self::$db->query($query);
         $array = [];
@@ -171,5 +227,11 @@ class Property {
 
         return $object;
     }
-    
+    public function sync($args = []) {
+        foreach($args as $key => $value){
+            if(property_exists($this, $key) && !is_null($value)) {
+                $this->$key = $value;
+            }
+        }
+    }
 } 

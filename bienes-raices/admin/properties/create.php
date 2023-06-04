@@ -19,14 +19,14 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $property = new Property($_POST);
+        $property = new Property($_POST['property']);
 
         //generating a unique name
         $imageName = md5(uniqid(rand(), true)).".jpg";
 
-        if ($_FILES['image']["tmp_name"]) {
+        if ($_FILES['property']['tmp_name']["image"]) {
             //upload image
-            $image = Image::make($_FILES['image']["tmp_name"])->fit(800, 600);
+            $image = Image::make($_FILES['property']['tmp_name']["image"])->fit(800, 600);
             $property->setImage($imageName);
         }
 
@@ -40,11 +40,7 @@
 
             $image->save(FOLDER_IMG.$imageName);
             
-            $result = $property->save();
- 
-            if ($result) {
-                header('Location: /admin?result=1');
-            }
+            $property->save();
         }
     }
 
