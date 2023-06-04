@@ -43,7 +43,8 @@
         <?php endif; ?>
     
         <a href="/admin/properties/create.php" class="btn btn-purple">Nueva Propiedad</a>
-    
+        <a href="/admin/sellers/create.php" class="btn btn-yellow">Nuevo Vendedor</a>
+
             <h2>Propiedades</h2>
 
             <table class="table-properties">
