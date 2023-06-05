@@ -3,15 +3,11 @@
 
     $properties = Property::all();
 
-/*     $queryRows = "SELECT COUNT(*) AS total_rows FROM propiedades"; // devuelve el total de filas en total_rows
-    $result = mysqli_query($db, $queryRows);
-    $table = mysqli_fetch_assoc($result); //lee el resultado
-    $totalRows = $table['total_rows']; //obtenemos el valor de total_rows
-
-    $limit = $limit ?? $totalRows; //si la variable limit no se define, el valor default sera $totalRows
-
-    $query = "SELECT * FROM propiedades LIMIT {$limit}";
-    $result = mysqli_query($db,$query); */
+    if ($_SERVER['SCRIPT_NAME'] === '/anuncios.php') {
+        $properties = Property::all();
+    } else {
+        $properties = Property::get(3);
+    }
 ?>
 
     <div class="properties">

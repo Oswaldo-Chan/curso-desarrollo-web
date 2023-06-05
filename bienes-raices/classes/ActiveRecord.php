@@ -7,7 +7,7 @@ class ActiveRecord {
     protected static $db;
     protected static $table = '';
     protected static $dbColumns = [];
-
+    
     protected static $errors = [];   
     
     //getters and setters
@@ -26,6 +26,12 @@ class ActiveRecord {
     }
     public static function getErrors() {
         return static::$errors;
+    }
+    public static function get($limit) {
+        $query = "SELECT * FROM ".static::$table." LIMIT ".$limit;
+        $result = self::SQLQuery($query);
+    
+        return $result;
     }
     
     //methods
