@@ -28,3 +28,30 @@ function sanitize($html) : string {
     $sanitized = htmlspecialchars($html);
     return $sanitized;
 }
+
+function validateTypeContent($type) {
+    $types = ['seller','property'];
+
+    return in_array($type, $types);
+}
+
+function showAlert($code){
+    $message = '';
+
+    switch ($code) {
+        case 1:
+            $message = "Creado Correctamente";
+            break;
+        case 2:
+            $message = "Actualizado Correctamente";
+            break;
+        case 2:
+            $message = "Eliminado Correctamente";
+            break;
+        default:
+            $message = false;
+            break;
+    }
+
+    return $message;
+}
