@@ -1,0 +1,47 @@
+@include tablet {
+    .inferior-section {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 2rem;
+    }
+}
+.blog-post {
+    margin-bottom: 2rem;
+
+    @include tablet {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 2rem;
+    }
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+.meta-info {
+    span {
+        color: $amarillo;
+    }
+}
+.text-post {
+    a {
+        color: $negro;
+        margin-top: 2rem;
+        display: block;
+        @include tablet {
+            margin-top: 0;
+        }
+    }
+    h4 {
+        margin: 0;
+        line-height: 1.4;
+
+        &::after {
+            content: '';
+            margin-top: 1rem;
+            display: block;
+            max-width: 34rem;
+            height: .5rem;
+            background-color: $morado;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.section {
+    margin-top: calc($separacion/2);
+    margin-bottom: calc($separacion/2);
+}
+.content-center {
+    max-width: 80rem;
+}
+.align-left {
+    display: flex;
+    justify-content: flex-end;
+}
+.w-100 {
+    width: 100%;
+}
