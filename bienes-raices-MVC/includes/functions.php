@@ -54,3 +54,14 @@ function showAlert($code){
 
     return $message;
 }
+
+function validateOrRedirect($url) {
+    $propertyID = $_GET['id'];
+    $propertyID = filter_var($propertyID, FILTER_VALIDATE_INT);
+    
+    if (!$propertyID) {
+        header("Location: ${url}");
+    }
+
+    return $propertyID;
+}

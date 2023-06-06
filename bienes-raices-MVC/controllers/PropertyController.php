@@ -54,8 +54,15 @@ class PropertyController {
     }
 
     public static function update(Router $router) {
-                $router->view('properties/update', [
-            
+        $id = validateOrRedirect('/admin');
+        $property = Property::find($id);
+        $sellers = Seller::all();
+        $errors = Property::getErrors();
+
+        $router->view('properties/update', [
+            'property' => $property,
+            'sellers' => $sellers,
+            'errors' => $errors
         ]);
     }
 }
