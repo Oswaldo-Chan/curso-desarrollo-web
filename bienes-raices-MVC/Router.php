@@ -26,9 +26,13 @@ class Router {
         }
     }
 
-    public function view($view) {
+    public function view($view, $data = []) {
+        foreach($data as $key => $value) {
+            $$key = $value;
+        }
+
         ob_start();
-        
+
         include __DIR__."/views/$view.php";
         $content = ob_get_clean();
         include __DIR__."/views/layout.php";
