@@ -59,6 +59,27 @@ class PropertyController {
         $sellers = Seller::all();
         $errors = Property::getErrors();
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $args = $_POST['property'];
+            $property->sync($args);
+            $errors = $property->validate();
+            $imageName = md5(uniqid(rand(), true)).".jpg";
+    
+            if ($_FILES['property']['tmp_name']["image"]) {
+                $image = Image::make($_FILES['property']['tmp_name']["image"])->fit(800, 600);
+                $property->setImage($imageName);
+            }
+           
+            if (empty($errors)) {   
+                if ($_FILES['property']['tmp_name']["image"]) {
+                $image->save(FOLDER_IMG.$imageName);
+                }
+                
+                $property->save();
+            }
+        }    
+
         $router->view('properties/update', [
             'property' => $property,
             'sellers' => $sellers,
