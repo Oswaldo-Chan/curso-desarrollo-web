@@ -1,9 +1,8 @@
 <?php 
 
-
 define('TEMPLATES_URL', __DIR__.'/templates');
 define('FUNCTIONS_URL', __DIR__.'functions.php');
-define('FOLDER_IMG',__DIR__.'/../img/');
+define('FOLDER_IMG',$_SERVER['DOCUMENT_ROOT'].'/img/');
 
 function includeTemplate(string $template, bool $inicio = false) {
     include TEMPLATES_URL."/{$template}.php";
