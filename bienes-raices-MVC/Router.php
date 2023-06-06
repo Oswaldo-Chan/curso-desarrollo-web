@@ -4,8 +4,8 @@ namespace MVC;
 
 class Router {
 
-    public $routesGET = [];
-    public $routesPOST = [];
+    private $routesGET = [];
+    private $routesPOST = [];
 
     public function get($url, $function) {
         $this->routesGET[$url] = $function;
