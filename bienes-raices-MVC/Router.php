@@ -25,4 +25,8 @@ class Router {
             echo "Pagina No Encontrada";
         }
     }
+
+    public function view($view) {
+        include __DIR__."/views/$view.php";
+    }
 }
