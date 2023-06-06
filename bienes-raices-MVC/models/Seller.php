@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Model;
 
 class Seller extends ActiveRecord{
     protected static $table = 'vendedores';

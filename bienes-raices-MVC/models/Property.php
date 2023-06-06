@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Model;
 
 class Property extends ActiveRecord {
     protected static $table = 'propiedades';
