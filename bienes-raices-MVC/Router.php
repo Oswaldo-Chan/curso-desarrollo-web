@@ -27,6 +27,10 @@ class Router {
     }
 
     public function view($view) {
+        ob_start();
+        
         include __DIR__."/views/$view.php";
+        $content = ob_get_clean();
+        include __DIR__."/views/layout.php";
     }
 }
