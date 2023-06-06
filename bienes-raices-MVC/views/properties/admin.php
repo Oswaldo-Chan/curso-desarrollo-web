@@ -10,7 +10,7 @@
             <?php }
         } ?>
     
-        <a href="/admin/properties/create.php" class="btn btn-purple">Nueva Propiedad</a>
+        <a href="/properties/create" class="btn btn-purple">Nueva Propiedad</a>
         <a href="/admin/sellers/create.php" class="btn btn-yellow">Nuevo Vendedor</a>
 
         <h2>Propiedades</h2>
