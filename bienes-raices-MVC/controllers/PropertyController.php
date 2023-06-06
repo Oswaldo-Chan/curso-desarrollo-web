@@ -21,6 +21,10 @@ class PropertyController {
         $property = new Property;
         $sellers = Seller::all();
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        }
+
         $router->view('properties/create', [
             'property' => $property,
             'sellers' => $sellers
