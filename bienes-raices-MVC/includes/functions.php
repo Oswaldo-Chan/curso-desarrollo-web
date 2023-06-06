@@ -44,7 +44,7 @@ function showAlert($code){
         case 2:
             $message = "Actualizado Correctamente";
             break;
-        case 2:
+        case 3:
             $message = "Eliminado Correctamente";
             break;
         default:
