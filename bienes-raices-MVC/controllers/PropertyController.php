@@ -2,12 +2,17 @@
 
 namespace Controllers;
 use MVC\Router;
+use Model\Property;
 
 class PropertyController {
     public static function index(Router $router) {
+
+        $properties = Property::all();
+        $result = null;
+
         $router->view('properties/admin', [
-            'message' => 'desde la vista',
-            'properties' => 'Casa'
+            'properties' => $properties,
+            'result' => $result
         ]);
     }
 
