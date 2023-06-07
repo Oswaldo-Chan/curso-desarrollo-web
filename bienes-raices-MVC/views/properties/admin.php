@@ -11,7 +11,7 @@
         } ?>
     
         <a href="/properties/create" class="btn btn-purple">Nueva Propiedad</a>
-        <a href="/admin/sellers/create.php" class="btn btn-yellow">Nuevo Vendedor</a>
+        <a href="/sellers/create" class="btn btn-yellow">Nuevo Vendedor</a>
 
         <h2>Propiedades</h2>
 
@@ -70,7 +70,7 @@
                             <input type="hidden" name="type" value="seller">
                             <input type="submit" class="btn-red-block" value="Eliminar">
                         </form>
-                        <a class="btn-green-block" href="/admin/sellers/update.php?id=<?php echo $seller->id ?>">Actualizar</a>
+                        <a class="btn-green-block" href="/sellers/update?id=<?php echo $seller->id ?>">Actualizar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
