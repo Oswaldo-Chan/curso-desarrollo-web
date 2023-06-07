@@ -14,22 +14,22 @@ class PageController {
             'properties' => $properties
         ]);
     }
-    public static function about_us() {
+    public static function about_us(Router $router) {
+        $router->view('pages/about-us');
+    }
+    public static function properties(Router $router) {
+ 
+    }
+    public static function property(Router $router) {
         
     }
-    public static function properties() {
+    public static function blog(Router $router) {
         
     }
-    public static function property() {
+    public static function article(Router $router) {
         
     }
-    public static function blog() {
-        
-    }
-    public static function article() {
-        
-    }
-    public static function contact() {
+    public static function contact(Router $router) {
         
     }
 }
