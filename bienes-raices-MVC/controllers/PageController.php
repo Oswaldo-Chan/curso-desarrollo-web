@@ -2,9 +2,17 @@
 
 namespace Controllers;
 
-class PageController {
-    public static function index() {
+use MVC\Router;
+use Model\Property;
 
+class PageController {
+    public static function index(Router $router) {
+        $properties = Property::get(3);
+
+        $router->view('pages/index', [
+            'inicio' => true,
+            'properties' => $properties
+        ]);
     }
     public static function about_us() {
         

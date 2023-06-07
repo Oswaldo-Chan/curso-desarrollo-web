@@ -31,12 +31,12 @@
                 <div class="nav-container">
                     <img class="btn-dark-mode" src="/build/img/dark-mode.svg">
                     <nav class="nav">
-                        <a href="/nosotros.php">nosotros</a>
-                        <a href="/anuncios.php">anuncios</a>
-                        <a href="/blog.php">blog</a>
-                        <a href="/contacto.php">contacto</a>
+                        <a href="/about-us">nosotros</a>
+                        <a href="/properties">anuncios</a>
+                        <a href="/blog">blog</a>
+                        <a href="/contact">contacto</a>
                         <?php if ($auth) : ?>
-                            <a href="logout.php">Cerrar Sesión</a>
+                            <a href="log-out">Cerrar Sesión</a>
                         <?php endif; ?>
                     </nav>
                 </div>
@@ -53,10 +53,10 @@
     <footer class="footer section">
         <div class="container footer-content">
             <nav class="nav">
-                <a href="/nosotros.php">nosotros</a>
-                <a href="/anuncios.php">anuncios</a>
-                <a href="/blog.php">blog</a>
-                <a href="/contacto.php">contacto</a>
+                <a href="/about-us">nosotros</a>
+                <a href="/properties">anuncios</a>
+                <a href="/blog">blog</a>
+                <a href="/contact">contacto</a>
             </nav>
         </div>
 
