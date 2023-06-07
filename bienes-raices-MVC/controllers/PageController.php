@@ -25,7 +25,12 @@ class PageController {
         ]);
     }
     public static function property(Router $router) {
-        
+        $id = validateOrRedirect('/properties');
+        $property = Property::find($id);
+
+        $router->view('pages/property', [
+            'property' => $property
+        ]);
     }
     public static function blog(Router $router) {
         
