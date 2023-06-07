@@ -1,0 +1,42 @@
+.dark-mode {
+    background-color: darken($grisOscuro, 5%);
+    p {
+        color: $blanco;
+    }
+    a,h1,h2,h3,h4 {
+        color: $gris;
+    }
+    .property {
+        background-color: $grisOscuro;
+        border-color: $grisOscuro;
+    }
+    .price {
+        color: lighten($morado, 30%);
+    }
+    .details-icons img {
+        filter: invert(50%);
+    }
+    .about-us-text blockquote {
+        color: $blanco;
+    }
+    .form {
+        label,
+        legend,
+        p {
+            color: $gris;
+        }
+        input:not([type="submit"]),
+        textarea,
+        select {
+            background-color: $grisOscuro;
+            color: $blanco;
+            border: .1rem solid $grisOscuro;
+        }
+    }
+    table {
+        color: $blanco;
+    }
+    .table-image {
+        border: .1rem solid darken($gris, 50%);
+    }
+}

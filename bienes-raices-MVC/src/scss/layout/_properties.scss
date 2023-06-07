@@ -1,0 +1,46 @@
+@include tablet {
+    .properties {
+        @include grid(3,2rem);
+    }
+}
+.property {
+    background-color: lighten($gris, 9%);
+    border: .1rem solid lighten($grisOscuro, 80%);
+    margin-bottom: 2rem;
+
+    .property-content {
+        padding: 2rem;
+    }
+    h3,p {
+        margin: 0;
+    }
+}
+.price {
+    color: $morado;
+    font-weight: $bold;
+    font-size: 3rem;
+}
+.details-icons {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    max-width: 40rem;
+
+    li {
+        flex: 1;
+        display: flex;
+
+        img {
+            flex: 0 0 5rem;
+            margin-right: 1rem;
+        }
+        p {
+            font-weight: $black;
+        }
+    }
+}
+.property-summary {
+    p {
+        text-align: justify;
+    }
+}

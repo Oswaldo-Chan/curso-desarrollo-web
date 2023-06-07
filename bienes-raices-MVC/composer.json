@@ -1,0 +1,21 @@
+{
+    "name": "joswa/bienes-raices",
+    "description": "Creando un proyecto con POO",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Oswaldo-Chan",
+            "email": "92545103+Oswaldo-Chan@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Model\\": "./models",
+            "MVC\\": "./",
+            "Controllers\\": "./controllers"
+        }
+    }
+}
