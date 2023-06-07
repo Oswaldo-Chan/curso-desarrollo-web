@@ -33,9 +33,10 @@ class PageController {
         ]);
     }
     public static function blog(Router $router) {
-        
+        $router->view('pages/blog');
     }
     public static function article(Router $router) {
+        $router->view('pages/article');
         
     }
     public static function contact(Router $router) {
