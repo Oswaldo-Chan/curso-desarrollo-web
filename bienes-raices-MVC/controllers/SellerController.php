@@ -23,8 +23,26 @@ class SellerController {
             'errors' => $errors
         ]);
     }
-    public static function update() {
+    public static function update(Router $router) {
+        $errors = Seller::getErrors();
+        $id = validateOrRedirect('/admin');
+        $seller = Seller::find($id);
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $args = $_POST['seller'];
+            $seller->sync($args);
+            
+            $errors = $seller->validate();
+    
+            if (empty($errors)) {
+                $seller->save();
+            }
+        }
 
+        $router->view('sellers/update', [
+            'errors' => $errors,
+            'seller' => $seller
+        ]);
     }
     public static function delete() {
 

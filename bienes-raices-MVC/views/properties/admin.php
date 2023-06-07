@@ -70,7 +70,7 @@
                             <input type="hidden" name="type" value="seller">
                             <input type="submit" class="btn-red-block" value="Eliminar">
                         </form>
-                        <a class="btn-green-block" href="/sellers/update?id=<?php echo $seller->id ?>">Actualizar</a>
+                        <a class="btn-green-block" href="sellers/update?id=<?php echo $seller->id ?>">Actualizar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
