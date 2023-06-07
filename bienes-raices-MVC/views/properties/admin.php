@@ -65,7 +65,7 @@
                     <td><?php echo $seller->name." ".$seller->surname; ?></td>
                     <td><?php echo $seller->phone; ?></td>
                     <td>
-                        <form method="POST" class="w-100">
+                        <form method="POST" class="w-100" action="/sellers/delete">
                             <input type="hidden" name="id" value="<?php echo $seller->id ?>">
                             <input type="hidden" name="type" value="seller">
                             <input type="submit" class="btn-red-block" value="Eliminar">

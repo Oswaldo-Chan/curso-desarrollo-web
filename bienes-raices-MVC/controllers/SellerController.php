@@ -27,7 +27,7 @@ class SellerController {
         $errors = Seller::getErrors();
         $id = validateOrRedirect('/admin');
         $seller = Seller::find($id);
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $args = $_POST['seller'];
             $seller->sync($args);
@@ -45,6 +45,18 @@ class SellerController {
         ]);
     }
     public static function delete() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $id = filter_var($id, FILTER_VALIDATE_INT);
 
+            if ($id) {
+                $type = $_POST['type'];
+
+                if (validateTypeContent($type)) {
+                    $seller = Seller::find($id);
+                    $seller->delete();
+                }
+            }
+        }
     }
 }
