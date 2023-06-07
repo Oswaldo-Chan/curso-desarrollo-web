@@ -24,7 +24,7 @@
                 </li>
             </ul>
 
-            <a class="btn-yellow-block" href="anuncio.php?id=<?php echo $property->id ?>">ver propiedad</a>
+            <a class="btn-yellow-block" href="/property?id=<?php echo $property->id ?>">ver propiedad</a>
         </div>
     </div>
     <?php endforeach; ?>

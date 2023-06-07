@@ -12,7 +12,7 @@
     ?>
 
     <div class="align-left">
-        <a href="anuncios.php" class="btn-purple">Ver Todas</a>
+        <a href="/properties" class="btn-purple">Ver Todas</a>
     </div>
 </section>
 

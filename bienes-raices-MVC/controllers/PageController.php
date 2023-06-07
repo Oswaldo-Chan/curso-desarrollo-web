@@ -18,7 +18,11 @@ class PageController {
         $router->view('pages/about-us');
     }
     public static function properties(Router $router) {
- 
+        $properties = Property::all();
+
+        $router->view('pages/properties', [
+            'properties' => $properties
+        ]);
     }
     public static function property(Router $router) {
         
