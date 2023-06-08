@@ -29,8 +29,7 @@ class Seller extends ActiveRecord{
         }
         if (!$this->phone) {
             self::$errors[] = "Necesitas agregar telefono";
-        } 
-        if (!preg_match('/[0-9]{10}/',$this->phone)) {
+        } else if (!preg_match('/[0-9]{10}/',$this->phone)) {
             self::$errors[] = "El telefono es invalido";
 
         }

@@ -5,6 +5,7 @@ require_once __DIR__.'/../includes/app.php';
 use MVC\Router;
 use Controllers\PropertyController;
 use Controllers\SellerController;
+use Controllers\ArticleController;
 use Controllers\PageController;
 
 $router = new Router();
@@ -21,6 +22,12 @@ $router->post('/sellers/create', [SellerController::class, 'create']);
 $router->get('/sellers/update', [SellerController::class, 'update']);
 $router->post('/sellers/update', [SellerController::class, 'update']);
 $router->post('/sellers/delete', [SellerController::class, 'delete']);
+
+$router->get('/blog/create', [ArticleController::class, 'create']);
+$router->post('/blog/create', [ArticleController::class, 'create']);
+$router->get('/blog/update', [ArticleController::class, 'update']);
+$router->post('/blog/update', [ArticleController::class, 'update']);
+$router->post('/blog/delete', [ArticleController::class, 'delete']);
 
 $router->get('/', [PageController::class, 'index']);
 $router->get('/about-us', [PageController::class, 'about_us']);

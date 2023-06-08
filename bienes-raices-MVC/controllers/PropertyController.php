@@ -2,19 +2,22 @@
 
 namespace Controllers;
 use MVC\Router;
-use Model\Property;
 use Model\Seller;
+use Model\Article;
+use Model\Property;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class PropertyController {
     public static function index(Router $router) {
         $properties = Property::all();
         $sellers = Seller::all();
+        $blog = Article::all();
         $result = $_GET['result'] ?? null;
 
         $router->view('properties/admin', [
             'properties' => $properties,
             'sellers' => $sellers,
+            'blog' => $blog,
             'result' => $result
         ]);
     }
