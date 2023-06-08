@@ -58,6 +58,12 @@ class PageController {
         ]);
     }
     public static function contact(Router $router) {
-        
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            debug($_POST);
+        }
+        $router->view('pages/contact', [
+
+        ]);
     }
 }
