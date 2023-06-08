@@ -32,8 +32,8 @@
             <label for="options">Venta o Compra:</label>
             <select id="options" name="contact[type]" required>
                 <option value="" disabled selected>-- Seleccione --</option>
-                <option value="purchase">Compra</option>
-                <option value="sale">Venta</option>
+                <option value="Compra">Compra</option>
+                <option value="Venta">Venta</option>
             </select>
 
             <label for="price">Precio o Presupuesto</label>
