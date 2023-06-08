@@ -61,8 +61,10 @@ class PageController {
     public static function contact(Router $router) {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $mail = new PHPMailer();
 
+            $replies = $_POST['contact'];
+
+            $mail = new PHPMailer();
             $mail->isSMTP();
             $mail->Host = 'sandbox.smtp.mailtrap.io';
             $mail->SMTPAuth = true;
@@ -78,7 +80,18 @@ class PageController {
             $mail->isHTML(true);
             $mail->CharSet = "UTF-8";
 
-            $content = '<html><p>Tiene Un Nuevo Mensaje</p></html>';
+            $content = '<html>';
+            $content .= '<p>Tiene Un Nuevo Mensaje</p>';
+            $content .= '<p>Nombre: '.$replies['name'].'</p>';
+            $content .= '<p>Email: '.$replies['email'].'</p>';
+            $content .= '<p>Teléfono: '.$replies['phone'].'</p>';
+            $content .= '<p>Mensaje: '.$replies['message'].'</p>';
+            $content .= '<p>Vende o Compra: '.$replies['type'].'</p>';
+            $content .= '<p>Precio o Presupuesto: $'.$replies['price'].'</p>';
+            $content .= '<p>Prefiere ser contactado por: '.$replies['contact'].'</p>';
+            $content .= '<p>Fecha: '.$replies['date'].'</p>';
+            $content .= '<p>Hora: '.$replies['hour'].'</p>';
+            $content .= '</html>';
             
             $mail->Body = $content;
             $mail->AltBody = "Texto alternativo sin HTML";
