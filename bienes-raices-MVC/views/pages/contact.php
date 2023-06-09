@@ -1,6 +1,16 @@
 <main class="container section">
     <h1>Contacto</h1>
 
+    <?php 
+    if($message) {
+        if ($sent) {?>
+            <p class='alert success'><?php echo $message?></p>;
+        <?php } else { ?>
+            <p class='alert error'><?php echo $message ?></p>;
+        <?php }
+    }
+    ?>
+
     <picture>
         <source srcset="build/img/destacada3.webp" type="image/webp">
         <source srcset="build/img/destacada3.jpg" type="image/jpeg">

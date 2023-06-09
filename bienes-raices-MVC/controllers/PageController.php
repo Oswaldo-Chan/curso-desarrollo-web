@@ -59,6 +59,7 @@ class PageController {
         ]);
     }
     public static function contact(Router $router) {
+        $message = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -83,28 +84,37 @@ class PageController {
             $content = '<html>';
             $content .= '<p>Tiene Un Nuevo Mensaje</p>';
             $content .= '<p>Nombre: '.$replies['name'].'</p>';
-            $content .= '<p>Email: '.$replies['email'].'</p>';
-            $content .= '<p>Teléfono: '.$replies['phone'].'</p>';
+            
+            if ($replies['contact'] === 'phone') {
+                $content .= '<p>Eligió ser contactado por teléfono</p>';
+                $content .= '<p>Teléfono: '.$replies['phone'].'</p>';
+                $content .= '<p>Fecha: '.$replies['date'].'</p>';
+                $content .= '<p>Hora: '.$replies['hour'].'</p>';
+            } else {
+                $content .= '<p>Eligió ser contactado por email</p>';
+                $content .= '<p>Email: '.$replies['email'].'</p>';
+            }
+            
             $content .= '<p>Mensaje: '.$replies['message'].'</p>';
             $content .= '<p>Vende o Compra: '.$replies['type'].'</p>';
             $content .= '<p>Precio o Presupuesto: $'.$replies['price'].'</p>';
             $content .= '<p>Prefiere ser contactado por: '.$replies['contact'].'</p>';
-            $content .= '<p>Fecha: '.$replies['date'].'</p>';
-            $content .= '<p>Hora: '.$replies['hour'].'</p>';
             $content .= '</html>';
             
             $mail->Body = $content;
             $mail->AltBody = "Texto alternativo sin HTML";
 
             if ($mail->send()) {
-                echo  "Mensaje enviado correctamente";
+                $message =  "Mensaje enviado correctamente";
             } else {
-                echo "El mensaje no se pudo enviar";
+                $message = "El mensaje no se pudo enviar";
             }
 
         }
-        $router->view('pages/contact', [
 
+        $router->view('pages/contact', [
+            'message' => $message,
+            'sent' => $mail->send()
         ]);
     }
 }
