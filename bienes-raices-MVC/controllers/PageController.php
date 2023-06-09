@@ -4,6 +4,7 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Seller;
+use Model\Admin;
 use Model\Article;
 use Model\Property;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -12,13 +13,13 @@ class PageController {
     public static function index(Router $router) {
         $properties = Property::get(3);
         $blog = Article::get(2);
-        $sellers = Seller::all();
+        $users = Admin::all();
 
         $router->view('pages/index', [
             'inicio' => true,
             'properties' => $properties,
             'blog' => $blog,
-            'sellers' => $sellers
+            'users' => $users
         ]);
     }
     public static function about_us(Router $router) {
@@ -41,17 +42,17 @@ class PageController {
     }
     public static function blog(Router $router) {
         $blog = Article::all();
-        $sellers = Seller::all();
+        $users = Admin::all();
 
         $router->view('pages/blog', [
             'blog' => $blog,
-            'sellers' => $sellers
+            'users' => $users
         ]);
     }
     public static function article(Router $router) {
         $id = validateOrRedirect('/blog');
         $article = Article::find($id);
-        $sellers = Seller::all();
+        $sellers = Admin::all();
 
         $router->view('pages/article', [
             'article' => $article,
@@ -103,8 +104,8 @@ class PageController {
             
             $mail->Body = $content;
             $mail->AltBody = "Texto alternativo sin HTML";
-
-            if ($mail->send()) {
+            $sent = $mail->send() ?? null;
+            if ($sent) {
                 $message =  "Mensaje enviado correctamente";
             } else {
                 $message = "El mensaje no se pudo enviar";
@@ -114,7 +115,7 @@ class PageController {
 
         $router->view('pages/contact', [
             'message' => $message,
-            'sent' => $mail->send()
+            'sent' => $sent
         ]);
     }
 }

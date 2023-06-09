@@ -65,6 +65,22 @@ class Admin extends ActiveRecord {
         }
         return $authenticated;
     }
+    public static function getUsernameByEmail() {
+        $query = "SELECT * FROM ".self::$table." WHERE email = '".$_SESSION['user']."' LIMIT 1";
+        $result = self::$db->query($query);        
+        $user = $result->fetch_object();
+           
+    
+        
+        return $user->nombre." ".$user->apellido;
+    }    
+    public static function getUserIdByEmail() {
+        $query = "SELECT * FROM ".self::$table." WHERE email = '".$_SESSION['user']."' LIMIT 1";
+        $result = self::$db->query($query);        
+        $user = $result->fetch_object();
+        
+        return $user->id;
+    }    
     public function authenticate() {
         session_start();
 

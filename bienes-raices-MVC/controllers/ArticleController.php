@@ -2,14 +2,15 @@
 
 namespace Controllers;
 use MVC\Router;
-use Model\Seller;
+use Model\Admin;
 use Model\Article;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class ArticleController {
     public static function create(Router $router) {
         $article = new Article();
-        $sellers = Seller::all();
+        $username = Admin::getUsernameByEmail(); 
+        $userId = Admin::getUserIdByEmail(); 
         $errors = Article::getErrors();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,14 +38,16 @@ class ArticleController {
 
         $router->view('blog/create', [
             'article' => $article,
-            'sellers' => $sellers,
+            'username' => $username,
+            'userId' => $userId,
             'errors' => $errors
         ]);
     }
     public static function update(Router $router) {
         $id = validateOrRedirect('/admin');
+        $username = Admin::getUsernameByEmail(); 
+        $userId = Admin::getUserIdByEmail(); 
         $article = Article::find($id);
-        $sellers = Seller::all();
         $errors = Article::getErrors();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -70,7 +73,8 @@ class ArticleController {
 
         $router->view('blog/update', [
             'article' => $article,
-            'sellers' => $sellers,
+            'username' => $username,
+            'userId' => $userId,
             'errors' => $errors
         ]);
     }

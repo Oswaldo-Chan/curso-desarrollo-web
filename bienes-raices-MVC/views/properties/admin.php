@@ -1,7 +1,7 @@
 <main class="container section">
 <h1>Administrador de Bienes Raíces</h1>
-
-<?php 
+<h3>Bienvenido, <?php echo $username?></h3>
+<?php
     if ($result) {
         $message = showAlert(intval($result));
 
@@ -85,7 +85,7 @@
             <tr>
                 <th>ID</th>
                 <th>Titulo</th>
-                <th>Autor</th>
+                <th>Editor</th>
                 <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
@@ -96,9 +96,9 @@
                 <tr>
                     <td><?php echo $article->id; ?></td>
                     <td><?php echo $article->title; ?></td>
-                    <?php foreach($sellers as $seller): ?>
-                        <?php if($seller->id == $article->author): ?>
-                            <td><?php echo $seller->name." ".$seller->surname; ?></td>
+                    <?php foreach($users as $user): ?>
+                        <?php if($user->id == $article->author): ?>
+                            <td><?php echo $user->name." ".$user->surname; ?></td>
                         <?php endif; ?>
                     <?php endforeach; ?>
                     <td><?php echo $article->date; ?></td>

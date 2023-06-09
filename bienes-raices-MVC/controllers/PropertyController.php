@@ -3,6 +3,7 @@
 namespace Controllers;
 use MVC\Router;
 use Model\Seller;
+use Model\Admin;
 use Model\Article;
 use Model\Property;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -10,15 +11,19 @@ use Intervention\Image\ImageManagerStatic as Image;
 class PropertyController {
     public static function index(Router $router) {
         $properties = Property::all();
+        $users = Admin::all();
         $sellers = Seller::all();
         $blog = Article::all();
+        $username = Admin::getUsernameByEmail();
         $result = $_GET['result'] ?? null;
 
         $router->view('properties/admin', [
             'properties' => $properties,
+            'users' => $users,
             'sellers' => $sellers,
             'blog' => $blog,
-            'result' => $result
+            'result' => $result,
+            'username' => $username
         ]);
     }
 
