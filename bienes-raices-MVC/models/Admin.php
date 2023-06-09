@@ -46,4 +46,23 @@ class Admin extends ActiveRecord {
                 return null;
         }
     }
+    public function userExists() {
+        $query = "SELECT * FROM ".self::$table." WHERE email = '".$this->email."' LIMIT 1";
+        $result = self::$db->query($query);
+        
+        if (!$result->num_rows) {
+            self::$errors[] = "El usuario no existe";
+            return;
+        }
+        return $result;
+    }
+    public function verifyPassword($result) {
+        $user = $result->fetch_object();
+        $authenticated = password_verify($this->password, $user->password);
+    
+        if (!$authenticated) {
+            self::$errors[] = 'La contraseña es incorrecta';
+        }
+        return $authenticated;
+    }
 }

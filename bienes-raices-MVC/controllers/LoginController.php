@@ -13,7 +13,19 @@ class LoginController {
             $errors = $auth->validate();
 
             if (empty($errors)) {
-                
+                $result = $auth->userExists();
+
+                if (!$result) {
+                    $errors = Admin::getErrors();
+                } else {
+                    $authenticated = $auth->verifyPassword($result);
+                    
+                    if ($authenticated) {
+                        
+                    } else {
+                        $errors = Admin::getErrors();
+                    }
+                }
             }
 
         }
