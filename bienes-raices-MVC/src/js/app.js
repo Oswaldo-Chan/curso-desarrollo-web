@@ -33,10 +33,17 @@ function eventListeners() {
     const mobileMenu = document.querySelector('.mobile-menu');
 
     mobileMenu.addEventListener('click', responsiveNav);
+
+    const contactMethod = document.querySelectorAll('input[name="contact[contact]"]');
+    contactMethod.forEach(input => input.addEventListener('click', showContactMethods));
 }
 
 function responsiveNav() {
     const nav = document.querySelector('.nav');
 
     nav.classList.toggle('show-nav');
+}
+
+function showContactMethods() {
+    console.log("seleccionando");
 }
