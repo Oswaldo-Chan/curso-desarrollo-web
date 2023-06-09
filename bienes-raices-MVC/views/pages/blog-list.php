@@ -9,9 +9,9 @@
                     <h4><?php echo $article->title ?></h4>
                     <p class="meta-info">Escrito el: <span><?php echo $article->date ?></span> por: 
                     <span>
-                        <?php foreach($sellers as $seller): ?>
-                            <?php if($seller->id == $article->author): ?>
-                                <?php echo $seller->name." ".$seller->surname; ?>
+                        <?php foreach($users as $user): ?>
+                            <?php if($user->id == $article->author): ?>
+                                <?php echo $user->name." ".$user->surname; ?>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </span></p>

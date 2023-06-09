@@ -21,13 +21,9 @@
 <fieldset>
     <legend>Información adicional del Artículo</legend>
 
-    <label for="author">Autor</label>
+    <label for="author">Editor</label>
     <select name="article[author]" id="author">
-        <option selected disabled value="">Seleccione un autor</option>
-        <?php foreach($sellers as $author): ?>
-            <option <?php echo $article->author == $author->id ? 'selected' : ''; ?> 
-            value="<?php echo sanitize($author->id); ?>"><?php echo sanitize($author->name)." ".sanitize($author->surname); ?></option>
-        <?php endforeach; ?>
+        <option value="<?php echo $userId; ?>" selected><?php echo $username; ?></option>    
     </select>
     
 </fieldset>

@@ -3,10 +3,11 @@
 require_once __DIR__.'/../includes/app.php';
 
 use MVC\Router;
-use Controllers\PropertyController;
+use Controllers\PageController;
+use Controllers\LoginController;
 use Controllers\SellerController;
 use Controllers\ArticleController;
-use Controllers\PageController;
+use Controllers\PropertyController;
 
 $router = new Router();
 
@@ -38,5 +39,9 @@ $router->get('/article', [PageController::class, 'article']);
 $router->get('/contact', [PageController::class, 'contact']);
 $router->post('/contact', [PageController::class, 'contact']);
 
+$router->get('/login', [LoginController::class, 'login']);
+$router->post('/login', [LoginController::class, 'login']);
+$router->get('/logout', [LoginController::class, 'logout']);
+$router->post('/logout', [LoginController::class, 'logout']);
 
 $router->checkRoutes();
