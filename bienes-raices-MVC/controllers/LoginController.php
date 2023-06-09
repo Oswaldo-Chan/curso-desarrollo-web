@@ -21,7 +21,7 @@ class LoginController {
                     $authenticated = $auth->verifyPassword($result);
                     
                     if ($authenticated) {
-                        
+                        $auth->authenticate();
                     } else {
                         $errors = Admin::getErrors();
                     }
