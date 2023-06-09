@@ -21,6 +21,15 @@ class Admin extends ActiveRecord {
         $this->password  = $args['password'] ?? '';
     
     }
+    public function validate(){
+        if (!$this->email) {
+            self::$errors[] = "El email es obligatorio";
+        } 
+        if (!$this->password) {
+            self::$errors[] = "La contraseña es obligatoria";
+        }
+        return self::$errors;
+    }   
     protected static function getPropertyForColumn($column) {
         switch ($column) {
             case 'id':
