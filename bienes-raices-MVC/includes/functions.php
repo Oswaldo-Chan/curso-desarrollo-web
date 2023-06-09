@@ -29,7 +29,7 @@ function sanitize($html) : string {
 }
 
 function validateTypeContent($type) {
-    $types = ['seller','property'];
+    $types = ['seller','property','article'];
 
     return in_array($type, $types);
 }

@@ -1,23 +1,20 @@
 <main class="container section content-center">
-    <h1>Guía para la decoración de tu hogar</h1>
+    <h1><?php echo $article->title?></h1>
 
-    <picture>
-        <source srcset="build/img/destacada.webp" type="image/webp">
-        <source srcset="build/img/destacada.jpg" type="image/jpeg">
-        <img loading="lazy" src="build/img/destacada.jpg" alt="property image">
-    </picture>
+    <img loading="lazy" src="/img/<?php echo $article->image?>" alt="article image">
 
-    <p class="meta-info">Escrito el: <span>06/05/23</span> por: <span>Admin</span></p>
+    <p class="meta-info">Escrito el: <span><?php echo $article->date ?></span> por: 
+    <span>
+        <?php foreach($sellers as $seller): ?>
+            <?php if($seller->id == $article->author): ?>
+                <?php echo $seller->name." ".$seller->surname; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </span></p>
 
     <div class="property-summary">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero ut?
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero
-        </p>
+        <p><?php echo $article->description?></p>
 
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero ut?
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis id nulla dolorem recusandae, distinctio minus. Veniam sit dolore quod facilis quasi quaerat doloremque, possimus, deserunt id non vero
-        </p>
+        <p><?php echo $article->content?></p>
     </div>
 </main>
