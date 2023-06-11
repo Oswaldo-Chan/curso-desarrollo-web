@@ -61,6 +61,7 @@ class PageController {
     }
     public static function contact(Router $router) {
         $message = null;
+        $sent = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -104,7 +105,7 @@ class PageController {
             
             $mail->Body = $content;
             $mail->AltBody = "Texto alternativo sin HTML";
-            $sent = $mail->send() ?? null;
+            $sent = $mail->send();
             if ($sent) {
                 $message =  "Mensaje enviado correctamente";
             } else {

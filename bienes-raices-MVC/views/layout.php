@@ -4,6 +4,7 @@
     }
 
     $auth = $_SESSION['login'] ?? false;
+    $inicio = isset($inicio) ? $inicio : false; 
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienes Raices</title>
-    <link rel="stylesheet" href="../build/css/app.css">
+    <link rel="stylesheet" href="/build/css/app.css">
 </head>
 <body>
 
