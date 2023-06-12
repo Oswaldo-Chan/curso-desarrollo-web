@@ -1,0 +1,19 @@
+{
+    "name": "joswa/app-salon-mvc",
+    "description": "AppSalon Project",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oswaldo-Chan",
+            "email": "j.oswaldochan@hotmail.com"
+        }
+    ],
+    "require": {}
+}

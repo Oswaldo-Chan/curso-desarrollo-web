@@ -82,7 +82,9 @@ class Admin extends ActiveRecord {
         return $user->id;
     }    
     public function authenticate() {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }        
 
         $_SESSION['user'] = $this->email;
         $_SESSION['login'] = true;

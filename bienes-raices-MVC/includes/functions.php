@@ -60,7 +60,7 @@ function validateOrRedirect($url) {
     $propertyID = filter_var($propertyID, FILTER_VALIDATE_INT);
     
     if (!$propertyID) {
-        header("Location: ${url}");
+        header("Location: {$url}");
     }
 
     return $propertyID;

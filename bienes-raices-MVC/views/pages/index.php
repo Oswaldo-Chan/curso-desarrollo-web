@@ -19,7 +19,7 @@
 <section class="contact-image">
     <h2>Encuentra la casa de tus sueños</h2>
     <p>Llena el formulario de contacto y un asesor se pondrá en contacto contigo a la brevedad</p>
-    <a href="contacto.php" class="btn-yellow">Contáctanos</a>
+    <a href="/contact" class="btn-yellow">Contáctanos</a>
 </section>
 
 <div class="container section inferior-section">
