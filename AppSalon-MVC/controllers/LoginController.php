@@ -12,8 +12,11 @@ class LoginController {
     public static function logout() {
         echo "Desde Logout";
     }
-    public static function passwordOlvidado() {
-        echo "Desde olvidado";
+    public static function passwordOlvidado(Router $router) {
+        
+        $router->view('auth/password-olvidado', [
+            
+        ]);
     }
     public static function recuperarPassword() {
         echo "Desde recuperar";
