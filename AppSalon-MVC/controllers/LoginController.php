@@ -8,8 +8,16 @@ use Model\Usuario;
 
 class LoginController {
     public static function login(Router $router) {
+        $alertas = [];
 
-        $router->view('auth/login');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $auth = new Usuario($_POST);
+            $alertas = $auth->validarLogin();
+        }
+
+        $router->view('auth/login', [
+            'alertas' => $alertas
+        ]);
     }
     public static function logout() {
         echo "Desde Logout";
