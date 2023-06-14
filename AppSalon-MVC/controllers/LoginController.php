@@ -59,4 +59,13 @@ class LoginController {
     public static function mensaje(Router $router) {
         $router->view('auth/mensaje');
     }
+    public static function confirmar(Router $router) {
+        $alertas = [];
+        $token = sanitizar($_GET['token']);
+        $usuario = Usuario::where('token',$token);
+        debuguear($usuario);
+        $router->view('auth/confirmr-cuenta', [
+            'alertas' => $alertas
+        ]);
+    }
 }
