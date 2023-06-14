@@ -37,7 +37,8 @@ class LoginController {
                 if ($resultado->num_rows) {
                     $alertas = Usuario::getAlertas();
                 } else {
-                    
+                    $usuario->hashPassword();
+                    debuguear($usuario);
                 }
             }
         }
