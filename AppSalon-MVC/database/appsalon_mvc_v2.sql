@@ -39,7 +39,7 @@ CREATE TABLE `citas` (
 
 LOCK TABLES `citas` WRITE;
 /*!40000 ALTER TABLE `citas` DISABLE KEYS */;
-INSERT INTO `citas` VALUES (1,1,'04:14:02','2023-06-13');
+INSERT INTO `citas` VALUES (1,NULL,'04:14:02','2023-06-13');
 /*!40000 ALTER TABLE `citas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +114,7 @@ CREATE TABLE `usuarios` (
   `confirmado` tinyint(1) DEFAULT NULL,
   `token` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +123,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Oswaldo','Chan','correo@correo.com','qwerty123','1234567890',NULL,1,NULL);
+INSERT INTO `usuarios` VALUES (7,' Oswaldo','Chan','correo@correo.com','$2y$10$tlBIo6qXewSKifRrZjlLRevUK458exvsxVCoEbK546i6vkxBqgSvi','1234567890',0,1,''),(8,' Oswaldo','Chan','admin@appsalon.com','$2y$10$v5NHYWApo/s.pNEKSJAVpOKrsKe0X0s1PFq9vlfnyhlmDCzdgFkv6','1234567890',1,1,'');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -136,4 +136,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-13  5:43:52
+-- Dump completed on 2023-06-14  4:46:07
