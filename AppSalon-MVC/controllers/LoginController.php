@@ -32,7 +32,13 @@ class LoginController {
             $alertas = $usuario->validarNuevaCuenta();
 
             if (empty($alertas)) {
-                echo "pasaste validacion";
+                $resultado = $usuario->existeUsuario();
+
+                if ($resultado->num_rows) {
+                    $alertas = Usuario::getAlertas();
+                } else {
+                    
+                }
             }
         }
         

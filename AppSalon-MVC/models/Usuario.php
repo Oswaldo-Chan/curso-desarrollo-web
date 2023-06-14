@@ -3,7 +3,7 @@
 namespace Model;
 
 class Usuario extends ActiveRecord {
-    protected static $table = 'usuarios';
+    protected static $tabla = 'usuarios';
     protected static $columnasDB = ['id','nombre','apellido','email','telefono','admin','confirmado','token'];
     public $id;
     public $nombre;
@@ -42,10 +42,20 @@ class Usuario extends ActiveRecord {
         }
         if (!$this->password) {
             self::$alertas['error'][] = 'El password es obligatorio';
-        } else if (strlen($this->password < 6)){
+        } else if (strlen($this->password)<6){
             self::$alertas['error'][] = 'El password debe contener al menos 6 caracteres';
         }
 
         return self::$alertas;
+    }
+    public function existeUsuario() {
+        $query = "SELECT * FROM ".self::$tabla." WHERE email = '".$this->email."' LIMIT 1";
+        $resultado = self::$db->query($query);
+    
+        if ($resultado) {
+            self::$alertas['error'][] = 'El usuario ya está registrado';
+        }
+
+        return $resultado;
     }
 }
