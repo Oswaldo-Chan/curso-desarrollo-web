@@ -51,9 +51,15 @@ class LoginController {
         echo "Desde Logout";
     }
     public static function passwordOlvidado(Router $router) {
-        
+        $alertas = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $auth = new Usuario($_POST);
+            $alertas = $auth->validarEmail();
+        }
+
         $router->view('auth/password-olvidado', [
-            
+            'alertas' => $alertas
         ]);
     }
     public static function recuperarPassword() {
