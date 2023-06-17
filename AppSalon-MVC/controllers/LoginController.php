@@ -64,7 +64,7 @@ class LoginController {
                     $usuario->crearToken();
                     $usuario->guardar();
 
-                    $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
+                    $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
                     $email->enviarInstrucciones();
                     Usuario::setAlerta('exito', 'Revisa tu email');
                 } else {
@@ -92,7 +92,21 @@ class LoginController {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
+            $password = new Usuario($_POST);
+            $password->validarPassword();
+
+            if (empty($alertas)) {
+                $usuario->password = null;
+                $usuario->password = $password->password;
+                $usuario->hashPassword();
+                $usuario->token = "";
+
+                $resultado = $usuario->guardar();
+
+                if ($resultado) {
+                    header('Location: /');
+                }
+            }
         }
 
         $alertas = Usuario::getAlertas();
