@@ -80,8 +80,26 @@ class LoginController {
         ]);
     }
     public static function recuperarPassword(Router $router) {
-        $router->view('auth/recuperar-password', [
+        $alertas = [];
+        $error = false;
+
+        $token = sanitizar($_GET['token']);
+        $usuario = Usuario::where('token', $token);
+        
+        if (empty($usuario)) {
+            Usuario::setAlerta('error', 'Token no válido');
+            $error = true;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
+        }
+
+        $alertas = Usuario::getAlertas();
+
+        $router->view('auth/recuperar-password', [
+            'alertas' => $alertas,
+            'error' => $error
         ]);
     }
     public static function crearCuenta(Router $router) {
