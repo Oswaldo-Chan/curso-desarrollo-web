@@ -33,7 +33,7 @@ class Email {
         $contenido .= "<p><strong>¡Hola, ".$this->nombre."!</strong> Has creado tu cuenta en App Salon, 
         solo falta confirmarla presionando el siguiente enlace.</p>";
         //aqui cree en wamp un virtualhost el cual se llama appsalon
-        $contenido .= "<p>Presiona aquí: <a href='http://appsalon/confirmar-cuenta?token=".$this->token."'>Confirmar Cuenta</a></p>";
+        $contenido .= "<p>Presiona aquí: <a href='http://".$_ENV['VIRTUALHOST']."/confirmar-cuenta?token=".$this->token."'>Confirmar Cuenta</a></p>";
         $contenido .= "<p>Si tu no solicitaste esta cuenta, ignora el mensaje</p>";
         $contenido .= "</html>";
         $mail->Body = $contenido;
