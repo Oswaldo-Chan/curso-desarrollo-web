@@ -64,6 +64,8 @@ class LoginController {
                     $usuario->crearToken();
                     $usuario->guardar();
 
+                    $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
+                    $email->enviarInstrucciones();
                     Usuario::setAlerta('exito', 'Revisa tu email');
                 } else {
                     Usuario::setAlerta('error', 'El usuario no existe o no está confirmado');
@@ -77,8 +79,10 @@ class LoginController {
             'alertas' => $alertas
         ]);
     }
-    public static function recuperarPassword() {
-        echo "Desde recuperar";
+    public static function recuperarPassword(Router $router) {
+        $router->view('auth/recuperar-password', [
+            
+        ]);
     }
     public static function crearCuenta(Router $router) {
         
