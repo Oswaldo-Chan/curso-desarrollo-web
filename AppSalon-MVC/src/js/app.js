@@ -20,6 +20,9 @@ function iniciarApp() {
     paginaSiguiente();
     paginaAnterior();
     consultarAPI();
+    nombreCliente();
+    seleccionarFecha();
+    seleccionarHora();
 }
 
 function mostrarSeccion() {
@@ -138,4 +141,57 @@ function seleccionarServicio(servicio) {
         cita.servicios = [...servicios, servicio];
         divServicio.classList.add('seleccionado');
     }
+}
+
+function nombreCliente() {
+    cita.nombre = document.querySelector('#nombre').value;
+    
+}
+
+function seleccionarFecha() {
+    const inputFecha = document.querySelector('#fecha');
+    inputFecha.addEventListener('input', function(e) {
+        const dia = new Date(e.target.value).getUTCDay();
+
+        if ([6,0].includes(dia)) {
+            e.target.value = '';
+            mostrarAlerta('fines de semana no permitidos', 'error');
+        } else {
+            cita.fecha = e.target.value;
+        }
+    });
+}
+
+function seleccionarHora() {
+    const inputHora = document.querySelector('#hora');
+    inputHora.addEventListener('input', function(e) {
+
+        const horaCita = e.target.value;
+        const hora = horaCita.split(":")[0];
+
+        if (hora < 10 || hora > 18) {
+        e.target.value = '';
+        mostrarAlerta('Hora no válida', 'error');
+        } else {
+            cita.hora = e.target.value
+        }
+    });
+}
+
+function mostrarAlerta(mensaje, tipo) {
+    const alertaPrevia = document.querySelector('.alerta');  
+    if (alertaPrevia) return;
+
+    const alerta = document.createElement('DIV');
+    alerta.textContent = mensaje;
+    alerta.classList.add('alerta');
+    alerta.classList.add(tipo);
+
+    const formulario = document.querySelector('.form');
+
+    setTimeout(() => {
+        alerta.remove();
+    }, 3000);
+
+    formulario.appendChild(alerta);
 }
