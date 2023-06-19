@@ -33,7 +33,7 @@
             </div>
         </form>
     </div>
-    <div class="seccion" id="paso-3">
+    <div class="seccion contenido-resumen" id="paso-3">
         <h2>Resumen</h2>
         <p class="text-center">Verifica que la información sea correcta</p>
     </div>
