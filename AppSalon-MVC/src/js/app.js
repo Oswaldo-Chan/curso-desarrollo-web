@@ -12,6 +12,7 @@ function iniciarApp() {
     botonesPaginador();
     paginaSiguiente();
     paginaAnterior();
+    consultarAPI();
 }
 
 function mostrarSeccion() {
@@ -78,4 +79,15 @@ function paginaAnterior() {
         paso--;
         botonesPaginador();
     });
+}
+
+async function consultarAPI() {
+    try {
+        const url = '/api/servicios';
+        const resultado = await fetch(url);
+        const servicios = await resultado.json();
+        console.log(servicios);
+    } catch (error) {
+        console.log(error);
+    }
 }
