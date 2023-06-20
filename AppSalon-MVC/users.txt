@@ -1,0 +1,9 @@
+Admin
+
+email: admin@appsalon.com
+password: qwerty123
+
+Cliente
+
+email: correo@correo.com
+password: qwerty123

@@ -50,15 +50,27 @@ class Usuario extends ActiveRecord {
     }
     public function validarLogin() {
         if (!$this->email) {
-            if (!$this->email) {
-                self::$alertas['error'][] = 'El email es obligatorio';
-            }
-            if (!$this->password) {
-                self::$alertas['error'][] = 'El password es obligatorio';
-            }
-
-            return self::$alertas;
+            self::$alertas['error'][] = 'El email es obligatorio';
         }
+        if (!$this->password) {
+            self::$alertas['error'][] = 'El password es obligatorio';
+        }
+
+        return self::$alertas;
+    }
+    public function validarEmail() {
+        if (!$this->email) {
+            self::$alertas['error'][] = 'El email es obligatorio';
+        }
+        return self::$alertas;
+    }
+    public function validarPassword() {
+        if (!$this->password) {
+            self::$alertas['error'][] = 'El password es obligatorio';
+        } else if (strlen($this->password)<6) {
+            self::$alertas['error'][] = 'El password debe tener al menos 6 caracteres';
+        }
+        return self::$alertas;
     }
     public function existeUsuario() {
         $query = "SELECT * FROM ".self::$tabla." WHERE email = '".$this->email."' LIMIT 1";
