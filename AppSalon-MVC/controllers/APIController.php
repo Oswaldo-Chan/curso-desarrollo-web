@@ -3,6 +3,8 @@
 namespace Controllers;
 
 use Model\Servicio;
+use Model\Cita;
+use Model\CitaServicio;
 
 class APIController {
     public static function index() {
@@ -10,10 +12,21 @@ class APIController {
         echo json_encode($servicios);
     }
     public static function guardar() {
-        $respuesta = [
-            'datos' => $_POST
-        ];
+        $cita = new Cita($_POST);
+        $resultado = $cita->guardar();
 
-        echo json_encode($respuesta);
+        $id = $resultado['id'];
+        $idServicios = explode(",",$_POST['servicios']);
+
+        foreach ($idServicios as $idServicio) {
+            $args = [
+                'citaId' => $id,
+                'servicioId' => $idServicio
+            ];
+            $citaServicio = new CitaServicio($args);
+            $citaServicio->guardar();
+        }
+
+        echo json_encode(['resultado' => $resultado]);
     }
 }
