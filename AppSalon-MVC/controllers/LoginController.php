@@ -48,7 +48,13 @@ class LoginController {
         ]);
     }
     public static function logout() {
-        echo "Desde Logout";
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION = [];
+
+        header('Location: /');
     }
     public static function passwordOlvidado(Router $router) {
         $alertas = [];
