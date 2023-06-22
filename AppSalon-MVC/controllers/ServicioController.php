@@ -47,12 +47,25 @@ class ServicioController {
             session_start();
         }
 
+        $id = $_GET['id'];
+        if (!is_numeric($id)) return;
+        $servicio = Servicio::find($id);
+        $alertas = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            # code...
+            $servicio->sincronizar($_POST);
+            $alertas = $servicio->validar();
+
+            if(empty($alertas)) {
+                $servicio->guardar();
+                header('Location: /servicios');
+            }
         }
 
         $router->view('servicios/actualizar', [
-            'nombre' => $_SESSION['nombre']
+            'nombre' => $_SESSION['nombre'],
+            'servicio' => $servicio,
+            'alertas' => $alertas
         ]);
     }
     public static function eliminar(Router $router) {
