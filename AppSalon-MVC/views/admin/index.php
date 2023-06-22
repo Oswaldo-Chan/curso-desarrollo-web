@@ -7,7 +7,7 @@
     <form action="" class="form">
         <div class="field">
             <label for="fecha">Fecha</label>
-            <input type="date" id="fecha" name="fecha">
+            <input type="date" id="fecha" name="fecha" value="<?php echo $fecha ?>">
         </div>
     </form>
 </div>

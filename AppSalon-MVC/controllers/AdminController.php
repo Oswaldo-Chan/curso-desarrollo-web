@@ -10,6 +10,8 @@ class AdminController {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
+        
+        $fecha = date('Y-m-d');  
 
         $consulta = "SELECT citas.id, citas.hora, CONCAT( usuarios.nombre, ' ', usuarios.apellido) as cliente, ";
         $consulta .= " usuarios.email, usuarios.telefono, servicios.nombre as servicio, servicios.precio  ";
@@ -20,13 +22,14 @@ class AdminController {
         $consulta .= " ON citasservicios.citaId=citas.id ";
         $consulta .= " LEFT OUTER JOIN servicios ";
         $consulta .= " ON servicios.id=citasservicios.servicioId ";
-        //$consulta .= " WHERE fecha =  '${fecha}' ";
+        $consulta .= " WHERE fecha =  '{$fecha}' ";
 
         $citas = AdminCita::SQL($consulta);
         
         $router->view('admin/index', [
             'nombre' => $_SESSION['nombre'],
-            'citas' => $citas
+            'citas' => $citas,
+            'fecha' => $fecha
         ]);
     }
 }
