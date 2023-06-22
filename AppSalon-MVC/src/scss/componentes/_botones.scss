@@ -4,3 +4,6 @@
 .btn {
     @include m.boton(v.$azul, v.$blanco);
 }
+.btn-eliminar {
+    @include m.boton(v.$rojo, v.$blanco);
+}
