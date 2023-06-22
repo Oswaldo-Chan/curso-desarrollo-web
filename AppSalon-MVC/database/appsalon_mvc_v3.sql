@@ -30,7 +30,7 @@ CREATE TABLE `citas` (
   PRIMARY KEY (`id`),
   KEY `usuarioId` (`usuarioId`),
   CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`usuarioId`) REFERENCES `usuarios` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `citas` (
 
 LOCK TABLES `citas` WRITE;
 /*!40000 ALTER TABLE `citas` DISABLE KEYS */;
-INSERT INTO `citas` VALUES (1,NULL,'04:14:02','2023-06-13');
+INSERT INTO `citas` VALUES (6,7,'16:55:00','2023-06-26'),(7,7,'12:05:00','2023-06-23'),(8,7,'11:03:00','2023-06-28');
 /*!40000 ALTER TABLE `citas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `citasservicios` (
   KEY `citaId` (`citaId`),
   CONSTRAINT `citasservicios_ibfk_3` FOREIGN KEY (`servicioId`) REFERENCES `servicios` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `citasservicios_ibfk_4` FOREIGN KEY (`citaId`) REFERENCES `citas` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,6 +68,7 @@ CREATE TABLE `citasservicios` (
 
 LOCK TABLES `citasservicios` WRITE;
 /*!40000 ALTER TABLE `citasservicios` DISABLE KEYS */;
+INSERT INTO `citasservicios` VALUES (1,10,6),(2,7,6),(3,3,7),(4,6,7),(5,10,7),(6,2,8),(7,10,8),(8,5,8),(9,5,NULL),(10,3,NULL);
 /*!40000 ALTER TABLE `citasservicios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +84,7 @@ CREATE TABLE `servicios` (
   `precio` decimal(5,2) DEFAULT NULL,
   `nombre` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +93,7 @@ CREATE TABLE `servicios` (
 
 LOCK TABLES `servicios` WRITE;
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
-INSERT INTO `servicios` VALUES (1,90.00,'Corte de Cabello Mujer'),(2,80.00,'Corte de Cabello Hombre'),(3,60.00,'Corte de Cabello Niño'),(4,80.00,'Peinado Mujer'),(5,60.00,'Peinado Hombre'),(6,60.00,'Peinado Niño'),(7,60.00,'Corte de Barba'),(8,300.00,'Tinte Mujer'),(9,400.00,'Uñas'),(10,50.00,'Lavado de Cabello'),(11,150.00,'Tratamiento Capilar');
+INSERT INTO `servicios` VALUES (1,90.00,'Corte de Cabello Mujer'),(2,80.00,'Corte de Cabello Hombre'),(3,60.00,'Corte de Cabello Niño'),(4,80.00,'Peinado Mujer'),(5,60.00,'Peinado Hombre'),(6,80.00,'Peinado para Niño'),(7,60.00,'Corte de Barba'),(8,300.00,'Tinte Mujer'),(9,400.00,'Uñas'),(10,50.00,'Lavado de Cabello'),(11,150.00,'Tratamiento Capilar');
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +115,7 @@ CREATE TABLE `usuarios` (
   `confirmado` tinyint(1) DEFAULT NULL,
   `token` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-14  4:46:07
+-- Dump completed on 2023-06-22  3:50:53
