@@ -32,3 +32,14 @@
         }
     }
 }
+.servicios {
+    @extend .citas;
+
+    .acciones {
+        margin: 0;
+    }
+    .btn,
+    .btn-eliminar {
+        margin: 0;
+    }
+}
