@@ -11,6 +11,11 @@
         </div>
     </form>
 </div>
+<?php 
+    if (count($citas) === 0) {
+        echo "<h2>No hay Citas</h2>";
+    }
+?>
 <div id="citas-admin">
     <ul class="citas">
         <?php 
@@ -48,3 +53,7 @@
         ?>
     </ul>
 </div>
+
+<?php 
+    $script = "<script src='build/js/buscador.js'></script>";
+?>
