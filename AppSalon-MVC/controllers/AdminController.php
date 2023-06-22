@@ -23,9 +23,10 @@ class AdminController {
         //$consulta .= " WHERE fecha =  '${fecha}' ";
 
         $citas = AdminCita::SQL($consulta);
-        debuguear($citas);
+        
         $router->view('admin/index', [
-            'nombre' => $_SESSION['nombre']
+            'nombre' => $_SESSION['nombre'],
+            'citas' => $citas
         ]);
     }
 }

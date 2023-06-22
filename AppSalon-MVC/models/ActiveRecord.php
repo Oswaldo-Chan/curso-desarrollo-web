@@ -94,9 +94,9 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
     public static function SQL($consulta) {
-        $query = $consulta ;
+        $query = $consulta;
         $resultado = self::consultarSQL($query);
-        return array_shift( $resultado ) ;
+        return $resultado;
     }
     public static function get($limite) {
         $query = "SELECT * FROM ".static::$tabla." LIMIT {$limite}";
