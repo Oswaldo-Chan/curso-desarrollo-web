@@ -21,8 +21,8 @@ class Email {
         $mail->Host = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth = true;
         $mail->Port = 2525;
-        $mail->Username = 'ae51157c559c16';
-        $mail->Password = '9de6c97bef4d6d';
+        $mail->Username = $_ENV['MAILTRAP_USER'];
+        $mail->Password = $_ENV['MAILTRAP_PASS'];
         $mail->setFrom('cuentas@appsalon.com');
         $mail->addAddress('cuentas@appsalon.com', 'AppSalon.com');
         $mail->Subject = 'Confirma tu cuenta';
@@ -46,8 +46,8 @@ class Email {
         $mail->Host = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth = true;
         $mail->Port = 2525;
-        $mail->Username = 'ae51157c559c16';
-        $mail->Password = '9de6c97bef4d6d';
+        $mail->Username = $_ENV['MAILTRAP_USER'];
+        $mail->Password = $_ENV['MAILTRAP_PASS'];
         $mail->setFrom('cuentas@appsalon.com');
         $mail->addAddress('cuentas@appsalon.com', 'AppSalon.com');
         $mail->Subject = 'Reestablecer password';
