@@ -26,9 +26,6 @@
         @include m.tablet {
             overflow: scroll;
         }
-        &::-webkit-scrollbar {
-            display: none;
-        }
     }
 }
 
