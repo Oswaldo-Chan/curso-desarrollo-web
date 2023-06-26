@@ -1,5 +1,5 @@
 {
-    "name": "up-task_mvc",
+    "name": "joswa/up-task",
     "description": "Proyecto UpTask MVC, PHP 8, SASS",
     "type": "project",
     "autoload": {
