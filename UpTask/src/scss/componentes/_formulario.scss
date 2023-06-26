@@ -15,7 +15,8 @@
             flex: 1;
             padding: 1rem;
             border: none;
-            background-color: lighten(v.$gris, 40%);
+            border-radius: 1rem;
+            background-color: lighten(v.$gris, 45%);
         }
     }
 }
