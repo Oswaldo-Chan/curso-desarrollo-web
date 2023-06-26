@@ -8,11 +8,11 @@
         <form action="/crear" method="POST" class="formulario">
             <div class="campo">
                 <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
+                <input value="<?php echo $usuario->nombre; ?>" type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
             </div>
             <div class="campo">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Ingrese su email">
+                <input value="<?php echo $usuario->email ?>" type="email" id="email" name="email" placeholder="Ingrese su email">
             </div>
             <div class="campo">
                 <label for="password">Password</label>
