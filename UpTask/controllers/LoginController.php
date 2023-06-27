@@ -20,6 +20,7 @@ class LoginController {
         echo "desde logout";
     }
     public static function crear(Router $router) {
+        $alertas = [];
         $usuario = new Usuario;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,7 +31,8 @@ class LoginController {
 
         $router->render('auth/crear', [
             'titulo' => 'Crear Cuenta',
-            'usuario' => $usuario
+            'usuario' => $usuario,
+            'alertas' => $alertas
         ]);
     }
     public static function olvide(Router $router) {
