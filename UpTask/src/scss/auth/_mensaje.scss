@@ -1,0 +1,23 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.mensaje {
+    margin-top: 5rem;
+
+    .uptask {
+        @include m.degradado(v.$naranja);
+    }
+
+    input[type="submit"] {
+        @include m.boton(v.$naranja, v.$blanco);
+    }
+    .acciones {
+        a {
+            color: v.$naranja;
+
+            &:hover {
+                color: lighten(v.$naranja, 20%);
+            }
+        }
+    }
+}

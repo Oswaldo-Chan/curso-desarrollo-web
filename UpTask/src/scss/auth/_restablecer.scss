@@ -1,0 +1,23 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.restablecer {
+    margin-top: 5rem;
+
+    .uptask {
+        @include m.degradado(v.$azul);
+    }
+
+    input[type="submit"] {
+        @include m.boton(v.$azul, v.$blanco);
+    }
+    .acciones {
+        a {
+            color: v.$azul;
+
+            &:hover {
+                color: lighten(v.$azul, 20%);
+            }
+        }
+    }
+}

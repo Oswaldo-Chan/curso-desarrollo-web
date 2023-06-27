@@ -10,8 +10,11 @@ class CitaController {
             session_start();
         }
 
+        isAuth();
+
         $router->view('cita/index', [
-            'nombre' => $_SESSION['nombre']
+            'nombre' => $_SESSION['nombre'],
+            'id' => $_SESSION['id']
         ]);
     }
 }

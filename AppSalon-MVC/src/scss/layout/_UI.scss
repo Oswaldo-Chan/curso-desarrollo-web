@@ -23,5 +23,34 @@
         width: 95%;
         margin: 0 auto;
         padding: 3rem 0;
+        @include m.tablet {
+            overflow: scroll;
+        }
+    }
+}
+
+.barra {
+    margin: v.$separacion 0; 
+
+    @include m.tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .btn {
+        @include m.boton(v.$negro, v.$blanco);
+        margin: 0;
+    }
+}
+.barra-servicios {
+    margin-bottom: v.$separacion;
+
+    @include m.tablet {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: .2rem;
+    }
+    .btn {
+        margin: 0 0 1rem 0;
     }
 }

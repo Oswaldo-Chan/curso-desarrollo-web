@@ -1,0 +1,22 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.olvide {
+    margin-top: 5rem;
+
+    .uptask {
+        @include m.degradado(v.$rosa);
+    }
+    input[type="submit"] {
+        @include m.boton(v.$rosa, v.$blanco);
+    }
+    .acciones {
+        a {
+            color: v.$rosa;
+
+            &:hover {
+                color: lighten(v.$rosa, 20%);
+            }
+        }
+    }
+}

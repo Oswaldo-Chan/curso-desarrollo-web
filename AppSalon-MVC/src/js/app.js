@@ -3,6 +3,7 @@ const pasoInicial = 1;
 const pasoFinal = 3;
 
 const cita = {
+    id: '',
     nombre: '',
     fecha: '',
     hora: '',
@@ -20,6 +21,7 @@ function iniciarApp() {
     paginaSiguiente();
     paginaAnterior();
     consultarAPI();
+    idCliente();
     nombreCliente();
     seleccionarFecha();
     seleccionarHora();
@@ -145,6 +147,10 @@ function seleccionarServicio(servicio) {
     }
 }
 
+function idCliente() {
+    cita.id = document.querySelector('#id').value;
+}
+
 function nombreCliente() {
     cita.nombre = document.querySelector('#nombre').value;
     
@@ -264,6 +270,45 @@ function mostrarResumen() {
     resumen.appendChild(reservar);
 }
 
-function reservarCita() {
+async function reservarCita() {
+    const {nombre, fecha, hora, id, servicios} = cita;
+    const idServicios = servicios.map(servicio => servicio.id);
+
+    const datos = new FormData();
+    datos.append('usuarioId',id);
+    datos.append('fecha',fecha);
+    datos.append('hora',hora);
+    datos.append('servicios',idServicios);
+
+    try {
+        //peticion a la api
+        const url = '/api/citas';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        });
+
+        const resultado = await respuesta.json();
+
+        if (resultado.resultado) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Cita Creada',
+                text: 'Tu cita se creó correctamente',
+                showConfirmButton: true
+            }).then(() => {
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2500);
+            }) 
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Error',
+            text: 'Ocurrió un error al guardar la cita',
+            showConfirmButton: true
+        })
+    }
 
 }

@@ -1,0 +1,24 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.confirmar {
+    margin-top: 5rem;
+
+    .uptask {
+        @include m.degradado(v.$indigo);
+    }
+
+    input[type="submit"] {
+        @include m.boton(v.$indigo, v.$blanco);
+    }
+    .acciones {
+        justify-content: center;
+        a {
+            color: v.$indigo;
+
+            &:hover {
+                color: lighten(v.$indigo, 20%);
+            }
+        }
+    }
+}
