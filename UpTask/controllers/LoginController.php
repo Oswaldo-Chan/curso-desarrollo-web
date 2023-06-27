@@ -34,7 +34,14 @@ class LoginController {
                     Usuario::setAlerta('error', 'El usuario ya existe');
                     $alertas = Usuario::getAlertas();
                 } else {
-                    
+                    $usuario->hashPassword();
+                    unset($usuario->password2);
+                    $usuario->crearToken();
+                    $resultado = $usuario->guardar();
+
+                    if($resultado) {
+                        header('Location: /mensaje');
+                    }
                 }
             }
         }
