@@ -72,7 +72,7 @@ class LoginController {
                     $usuario->guardar();
                     $email = new Email($usuario->nombre, $usuario->email, $usuario->token); 
                     $email->enviarInstrucciones();
-                    
+
                     Usuario::setAlerta('exito', 'Hemos enviado las instrucciones a tu email');
                 } else {
                     Usuario::setAlerta('error', 'El usuario no existe o no está confirmado');
@@ -88,12 +88,29 @@ class LoginController {
         ]);
     }
     public static function restablecer(Router $router) {        
+        if(!$_GET['token']){
+            header('Location: /');
+        }
+
+        $token = s($_GET['token']);
+        $usuario = Usuario::where('token', $token);
+        $mostrar = true;
+
+        if(empty($usuario)) {
+            Usuario::setAlerta('error', 'Token Inválido');
+            $mostrar = false;
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             # code...
         }
 
+        $alertas = Usuario::getAlertas();
+
         $router->render('auth/restablecer', [
-            'titulo' => 'Restablecer Password'
+            'titulo' => 'Restablecer Password',
+            'alertas' => $alertas,
+            'mostrar' => $mostrar
         ]);
     }
     public static function mensaje(Router $router) {
