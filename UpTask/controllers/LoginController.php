@@ -64,9 +64,21 @@ class LoginController {
             $alertas = $usuario->validarEmail();
 
             if(empty($alertas)) {
+                $usuario = Usuario::where('email', $usuario->email);
                 
+                if($usuario && $usuario->confirmado) {
+                    $usuario->crearToken();
+                    unset($usuario->password2);
+                    $usuario->guardar();
+
+                    Usuario::setAlerta('exito', 'Hemos enviado las instrucciones a tu email');
+                } else {
+                    Usuario::setAlerta('error', 'El usuario no existe o no está confirmado');
+                }
             }
         }
+
+        $alertas = Usuario::getAlertas();
 
         $router->render('auth/olvide', [
             'titulo' => 'Recuperar Acceso',
