@@ -57,13 +57,20 @@ class LoginController {
         ]);
     }
     public static function olvide(Router $router) {
-        
+        $alertas = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            # code...
+            $usuario = new Usuario($_POST);
+            $alertas = $usuario->validarEmail();
+
+            if(empty($alertas)) {
+                
+            }
         }
 
         $router->render('auth/olvide', [
-            'titulo' => 'Recuperar Acceso'
+            'titulo' => 'Recuperar Acceso',
+            'alertas' => $alertas
         ]);
     }
     public static function restablecer(Router $router) {        
@@ -82,10 +89,13 @@ class LoginController {
         ]);
     }
     public static function confirmar(Router $router) {
+        
+        if(!$_GET['token']){
+            header('Location: /');
+        }
+
         $token = s($_GET['token']);
-
-        if(!$token) header('Location: /');
-
+        
         $usuario = Usuario::where('token', $token);
 
         if(empty($usuario)) {

@@ -30,6 +30,8 @@ class Usuario extends ActiveRecord {
         }
         if (!$this->email) {
             self::$alertas['error'][] = 'El email es obligatorio';
+        } else if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            self::$alertas['error'][] = 'El email es inválido'; 
         }
         if (!$this->password) {
             self::$alertas['error'][] = 'El password es obligatorio';
@@ -37,6 +39,15 @@ class Usuario extends ActiveRecord {
             self::$alertas['error'][] = 'El password debe contener al menos 6 caracteres';
         } else if ($this->password !== $this->password2) {
             self::$alertas['error'][] = 'Los passwords no coinciden';
+        }
+
+        return self::$alertas;
+    }
+    public function validarEmail() {
+        if(!$this->email) {
+            self::$alertas['error'][] = 'El email es obligatorio'; 
+        } else if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            self::$alertas['error'][] = 'El email es inválido'; 
         }
 
         return self::$alertas;
