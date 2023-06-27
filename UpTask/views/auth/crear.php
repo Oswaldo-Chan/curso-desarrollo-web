@@ -22,7 +22,7 @@
             </div>
             <div class="campo">
                 <label for="password2">Repetir Password</label>
-                <input type="password2" id="password2" name="password2" placeholder="Repite tu password">
+                <input type="password" id="password2" name="password2" placeholder="Repite tu password">
             </div>
 
             <input type="submit" class="boton" value="Crear Cuenta">
