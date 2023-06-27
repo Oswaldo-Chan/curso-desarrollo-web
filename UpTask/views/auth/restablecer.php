@@ -9,7 +9,7 @@
 
         <?php if($mostrar): ?>
 
-        <form action="/restablecer" method="POST" class="formulario">
+        <form method="POST" class="formulario">
             <div class="campo">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Ingrese su password">
