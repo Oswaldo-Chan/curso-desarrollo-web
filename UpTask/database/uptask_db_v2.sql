@@ -16,6 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `proyectos`
+--
+
+DROP TABLE IF EXISTS `proyectos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `proyectos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `proyecto` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `propietarioId` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `propietarioId` (`propietarioId`),
+  CONSTRAINT `proyectos_ibfk_1` FOREIGN KEY (`propietarioId`) REFERENCES `usuarios` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `proyectos`
+--
+
+LOCK TABLES `proyectos` WRITE;
+/*!40000 ALTER TABLE `proyectos` DISABLE KEYS */;
+INSERT INTO `proyectos` VALUES (1,' Tienda Virtual','2d18f724d47b372a7bf5650db9726df8',4),(2,' Control de biblioteca en Java','d967be2d35f0ff244dfd6917894a21d7',4),(3,' Diseñar Landing Page','589089be3bdb26a28be09bb222af3bde',4);
+/*!40000 ALTER TABLE `proyectos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuarios`
 --
 
@@ -30,7 +58,7 @@ CREATE TABLE `usuarios` (
   `token` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `confirmado` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +67,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (4,' Oswaldo','correo@correo.com','$2y$10$PiaQJko3NRABrQkjnJ763.cogULgqPxB76PRy5clm3CJrJXfub2Gm','',1);
+INSERT INTO `usuarios` VALUES (4,' Oswaldo','correo@correo.com','$2y$10$5bOykigJ2DfvUW3nFJB.Aucs/LiBvIMHZqrx8xtBAeQMXOv5cBdbq','',1),(5,' Juan','correo2@correo.com','$2y$10$JaVi6GxdFVKdLQ5F8th.Eu4Fq55arq8yDiSKDMP9xtm2sphFuibLy','',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-26 19:38:41
+-- Dump completed on 2023-06-28  2:28:21
