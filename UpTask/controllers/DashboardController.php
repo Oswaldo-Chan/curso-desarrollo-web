@@ -24,8 +24,12 @@ class DashboardController {
             session_start();
         }
 
+        isAuth();
+        $alertas = [];
+        
         $router->render('dashboard/crear', [
-            'titulo' => 'Crear Proyecto'
+            'titulo' => 'Crear Proyecto',
+            'alertas' => $alertas
         ]);
     }
     public static function perfil(Router $router) {
@@ -33,6 +37,8 @@ class DashboardController {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
+        
+        isAuth();
 
         $router->render('dashboard/perfil', [
             'titulo' => 'Mi Perfil'

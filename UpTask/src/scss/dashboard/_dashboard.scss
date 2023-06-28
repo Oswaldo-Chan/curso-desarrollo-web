@@ -22,4 +22,13 @@
             text-align: center;
         }
     }
+    .formulario {
+        input:not([type="submit"]) {
+            background-color: v.$blanco;
+        }
+        input[type="submit"] {
+            @include m.boton(v.$azulMorado, v.$blanco);
+            padding: 1.5rem 2rem;
+        }
+    }
 }
