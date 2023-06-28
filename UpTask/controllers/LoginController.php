@@ -48,7 +48,12 @@ class LoginController {
 
     }
     public static function logout(Router $router) {
-        echo "desde logout";
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION = [];
+        header('Location: /');
     }
     public static function crear(Router $router) {
         $alertas = [];

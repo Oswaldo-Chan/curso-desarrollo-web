@@ -12,8 +12,10 @@ class DashboardController {
             session_start();
         }
 
-        $router->render('dashboard/index', [
+        isAuth();
 
+        $router->render('dashboard/index', [
+            'titulo' => 'Dashboard'
         ]);
     }
 }
