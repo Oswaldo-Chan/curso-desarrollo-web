@@ -22,7 +22,8 @@
             transition-duration: 150ms;
             font-size: 1.8rem;
 
-            &:hover {
+            &:hover,
+            &.activo {
                 background-color: darken(v.$azulMorado, 10%);
                 border-radius: .5rem;
 

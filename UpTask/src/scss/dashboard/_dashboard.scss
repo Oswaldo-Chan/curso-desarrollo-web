@@ -12,4 +12,14 @@
     .principal {
         flex: 1;
     }
+
+    .contenido {
+        padding: 2rem;
+
+        .nombre-pagina {
+            color: v.$negro;
+            font-size: 3.2rem;
+            text-align: center;
+        }
+    }
 }
