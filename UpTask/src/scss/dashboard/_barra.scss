@@ -1,0 +1,29 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.barra {
+    background-color: v.$blanco;    
+    padding: 1rem 2rem;
+    box-shadow: .1rem 1.2rem .9rem -1.3rem rgba(0,0,0,.4);
+
+    @include m.tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    p {
+        margin: 0;
+        font-size: 2rem;
+
+        span {
+            font-weight: 700;
+            color: lighten(v.$azulMorado, 10%);
+        }
+    }
+    .logout {
+        @include m.boton(v.$azulMorado, v.$blanco);
+        font-size: 1.4rem;
+        padding: 1rem;
+    }
+}
