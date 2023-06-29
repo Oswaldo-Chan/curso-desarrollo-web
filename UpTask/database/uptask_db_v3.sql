@@ -44,6 +44,34 @@ INSERT INTO `proyectos` VALUES (1,' Tienda Virtual','2d18f724d47b372a7bf5650db97
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tareas`
+--
+
+DROP TABLE IF EXISTS `tareas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tareas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT NULL,
+  `proyectoId` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `proyectoId` (`proyectoId`),
+  CONSTRAINT `tareas_ibfk_1` FOREIGN KEY (`proyectoId`) REFERENCES `proyectos` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tareas`
+--
+
+LOCK TABLES `tareas` WRITE;
+/*!40000 ALTER TABLE `tareas` DISABLE KEYS */;
+INSERT INTO `tareas` VALUES (2,' crear mockups',0,3),(3,' Investigar Hostings',0,3),(4,' Aprender Spring',0,2),(5,' Crear Diagrama de Clases',0,2),(6,' Diseñar la Interfaz de Usuario',0,2),(7,' Diseñar la Interfaz de Usuario',0,1),(8,' Investigar Hostings',0,1),(9,' Definir los Requerimientos',0,2),(10,' Definir los Requerimientos',0,1);
+/*!40000 ALTER TABLE `tareas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuarios`
 --
 
@@ -80,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-28  2:28:21
+-- Dump completed on 2023-06-29  4:42:12
