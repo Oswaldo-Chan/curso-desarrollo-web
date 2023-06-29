@@ -34,7 +34,7 @@
 
         const estados = {
             0: 'Pendiente',
-            1: 'Completada'
+            1: 'Completa'
         }
 
         tareas.forEach(tarea => {
