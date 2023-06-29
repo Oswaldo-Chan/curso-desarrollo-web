@@ -10,7 +10,6 @@
             <form class="formulario nueva-tarea">
                 <legend>Añade una Nueva Tarea</legend>
                 <div class="campo">
-                    <label>Tarea</label>
                     <input type="text" name="tarea" id="tarea" placeholder="Añadir tarea al proyecto actual"/>
                 </div>
                 <div class="opciones">
@@ -36,8 +35,45 @@
                     modal.remove();
                 }, 500);
             }
+            if (e.target.classList.contains('submit-nueva-tarea')) {
+                submitNuevaTarea();
+            }
         });
 
-        document.querySelector('body').appendChild(modal);
+        document.querySelector('.dashboard').appendChild(modal);
+    }
+
+    function submitNuevaTarea() {
+        const tarea = document.querySelector('#tarea').value.trim();
+        
+        if (tarea === '') {
+            mostrarAlerta('El campo es obligatorio', 'error', document.querySelector('.formulario legend'));
+            return;
+        }
+
+        agregarTarea(tarea);
+    }
+
+    function mostrarAlerta(mensaje, tipo, referencia) {
+        const alertaPrevia = document.querySelector('.alerta');
+
+        if (alertaPrevia) {
+            alertaPrevia.remove();
+        }
+
+        const alerta = document.createElement('DIV');
+        alerta.classList.add('alerta', tipo);
+        alerta.textContent = mensaje;
+
+        //inserta la alerta despues del legend
+        referencia.parentElement.insertBefore(alerta, referencia.nextElementSibling);
+        
+        setTimeout(() => {
+            alerta.remove();
+        }, 5000);
+    }
+
+    function agregarTarea(tarea) {
+        
     }
 })();
