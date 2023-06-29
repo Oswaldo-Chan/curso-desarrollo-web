@@ -22,7 +22,7 @@
         }
     }
     .logout {
-        @include m.boton(v.$azulMorado, v.$blanco);
+        @include m.boton(darken(v.$naranja, 5%), v.$blanco);
         font-size: 1.4rem;
         padding: 1rem;
     }

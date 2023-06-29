@@ -7,3 +7,9 @@
     </div>
 
 <?php include_once __DIR__.'/footer.php'; ?>
+
+<?php 
+$script = '
+    <script src="build/js/tareas.js"></script>
+';
+?>
