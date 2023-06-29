@@ -73,7 +73,38 @@
         }, 5000);
     }
 
-    function agregarTarea(tarea) {
+    async function agregarTarea(tarea) {
+        const datos = new FormData();
+        datos.append('nombre', tarea);
+        datos.append('proyectoId', obtenerProyecto());
+
+        try {
+            const url = '/api/tarea';
+            const respuesta = await fetch(url, {
+                method: 'POST',
+                body: datos
+            });
+
+            const resultado = await respuesta.json();
+
+            mostrarAlerta(resultado.mensaje, resultado.tipo , document.querySelector('.formulario legend'));
+
+            if (resultado.tipo === 'exito') {
+                const modal = document.querySelector('.modal');
+                
+                setTimeout(() => {
+                    modal.remove();
+                }, 1200);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    function obtenerProyecto() {
+        const proyectoParams = new URLSearchParams(window.location.search);
+        const proyecto = Object.fromEntries(proyectoParams.entries());
         
+        return proyecto.url;
     }
 })();
