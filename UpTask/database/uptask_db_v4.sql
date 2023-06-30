@@ -30,7 +30,7 @@ CREATE TABLE `proyectos` (
   PRIMARY KEY (`id`),
   KEY `propietarioId` (`propietarioId`),
   CONSTRAINT `proyectos_ibfk_1` FOREIGN KEY (`propietarioId`) REFERENCES `usuarios` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `proyectos` (
 
 LOCK TABLES `proyectos` WRITE;
 /*!40000 ALTER TABLE `proyectos` DISABLE KEYS */;
-INSERT INTO `proyectos` VALUES (1,' Tienda Virtual','2d18f724d47b372a7bf5650db9726df8',4),(2,' Control de biblioteca en Java','d967be2d35f0ff244dfd6917894a21d7',4),(3,' Diseñar Landing Page','589089be3bdb26a28be09bb222af3bde',4);
+INSERT INTO `proyectos` VALUES (1,' Tienda Virtual','2d18f724d47b372a7bf5650db9726df8',4),(2,' Control de biblioteca en Java','d967be2d35f0ff244dfd6917894a21d7',4),(3,' Diseñar Landing Page','589089be3bdb26a28be09bb222af3bde',4),(4,' Curso Web','51b86322e5eaecea323a0369f5d4b22a',4);
 /*!40000 ALTER TABLE `proyectos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `tareas` (
   PRIMARY KEY (`id`),
   KEY `proyectoId` (`proyectoId`),
   CONSTRAINT `tareas_ibfk_1` FOREIGN KEY (`proyectoId`) REFERENCES `proyectos` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `tareas` (
 
 LOCK TABLES `tareas` WRITE;
 /*!40000 ALTER TABLE `tareas` DISABLE KEYS */;
-INSERT INTO `tareas` VALUES (2,' crear mockups',0,3),(3,' Investigar Hostings',0,3),(4,' Aprender Spring',0,2),(5,' Crear Diagrama de Clases',0,2),(6,' Diseñar la Interfaz de Usuario',0,2),(7,' Diseñar la Interfaz de Usuario',0,1),(8,' Investigar Hostings',0,1),(9,' Definir los Requerimientos',0,2),(10,' Definir los Requerimientos',0,1);
+INSERT INTO `tareas` VALUES (2,'Crear Mockups',1,3),(3,'Investigar Hostings',0,3),(4,'Aprender Spring',1,2),(5,'Crear Diagrama de Clases',0,2),(6,'Diseñar Interfaz de Usuario',1,2),(7,'Diseñar la Interfaz de Usuario',1,1),(8,'Investigar Hostings',0,1),(9,'Definir Requerimientos',0,2),(10,'Definir los Requerimientos',1,1),(11,'Configurar Plugins de WordPress para Seguridad',0,1),(12,'Configurar Backup',1,1),(13,'Configurar Cuenta de PayPal',1,1),(22,'Diseñar versión mobile',0,3),(23,'Aprender Curso de SASS',1,1),(24,'Aprender SASS',0,3);
 /*!40000 ALTER TABLE `tareas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +95,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (4,' Oswaldo','correo@correo.com','$2y$10$5bOykigJ2DfvUW3nFJB.Aucs/LiBvIMHZqrx8xtBAeQMXOv5cBdbq','',1),(5,' Juan','correo2@correo.com','$2y$10$JaVi6GxdFVKdLQ5F8th.Eu4Fq55arq8yDiSKDMP9xtm2sphFuibLy','',1);
+INSERT INTO `usuarios` VALUES (4,' Oswaldo Chan','correo@correo.com','$2y$10$Qem7Z4Jy/jTFuuP75TkZw.hE3jm9LuioMJQ7SSymAJSvwIiACcWw.','',1),(5,' Juan','correo2@correo.com','$2y$10$JaVi6GxdFVKdLQ5F8th.Eu4Fq55arq8yDiSKDMP9xtm2sphFuibLy','',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-29  4:42:12
+-- Dump completed on 2023-06-30  4:08:32
