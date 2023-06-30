@@ -32,4 +32,10 @@
             padding: 1.5rem 2rem;
         }
     }
+    .enlace {
+        color: v.$azulMorado;
+        &:hover {
+            color: darken(v.$azulMorado, 20%);
+        }
+    }
 }
