@@ -18,6 +18,10 @@
     .menu {
         img {
             width: 7rem;
+            &:hover {
+                cursor: pointer;
+                opacity: .8;
+            }
         }
     }
 }
