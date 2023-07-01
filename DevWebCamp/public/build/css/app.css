@@ -339,4 +339,9 @@ h3 {
 .text-center {
   text-align: center;
 }
+
+.auth {
+  width: min(95%, 120rem);
+  margin: 0 auto;
+}
 /*# sourceMappingURL=app.css.map */
