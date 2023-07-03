@@ -27,7 +27,6 @@ class ActiveRecord {
         static::$alertas = [];
         return static::$alertas;
     }
-
     // Registros - CRUD
     public function guardar() {
         $resultado = '';
@@ -40,7 +39,6 @@ class ActiveRecord {
         }
         return $resultado;
     }
-
     public static function all() {
         $query = "SELECT * FROM " . static::$tabla;
         $resultado = self::consultarSQL($query);
@@ -49,32 +47,34 @@ class ActiveRecord {
 
     // Busca un registro por su id
     public static function find($id) {
-        $query = "SELECT * FROM " . static::$tabla  ." WHERE id = ${id}";
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE id = {$id}";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
-
     // Obtener Registro
     public static function get($limite) {
-        $query = "SELECT * FROM " . static::$tabla . " LIMIT ${limite}";
+        $query = "SELECT * FROM " . static::$tabla . " LIMIT {$limite}";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
-
     // Busqueda Where con Columna 
     public static function where($columna, $valor) {
-        $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";
+        $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '{$valor}'";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
-
+    // Busca todos los registrosque pertenecen a un ID
+    public static function belongsTo($columna, $valor) {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '{$valor}'";
+        $resultado = self::consultarSQL($query);
+        return $resultado ;
+    }
     // SQL para Consultas Avanzadas.
     public static function SQL($consulta) {
         $query = $consulta;
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
-
     // crea un nuevo registro
     public function crear() {
         // Sanitizar los datos
@@ -95,7 +95,6 @@ class ActiveRecord {
            'id' => self::$db->insert_id
         ];
     }
-
     public function actualizar() {
         // Sanitizar los datos
         $atributos = $this->sanitizarAtributos();
@@ -116,14 +115,12 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
         return $resultado;
     }
-
     // Eliminar un registro - Toma el ID de Active Record
     public function eliminar() {
         $query = "DELETE FROM "  . static::$tabla . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
         $resultado = self::$db->query($query);
         return $resultado;
     }
-
     public static function consultarSQL($query) {
         // Consultar la base de datos
         $resultado = self::$db->query($query);
@@ -140,7 +137,6 @@ class ActiveRecord {
         // retornar los resultados
         return $array;
     }
-
     protected static function crearObjeto($registro) {
         $objeto = new static;
 
@@ -152,9 +148,6 @@ class ActiveRecord {
 
         return $objeto;
     }
-
-
-
     // Identificar y unir los atributos de la BD
     public function atributos() {
         $atributos = [];
@@ -164,7 +157,6 @@ class ActiveRecord {
         }
         return $atributos;
     }
-
     public function sanitizarAtributos() {
         $atributos = $this->atributos();
         $sanitizado = [];
@@ -173,7 +165,6 @@ class ActiveRecord {
         }
         return $sanitizado;
     }
-
     public function sincronizar($args=[]) { 
         foreach($args as $key => $value) {
           if(property_exists($this, $key) && !is_null($value)) {

@@ -1,0 +1,54 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.barra-mobile {
+    background-color: v.$azulMorado;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include m.tablet {
+        display: none;
+    }
+
+    h1 {
+        color: v.$blanco;
+        margin: 0;
+    }
+    .menu {
+        img {
+            width: 7rem;
+            &:hover {
+                cursor: pointer;
+                opacity: .8;
+            }
+        }
+    }
+}
+.barra {
+    display: none;
+
+    @include m.tablet {
+        background-color: v.$blanco;    
+        padding: 1rem 2rem;
+        box-shadow: .1rem 1.2rem .9rem -1.3rem rgba(0,0,0,.4);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    p {
+        margin: 0;
+        font-size: 2rem;
+
+        span {
+            font-weight: 700;
+            color: lighten(v.$azulMorado, 10%);
+        }
+    }
+    .logout {
+        @include m.boton(darken(v.$naranja, 5%), v.$blanco);
+        font-size: 1.4rem;
+        padding: 1rem;
+    }
+}
