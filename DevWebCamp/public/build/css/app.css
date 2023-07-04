@@ -417,6 +417,28 @@ h3 {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+.formulario__listado {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.formulario__listado li {
+  margin-right: 1.5rem;
+  margin-top: 1.5rem;
+}
+.formulario__listado li:last-of-type {
+  margin-left: 0;
+}
+.formulario__listado > li {
+  background-color: #007df4;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  font-weight: 700;
+}
 .formulario__submit {
   background-color: #007df4;
   padding: 1.5rem 4rem;
@@ -771,6 +793,7 @@ h3 {
 .dashboard__grid {
   display: flex;
   flex: 1;
+  overflow-y: auto;
 }
 .dashboard__sidebar {
   background-color: #2f405d;
@@ -812,6 +835,7 @@ h3 {
 .dashboard__contenido {
   padding: 1rem 1rem 3rem 1rem;
   width: 100%;
+  overflow: scroll;
 }
 @media (min-width: 768px) {
   .dashboard__contenido {

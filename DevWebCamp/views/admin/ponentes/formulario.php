@@ -77,11 +77,11 @@
     <legend class="formulario__legend">Información Extra</legend>
 
     <div class="formulario__campo">
-        <label for="tags_input" class="formulario__label">Áreas de Experiencia (Separadas por coma)</label>
+        <label for="tags__input" class="formulario__label">Áreas de Experiencia (Separadas por coma)</label>
         <input 
             type="text" 
             class="formulario__input" 
-            id="tags_input" 
+            id="tags__input" 
             placeholder="Ej: Node.js, PHP, CSS, Laravel, UX / UI" 
         >
 
