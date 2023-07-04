@@ -12,4 +12,12 @@ class PonentesController {
             "titulo" => "Ponentes / Conferencias"
         ]);
     }
+    public static function crear(Router $router){
+        $alertas = [];
+
+        $router->render("admin/ponentes/crear", [ 
+            "titulo" => "Registrar Ponente",
+            "alertas" => $alertas
+        ]);
+    }
 }
