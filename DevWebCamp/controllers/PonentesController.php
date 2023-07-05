@@ -8,9 +8,11 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class PonentesController {
     public static function index(Router $router){
+        $ponentes = Ponente::all();
 
         $router->render("admin/ponentes/index", [ 
-            "titulo" => "Ponentes / Conferencias"
+            "titulo" => "Ponentes / Conferencias",
+            "ponentes" => $ponentes
         ]);
     }
     public static function crear(Router $router){
@@ -52,7 +54,33 @@ class PonentesController {
         $router->render("admin/ponentes/crear", [ 
             "titulo" => "Registrar Ponente",
             "alertas" => $alertas,
-            "ponente" => $ponente
+            "ponente" => $ponente,
+            "redes" => json_decode($ponente->redes)
+        ]);
+    }
+    public static function editar(Router $router){
+        $alertas = [];
+        
+        $id = $_GET['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if (!$id) {
+            header('Location: /admin/ponentes');
+        }
+        
+        $ponente = Ponente::find($id);
+
+        if (!$ponente) {
+            header('Location: /admin/ponentes');
+        }
+
+        $ponente->imagenActual = $ponente->imagen;
+
+        $router->render("admin/ponentes/editar", [ 
+            "titulo" => "Editar Ponente",
+            "alertas" => $alertas,
+            "ponente" => $ponente,
+            "redes" => json_decode($ponente->redes)
         ]);
     }
 }

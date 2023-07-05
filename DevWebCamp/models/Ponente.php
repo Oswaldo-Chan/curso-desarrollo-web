@@ -12,6 +12,7 @@ class Ponente extends ActiveRecord {
     public $ciudad;
     public $pais;
     public $imagen;
+    public $imagenActual;
     public $tags;
     public $redes;
     

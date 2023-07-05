@@ -59,17 +59,16 @@
         >
     </div>
 
-    <?php if(isset($ponente->imagenActual)){ ?>
-
+    <?php if(isset($ponente->imagenActual)): ?>
         <p class="formulario__texto">Imagen Actual:</p>
         <div class="formulario__imagen">
             <picture>
-                <source srcset="<?php echo $_ENV["HOST"] . "/img/speakers/" . $ponente->imagen; ?>.webp" type="image/webp">
-                <source srcset="<?php echo $_ENV["HOST"] . "/img/speakers/" . $ponente->imagen; ?>.png" type="image/png">
-                <img src="<?php echo $_ENV["HOST"] . "/img/speakers/" . $ponente->imagen; ?>.png" alt="imagen ponente">
+                <source srcset="<?php echo $_ENV['VIRTUALHOST'].'/img/speakers/'.$ponente->imagen; ?>.webp" type="image/webp">
+                <source srcset="<?php echo $_ENV['VIRTUALHOST'].'/img/speakers/'.$ponente->imagen; ?>.png" type="image/png">
+                <img src="<?php echo $_ENV['VIRTUALHOST'].'/img/speakers/'.$ponente->imagen; ?>.png" alt="imagen ponente">
             </picture>
         </div>
-    <?php } ?>
+    <?php endif; ?>
 
 </fieldset>
 
