@@ -9,7 +9,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class PonentesController {
     public static function index(Router $router){
-        $paginaActual = $_GET['page'];
+        $paginaActual = $_GET['page'] ?? '';
         $paginaActual = filter_var($paginaActual, FILTER_VALIDATE_INT);
         
         if (!$paginaActual || $paginaActual < 1) {
