@@ -47,11 +47,25 @@ class Paginacion {
         return $html;
     }
 
+    public function numerosPaginas(){
+        $html = '';
+
+        for($i=1; $i<=$this->totalPaginas(); $i++){
+            if($i === $this->paginaActual){
+                $html .= "<span class=\"paginacion__enlace paginacion__enlace--actual\">{$i}</span>";
+            } else {
+                $html.= "<a class=\"paginacion__enlace paginacion__enlace--numero\" href=\"?page={$i}\">{$i}</a>";
+            }
+        }
+        return $html;
+    }
+
     public function paginacion(){
         $html = '';
         if($this->totalRegistros > 1){
             $html .= '<div class="paginacion">';
             $html .= $this->enlaceAnterior();
+            $html .= $this->numerosPaginas();
             $html .= $this->enlaceSiguiente();
             $html .= '</div';
         }
