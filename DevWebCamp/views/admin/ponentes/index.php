@@ -48,3 +48,7 @@
         <p class="text-center">No Hay Ponentes Aún</p>
     <?php endif; ?>
 </div>
+
+<?php  
+    echo $paginacion;
+?>
