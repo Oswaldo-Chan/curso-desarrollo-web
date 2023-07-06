@@ -9,7 +9,7 @@
             id="nombre" 
             name="nombre" 
             placeholder="Ingrese el nombre del evento" 
-            value="<?php echo $evento->nombre ?? ''; ?>" 
+            value="<?php echo $evento->nombre; ?>" 
         >
     </div>
     <div class="formulario__campo">
@@ -20,8 +20,7 @@
             name="descripcion" 
             placeholder="Ingrese la descripción del evento" 
             rows="4"
-            value="<?php echo $evento->descripcion ?? ''; ?>" 
-        ></textarea>
+        ><?php echo $evento->descripcion; ?></textarea>
     </div>
     <div class="formulario__campo">
         <label for="categoria" class="formulario__label">Categoría Evento</label>
@@ -32,7 +31,7 @@
         >
             <option disabled selected value="">- Seleccionar Categoría -</option>
             <?php foreach($categorias as $categoria): ?>
-                <option value="<?php echo $categoria->id; ?>"><?php echo $categoria->nombre; ?></option>
+                <option <?php echo ($evento->categoria_id === $categoria->id) ? 'selected' : '' ?> value="<?php echo $categoria->id; ?>"><?php echo $categoria->nombre; ?></option>
             <?php endforeach; ?>
         </select>
     </div>
@@ -52,15 +51,19 @@
                 </div>
             <?php endforeach; ?>
         </div>
+
+        <input type="hidden" name="dia_id" value="">
     </div>
     <div id="horas" class="formulario__campo">
         <label for="hora" class="formulario__label">Selecciona la hora</label>
         
-        <ul class="horas">
+        <ul id="horas" class="horas">
             <?php foreach($horas as $hora):?>
-                <li class="horas__hora"><?php echo $hora->hora ?></li>
+                <li data-hora-id="<?php echo $hora->id; ?>" class="horas__hora horas__hora--deshabilitada"><?php echo $hora->hora ?></li>
             <?php endforeach; ?>
         </ul>
+
+        <input type="hidden" name="hora_id" value="">
     </div>
 </fieldset>
 
@@ -83,7 +86,9 @@
             min="1" 
             class="formulario__input" 
             id="disponibles" 
+            name="disponibles"
             placeholder="Ej. 20" 
+            value="<?php echo $evento->disponibles; ?>" 
         >
     </div>
 </fieldset>

@@ -4,11 +4,12 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AuthController;
-use Controllers\DashboardController;
-use Controllers\PonentesController;
 use Controllers\EventosController;
-use Controllers\RegistradosController;
 use Controllers\RegalosController;
+use Controllers\PonentesController;
+use Controllers\DashboardController;
+use Controllers\APIEventosController;
+use Controllers\RegistradosController;
 
 $router = new Router();
 
@@ -45,7 +46,9 @@ $router->post('/admin/ponentes/eliminar', [PonentesController::class, 'eliminar'
 
 $router->get('/admin/eventos', [EventosController::class, 'index']);
 $router->get('/admin/eventos/crear', [EventosController::class, 'crear']);
-$router->post('/admin/eventos/crear', [EventosController::class, 'crear']);
+$router->post ('/admin/eventos/crear', [EventosController::class, 'crear']);
+
+$router->get('/api/eventos-horario', [APIEventosController::class, 'index']);
 
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 
