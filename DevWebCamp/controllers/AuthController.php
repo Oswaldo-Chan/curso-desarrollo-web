@@ -27,7 +27,10 @@ class AuthController {
                     if( password_verify($_POST['password'], $usuario->password) ) {
                         
                         // Iniciar la sesión
-                        session_start();    
+                        if (session_status() === PHP_SESSION_NONE) {
+                            session_start();
+                        }
+
                         $_SESSION['id'] = $usuario->id;
                         $_SESSION['nombre'] = $usuario->nombre;
                         $_SESSION['apellido'] = $usuario->apellido;
@@ -57,7 +60,10 @@ class AuthController {
 
     public static function logout() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
             $_SESSION = [];
             header('Location: /');
         }
@@ -96,7 +102,6 @@ class AuthController {
                     // Enviar email
                     $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
                     $email->enviarConfirmacion();
-                    
 
                     if($resultado) {
                         header('Location: /mensaje');
