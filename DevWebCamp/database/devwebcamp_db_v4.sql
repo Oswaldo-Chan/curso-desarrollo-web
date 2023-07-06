@@ -16,6 +16,116 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `categorias`
+--
+
+DROP TABLE IF EXISTS `categorias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categorias` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categorias`
+--
+
+LOCK TABLES `categorias` WRITE;
+/*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES (1,'Conferencias'),(2,'Workshops');
+/*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dias`
+--
+
+DROP TABLE IF EXISTS `dias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `dias` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dias`
+--
+
+LOCK TABLES `dias` WRITE;
+/*!40000 ALTER TABLE `dias` DISABLE KEYS */;
+INSERT INTO `dias` VALUES (1,'Viernes'),(2,'Sábado'),(3,'Domingo');
+/*!40000 ALTER TABLE `dias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `eventos`
+--
+
+DROP TABLE IF EXISTS `eventos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `eventos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci,
+  `disponibles` int DEFAULT NULL,
+  `categoria_id` int NOT NULL,
+  `dia_id` int NOT NULL,
+  `hora_id` int NOT NULL,
+  `ponente_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_eventos_categorias_idx` (`categoria_id`),
+  KEY `fk_eventos_dias1_idx` (`dia_id`),
+  KEY `fk_eventos_horas1_idx` (`hora_id`),
+  KEY `fk_eventos_ponentes1_idx` (`ponente_id`),
+  CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`ponente_id`) REFERENCES `ponentes` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `fk_eventos_categorias` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`),
+  CONSTRAINT `fk_eventos_dias1` FOREIGN KEY (`dia_id`) REFERENCES `dias` (`id`),
+  CONSTRAINT `fk_eventos_horas1` FOREIGN KEY (`hora_id`) REFERENCES `horas` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `eventos`
+--
+
+LOCK TABLES `eventos` WRITE;
+/*!40000 ALTER TABLE `eventos` DISABLE KEYS */;
+INSERT INTO `eventos` VALUES (1,'Next.js','descripción aquí',40,1,1,3,1),(2,'Next.js','descripción aquí',40,1,1,6,1);
+/*!40000 ALTER TABLE `eventos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `horas`
+--
+
+DROP TABLE IF EXISTS `horas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `horas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `hora` varchar(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `horas`
+--
+
+LOCK TABLES `horas` WRITE;
+/*!40000 ALTER TABLE `horas` DISABLE KEYS */;
+INSERT INTO `horas` VALUES (1,'10:00 - 10:55'),(2,'11:00 - 11:55'),(3,'12:00 - 12:55'),(4,'13:00 - 13:55'),(5,'16:00 - 16:55'),(6,'17:00 - 17:55'),(7,'18:00 - 18:55'),(8,'19:00 - 19:55');
+/*!40000 ALTER TABLE `horas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ponentes`
 --
 
@@ -84,4 +194,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-05  4:57:35
+-- Dump completed on 2023-07-06  4:48:43
