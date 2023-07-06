@@ -23,4 +23,17 @@
             value="<?php echo $evento->descripcion ?? ''; ?>" 
         ></textarea>
     </div>
+    <div class="formulario__campo">
+        <label for="categoria" class="formulario__label">Categoría Evento</label>
+        <select
+            class="formulario__select"
+            id="categoria"
+            name="categoria_id"
+        >
+            <option disabled selected value="">- Seleccionar Categoría -</option>
+            <?php foreach($categorias as $categoria): ?>
+                <option value="<?php echo $categoria->id; ?>"><?php echo $categoria->nombre; ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
 </fieldset>

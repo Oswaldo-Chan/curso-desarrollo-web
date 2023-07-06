@@ -2,8 +2,9 @@
 
 namespace Controllers;
 
-use Model\Usuario;
 use MVC\Router;
+use Model\Usuario;
+use Model\Categoria;
 
 class EventosController {
     public static function index(Router $router){
@@ -22,10 +23,12 @@ class EventosController {
         }
 
         $alertas = [];
+        $categorias = Categoria::all();
 
         $router->render("admin/eventos/crear", [ 
             "titulo" => "Crear Evento",
-            "alertas" => $alertas
+            "alertas" => $alertas,
+            "categorias" => $categorias
         ]);
     }
 }
