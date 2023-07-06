@@ -58,6 +58,15 @@
             border-bottom-left-radius: 0;
         }
     }
+    &__radio {
+        display: flex;
+        div {
+            margin-right: 1rem;
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
     &__texto {
         margin-top: 3rem;
     }

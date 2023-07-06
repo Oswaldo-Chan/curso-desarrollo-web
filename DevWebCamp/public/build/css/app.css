@@ -417,6 +417,15 @@ h3 {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+.formulario__radio {
+  display: flex;
+}
+.formulario__radio div {
+  margin-right: 1rem;
+}
+.formulario__radio div:last-of-type {
+  margin-right: 0;
+}
 .formulario__texto {
   margin-top: 3rem;
 }
