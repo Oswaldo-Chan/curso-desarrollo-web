@@ -842,6 +842,7 @@ h3 {
 }
 .dashboard__submit--logout:hover {
   color: #007df4;
+  cursor: pointer;
 }
 .dashboard__grid {
   display: flex;

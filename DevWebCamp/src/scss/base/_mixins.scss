@@ -130,6 +130,7 @@
 
     &:hover {
         color: v.$azul;
+        cursor: pointer;
     }
 }
 @mixin shadow{

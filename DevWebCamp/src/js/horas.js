@@ -57,6 +57,12 @@
 
             const horasDisponibles = document.querySelectorAll('#horas li:not(.horas__hora--deshabilitada)');
             horasDisponibles.forEach(hora => hora.addEventListener('click', seleccionarHora));
+        
+            //elimina el eventListener al cambiar los terminos de busqueda
+            const horasNoDisponibles = document.querySelectorAll('.horas__hora--deshabilitada');
+            Array.from(horasNoDisponibles).map(hora => {
+                hora.removeEventListener('click', seleccionarHora);
+            });  
         }
 
         function seleccionarHora(e) {

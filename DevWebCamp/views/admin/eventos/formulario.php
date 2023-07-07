@@ -76,7 +76,7 @@
             type="text" 
             class="formulario__input" 
             id="ponentes" 
-            placeholder="Buscar Ponente" 
+            placeholder="Ingrese el nombre del ponente a buscar" 
         >
         <ul id="listado-ponentes" class="listado-ponentes"></ul>
         <input type="hidden" name="ponente_id" value="">
