@@ -35,6 +35,7 @@
     &__grid {
         display: flex;
         flex: 1;
+        overflow-y: auto;
     }
     &__sidebar {
         background-color: lighten(v.$gris-oscuro, 10);
@@ -81,8 +82,34 @@
     &__contenido {
         padding: 1rem 1rem 3rem 1rem;
         width: 100%;
+        overflow: scroll;
         @include m.tablet {
             padding: 1rem 5rem 3rem 5 rem;
         }
+    }
+    &__contenedor-boton {
+        @include m.tablet {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 5rem;
+        }
+    }
+    &__boton {
+        @include m.boton(v.$azul,v.$blanco);
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        @include m.tablet {
+            width: auto;
+        }
+    }
+    &__contenedor {
+        @include m.shadow;
+        background-color: v.$blanco;
+        padding: 2rem;
+        border-radius: 1rem;
+    }
+    &__formulario {
+        @extend .dashboard__contenedor;
+        @include m.contenedor-md;
     }
 }
