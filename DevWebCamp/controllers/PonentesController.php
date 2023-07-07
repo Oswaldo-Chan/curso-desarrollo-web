@@ -156,7 +156,7 @@ class PonentesController {
         ]);
     }
 
-    public static function eliminar(Router $router){
+    public static function eliminar(){
         if (!isAdmin()) {
             header('Location: /login');
         }
