@@ -9,6 +9,7 @@ use Controllers\RegalosController;
 use Controllers\PonentesController;
 use Controllers\DashboardController;
 use Controllers\APIEventosController;
+use Controllers\APIPonentesController;
 use Controllers\RegistradosController;
 
 $router = new Router();
@@ -49,6 +50,7 @@ $router->get('/admin/eventos/crear', [EventosController::class, 'crear']);
 $router->post ('/admin/eventos/crear', [EventosController::class, 'crear']);
 
 $router->get('/api/eventos-horario', [APIEventosController::class, 'index']);
+$router->get('/api/ponentes', [APIPonentesController::class, 'index']);
 
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 
