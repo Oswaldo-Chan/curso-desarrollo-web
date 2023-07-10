@@ -532,6 +532,29 @@ h3 {
 .evento__autor-nombre {
   font-weight: 700;
 }
+.evento__agregar {
+  background-color: #FFFFFF;
+  padding: 1.5rem 4rem;
+  color: #1a1b15;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  border-radius: 2.5rem;
+  margin-top: 1rem;
+}
+.evento__agregar:hover {
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+.evento__agregar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
 .resumen {
   background-image: linear-gradient(to right, rgba(0, 125, 244, 0.7), rgba(0, 125, 244, 0.9)), url(../img/bg_numeros.jpg);
@@ -1584,5 +1607,67 @@ h3 {
 .listado-ponentes__ponente--seleccionado {
   background-color: #007df4;
   color: #FFFFFF;
+}
+
+.eventos-registro {
+  width: min(95%, 140rem);
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .eventos-registro {
+    display: flex;
+    align-items: flex-start;
+  }
+  .eventos-registro main {
+    margin-right: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .eventos-registro__listado {
+    flex: 0 0 60%;
+  }
+}
+.eventos-registro__grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 768px) {
+  .eventos-registro__grid {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.eventos-registro__heading--conferencias {
+  color: #007df4;
+  white-space: nowrap;
+  font-size: clamp(2rem, -0.8rem + 10vw, 5rem);
+}
+.eventos-registro__heading--workshops {
+  margin-top: 5rem;
+  color: #00c8c2;
+  white-space: nowrap;
+  font-size: clamp(2rem, -0.8rem + 10vw, 5rem);
+}
+.eventos-registro__fecha {
+  margin: 6rem 0 3rem 0;
+}
+
+.registro {
+  background-color: #F8FAFC;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+@media (min-width: 768px) {
+  .registro {
+    flex: 0 0 40%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 3rem;
+  }
+}
+.registro__heading {
+  margin: 0 0 3rem 0;
 }
 /*# sourceMappingURL=app.css.map */

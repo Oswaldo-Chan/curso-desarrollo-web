@@ -125,4 +125,53 @@ class RegistroController {
             'registro' => $registro
         ]);
     }
+    public static function conferencias(Router $router){
+        if(!isAuth()){
+            header('Location: /login');
+            return;
+        }
+
+        $usuario_id = $_SESSION['id'];
+        $registro = Registro::where('usuario_id', $usuario_id);
+       
+        if(!isset($registro) || $registro->paquete_id !== '1'){
+            header('Location: /');
+            return;
+        }
+
+        $eventos = Evento::ordenar('hora_id', 'ASC'); 
+        $eventosFormateados = [];
+
+        foreach ($eventos as $evento) {
+            $evento->categoria = Categoria::find($evento->categoria_id);
+            $evento->dia = Dia::find($evento->dia_id);
+            $evento->hora = Hora::find($evento->hora_id);
+            $evento->ponente = Ponente::find($evento->ponente_id);
+
+            if ($evento->dia_id === "1" && $evento->categoria_id === "1") {
+                $eventosFormateados['conferencias_v'][] = $evento;
+            }    
+            if ($evento->dia_id === "2" && $evento->categoria_id === "1") {
+                $eventosFormateados['conferencias_s'][] = $evento;
+            }    
+            if ($evento->dia_id === "3" && $evento->categoria_id === "1") {
+                $eventosFormateados['conferencias_d'][] = $evento;
+            }    
+
+            if ($evento->dia_id === "1" && $evento->categoria_id === "2") {
+                $eventosFormateados['workshops_v'][] = $evento;
+            }    
+            if ($evento->dia_id === "2" && $evento->categoria_id === "2") {
+                $eventosFormateados['workshops_s'][] = $evento;
+            }    
+            if ($evento->dia_id === "3" && $evento->categoria_id === "2") {
+                $eventosFormateados['workshops_d'][] = $evento;
+            }   
+        }
+
+        $router->render('registro/conferencias', [
+            'titulo' => 'Elige Workshops y Conferencias',
+            'eventos' => $eventosFormateados
+        ]);
+    }
 }

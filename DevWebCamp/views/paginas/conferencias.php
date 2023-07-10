@@ -4,8 +4,8 @@
 
     <div class="eventos">
         <h3 <?php animacion(); ?> class="eventos__heading">&lt; Conferencias /></h3>
-       
         <p class="eventos__fecha">Viernes 5 de Octubre</p>
+        
         <div class="eventos__listado slider swiper">
             <div class="swiper-wrapper">
                 <?php if (isset($eventos['conferencias_v'])) {
