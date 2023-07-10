@@ -3,7 +3,7 @@
     <p class="agenda__descripcion">Talleres y Conferencias dictados por expertos en Desarrollo Web</p>
 
     <div class="eventos">
-        <h3 class="eventos__heading">&lt; Conferencias /></h3>
+        <h3 <?php animacion(); ?> class="eventos__heading">&lt; Conferencias /></h3>
        
         <p class="eventos__fecha">Viernes 5 de Octubre</p>
         <div class="eventos__listado slider swiper">
@@ -49,7 +49,7 @@
     </div>
 
     <div class="eventos eventos--workshops">
-        <h3 class="eventos__heading">&lt; Workshops /></h3>
+        <h3 <?php animacion(); ?> class="eventos__heading">&lt; Workshops /></h3>
        
         <p class="eventos__fecha">Viernes 5 de Octubre</p>
         <div class="eventos__listado slider swiper">
