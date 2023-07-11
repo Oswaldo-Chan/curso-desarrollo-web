@@ -325,6 +325,10 @@ img {
   height: auto;
 }
 
+.swal2-popup {
+  font-size: 2rem !important;
+}
+
 h1, h2, h3 {
   font-family: "Outfit", sans-serif;
   font-weight: 900;
@@ -1011,6 +1015,9 @@ h3 {
 .formulario__submit--registrar {
   width: 100%;
 }
+.formulario__submit--full {
+  width: 100%;
+}
 
 .acciones, .acciones--centrar {
   margin-top: 3rem;
@@ -1654,20 +1661,61 @@ h3 {
   margin: 6rem 0 3rem 0;
 }
 
-.registro {
+.registro-sidebar {
   background-color: #F8FAFC;
   padding: 3rem;
   border-radius: 1rem;
 }
 @media (min-width: 768px) {
-  .registro {
+  .registro-sidebar {
     flex: 0 0 40%;
     position: -webkit-sticky;
     position: sticky;
     top: 3rem;
   }
 }
-.registro__heading {
+.registro-sidebar__heading {
   margin: 0 0 3rem 0;
+}
+.registro-sidebar__evento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+.registro-sidebar__evento:nth-child(even) {
+  background-color: #edf2f7;
+}
+.registro-sidebar__nombre {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.registro-sidebar__eliminar {
+  all: unset;
+  color: rgb(169, 0, 0);
+}
+.registro-sidebar__eliminar:hover {
+  cursor: pointer;
+  color: #dc0000;
+}
+.registro-sidebar__regalo {
+  margin-top: 3rem;
+}
+.registro-sidebar__label {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.registro-sidebar__select {
+  width: 100%;
+  background-color: #FFFFFF;
+  border: 0.1rem solid #64748B;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.registro-sidebar__texto {
+  text-align: center;
 }
 /*# sourceMappingURL=app.css.map */

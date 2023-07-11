@@ -41,7 +41,7 @@
         margin: 6rem 0 3rem 0;
     }
 }
-.registro {
+.registro-sidebar {
     background-color: v.$gris-claro;
     padding: 3rem;
     border-radius: 1rem;
@@ -53,5 +53,48 @@
     }
     &__heading {
         margin: 0 0 3rem 0;
+    }
+    &__evento {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        
+        &:nth-child(even) {
+            background-color: darken(v.$gris-claro, 3);
+        }
+    }
+    &__nombre {
+        font-size: 2rem;
+        font-weight: v.$bold;
+        margin: 0;
+    }
+    &__eliminar {
+        all: unset;
+        color: v.$rojo;
+        
+        &:hover {
+            cursor: pointer;
+            color: lighten(v.$rojo, 10);
+        }
+    }
+    &__regalo {
+        margin-top: 3rem;
+    }
+    &__label {
+        display: block;
+        font-size: 2.2rem;
+        font-weight: v.$bold;
+        margin-bottom: 1rem;
+    }
+    &__select {
+        width: 100%;
+        background-color: v.$blanco;
+        border: .1rem solid v.$gris;
+        padding: 1rem;
+        border-radius: .5rem;
+    }
+    &__texto {
+        text-align: center;
     }
 }

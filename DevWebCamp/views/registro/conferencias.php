@@ -19,7 +19,7 @@
 
         <div class="eventos-registro__grid">
             <?php if (isset($eventos['conferencias_s'])) {
-                foreach($eventos['conferencias_v'] as $evento):?>
+                foreach($eventos['conferencias_s'] as $evento):?>
                     <?php include __DIR__.'/evento.php'; ?>
                 <?php endforeach; 
             }?>
@@ -29,7 +29,7 @@
 
         <div class="eventos-registro__grid">
             <?php if (isset($eventos['conferencias_d'])) {
-                foreach($eventos['conferencias_v'] as $evento):?>
+                foreach($eventos['conferencias_d'] as $evento):?>
                     <?php include __DIR__.'/evento.php'; ?>
                 <?php endforeach; 
             }?>
@@ -50,7 +50,7 @@
 
         <div class="eventos-registro__grid eventos--workshops">
             <?php if (isset($eventos['workshops_s'])) {
-                foreach($eventos['workshops_v'] as $evento):?>
+                foreach($eventos['workshops_s'] as $evento):?>
                     <?php include __DIR__.'/evento.php'; ?>
                 <?php endforeach; 
             }?>
@@ -60,18 +60,41 @@
 
         <div class="eventos-registro__grid eventos--workshops">
             <?php if (isset($eventos['workshops_d'])) {
-                foreach($eventos['workshops_v'] as $evento):?>
+                foreach($eventos['d'] as $evento):?>
                     <?php include __DIR__.'/evento.php'; ?>
                 <?php endforeach; 
             }?>
         </div>
     </main>
 
-    <aside class="registro">
-        <h2 class="registro__heading">Tu Registro</h2>
+    <aside class="registro-sidebar">
+        <h2 class="registro-sidebar__heading">Tu Registro</h2>
 
-        <div class="registro__resumen" id="registro-resumen">
+        <div class="registro-sidebar__resumen" id="registro-resumen">
             
         </div>
+
+        <div class="registro-sidebar__regalo">
+            <label for="regalo" class="registro-sidebar__label">Selecciona un regalo</label>
+
+            <select id="regalo" class="registro-sidebar__select">
+                <option value="" selected disabled>- Seleccionar Regalo -</option>
+                <?php 
+                    foreach($regalos as $regalo):
+                        if($regalo->id !== "0"):
+                ?>
+                    <option value="<?php echo $regalo->id; ?>"><?php echo $regalo->nombre; ?></option>
+                <?php 
+                        endif;
+                    endforeach; 
+                ?>
+            </select>
+        </div>
+
+        <form id="registro" class="formulario">
+            <div class="formulario__campo">
+                <input type="submit" class="formulario__submit formulario__submit--full" value="Registrarme">
+            </div>
+        </form>
     </aside>
 </div>
