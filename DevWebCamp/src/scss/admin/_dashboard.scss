@@ -112,4 +112,7 @@
         @extend .dashboard__contenedor;
         @include m.contenedor-md;
     }
+    &__grafica {
+        @include m.contenedor-sm;
+    }
 }

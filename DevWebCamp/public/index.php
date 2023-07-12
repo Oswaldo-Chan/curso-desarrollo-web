@@ -11,6 +11,7 @@ use Controllers\PonentesController;
 use Controllers\DashboardController;
 use Controllers\APIEventosController;
 use Controllers\APIPonentesController;
+use Controllers\APIRegalosController;
 use Controllers\RegistradosController;
 use Controllers\RegistroController;
 
@@ -57,6 +58,7 @@ $router->post('/admin/eventos/eliminar', [EventosController::class, 'eliminar'])
 $router->get('/api/eventos-horario', [APIEventosController::class, 'index']);
 $router->get('/api/ponentes', [APIPonentesController::class, 'index']);
 $router->get('/api/ponente', [APIPonentesController::class, 'ponente']);
+$router->get('/api/regalos', [APIRegalosController::class, 'index']);
 
 $router->get('/admin/registrados', [RegistradosController::class, 'index']);
 
