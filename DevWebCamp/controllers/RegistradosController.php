@@ -25,9 +25,9 @@ class RegistradosController {
         $total = Registro::total();
         $paginacion = new Paginacion($paginaActual,$registrosPorPagina,$total);
         
-        if ($paginacion->totalPaginas() < $paginaActual) {
+        if (($paginacion->totalPaginas() < $paginaActual) && !empty($total)) {
             header('Location: /admin/registrados?page=1');
-        }
+        } 
 
         $registros = Registro::paginar($registrosPorPagina, $paginacion->offset());
         
