@@ -29,14 +29,15 @@
         }
     }
     &__enlace {
-        color: v.$blanco;
-        font-size: 1.4rem;
-        text-transform: uppercase;
-        font-weight: v.$bold;
-
-        &:hover {
-            color: v.$azul;
-        }
+        @include m.enlace;
+    }
+    &__form {
+        display: flex;
+    }
+    &__submit--logout {
+        all: unset;
+        @include m.enlace;
+        margin-left: 2rem;
     }
     &__contenido {
         padding-top: 10rem;

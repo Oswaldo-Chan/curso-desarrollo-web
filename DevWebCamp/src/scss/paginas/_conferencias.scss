@@ -1,0 +1,101 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.agenda {
+    padding: 5rem 0;
+    @include m.contenedor;
+}
+.eventos {
+    $modificador: &;
+
+    &__heading {
+        color: v.$azul;
+        margin: 5rem 0;
+        text-align: left;
+        font-size: clamp(2rem, -0.8rem + 8vw, 6rem);
+    }
+
+    &__fecha {
+        color: v.$gris;
+        margin: 3rem 0 1rem 0;
+    }
+
+    &--workshops {
+        #{$modificador}__heading {
+            color: v.$secundario;
+        }
+
+        .evento__info {
+            background-color: v.$secundario;
+            &:hover {
+                background-color: darken(v.$secundario, 10);
+            }
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: rgba(v.$blanco,.5);
+        &:hover {
+            color: rgba(v.$blanco,.8);
+        }
+    }
+}
+
+.evento {
+    &__hora {
+        font-weight: v.$bold;
+    }
+    &__info {
+        padding: 2rem;
+        border-radius: 1rem;
+        background-color: v.$azul;
+        color: v.$blanco;
+        transition: 300ms background-color ease;
+
+        &:hover {
+            cursor: pointer;
+            background-color: darken(v.$azul, 10);
+        }
+    }
+
+    &__nombre {
+        font-size: 2rem;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    &__descripcion {
+        color: v.$blanco;
+        font-size: 1.6rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    &__autor-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__imagen-autor {
+        width: 5rem;
+        background-color: v.$blanco;
+        border-radius: 50%;
+    }
+    &__autor-nombre {
+        font-weight: v.$bold;
+    }
+    &__agregar {
+        @include m.boton(v.$blanco, v.$negro);
+        border-radius: 2.5rem;
+        margin-top: 1rem;
+
+        &:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+    }
+}

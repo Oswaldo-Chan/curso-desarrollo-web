@@ -2,11 +2,6 @@
     const horas = document.querySelector('#horas');
 
     if (horas) {
-        let busqueda = {
-            categoria_id: '',
-            dia: '' 
-        }
-
         const categoria = document.querySelector('[name="categoria_id"]');
         const dias = document.querySelectorAll('[name="dia"]');
         const hiddenDia = document.querySelector('[name="dia_id"]');
@@ -15,6 +10,28 @@
         categoria.addEventListener('change', terminoBusqueda);
         dias.forEach(dia => dia.addEventListener('change', terminoBusqueda));
         
+        let busqueda = {
+            categoria_id: +categoria.value || '',
+            dia: +hiddenDia.value || '' 
+        }
+
+        if (!Object.values(busqueda).includes('')) {
+            
+            async function init() { //tambien se puede con IIFE
+                await buscarEventos();
+
+                const id = hiddenHora.value;
+
+                const horaSeleccionada = document.querySelector(`[data-hora-id="${id}"]`);
+                horaSeleccionada.classList.remove('horas__hora--deshabilitada');
+                horaSeleccionada.classList.add('horas__hora--seleccionada');
+
+                horaSeleccionada.onclick = seleccionarHora;
+            }  
+
+            init();
+        }
+
         function terminoBusqueda(e) {
             busqueda[e.target.name] = e.target.value;
 
@@ -57,6 +74,12 @@
 
             const horasDisponibles = document.querySelectorAll('#horas li:not(.horas__hora--deshabilitada)');
             horasDisponibles.forEach(hora => hora.addEventListener('click', seleccionarHora));
+        
+            //elimina el eventListener al cambiar los terminos de busqueda
+            const horasNoDisponibles = document.querySelectorAll('.horas__hora--deshabilitada');
+            Array.from(horasNoDisponibles).map(hora => {
+                hora.removeEventListener('click', seleccionarHora);
+            });  
         }
 
         function seleccionarHora(e) {

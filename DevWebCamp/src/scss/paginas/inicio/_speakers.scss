@@ -1,0 +1,62 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.speakers {
+
+    &__grid {
+        @include m.contenedor;
+        @include m.grid(1,5rem);
+
+        @include m.tablet {
+            @include m.grid(2,5rem);
+        }
+        @include m.xl_desktop {
+            @include m.grid(3,5rem);
+        }
+    }
+}
+.speaker {
+    @include m.card;
+    background-position: center top;
+    background-size: 35rem;
+    background-repeat: no-repeat;
+
+    @for $i from 1 through 4 {
+        &:nth-child(4n + #{$i}) {
+            background-image: image-set(
+                url('../img/bg_#{$i}.avif') 1x,
+                url('../img/bg_#{$i}.webp') 1x,
+                url('../img/bg_#{$i}.png') 1x
+            );
+        }
+    }
+    &__imagen {
+        min-width: 35rem;
+        @include m.tablet {
+            min-width: unset;
+        }
+    }
+    &__ubicacion {
+        color: v.$gris;
+        margin: 1rem 0;
+        font-size: 2rem;
+        line-height: 1.5;
+    }
+
+    &__listado-skills {
+        @include m.tags;
+    }
+}
+.speaker-sociales {
+    @include m.menu-social(v.$negro, 3rem);
+    display: flex;
+    margin-top: 2rem;
+
+    &__enlace {
+        margin-right: 2rem;
+
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
